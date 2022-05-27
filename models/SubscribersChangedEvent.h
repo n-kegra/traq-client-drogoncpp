@@ -25,26 +25,11 @@ struct SubscribersChangedEvent {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["userId"] = (userId);
-        _json["on"] = Helper::toJson(on);
-        _json["off"] = Helper::toJson(off);
-        return _json;
-    }
-    SubscribersChangedEvent& fromJson(const Json::Value& _json) {
-        userId = _json["userId"].as<std::string>();
-        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
-            on.emplace_back((*_it).as<std::string>());    
-        }
-        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
-            off.emplace_back((*_it).as<std::string>());    
-        }
-        return *this;
-    }
+    Json::Value toJson() const;
+    SubscribersChangedEvent& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::SubscribersChangedEvent Json::Value::as<traQ::SubscribersChangedEvent>() const { return traQ::SubscribersChangedEvent(*this); }
+template <> traQ::SubscribersChangedEvent Json::Value::as<traQ::SubscribersChangedEvent>() const;
 
 #endif

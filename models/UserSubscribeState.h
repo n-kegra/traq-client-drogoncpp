@@ -24,20 +24,11 @@ struct UserSubscribeState {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["channelId"] = (channelId);
-        _json["level"] = (level);
-        return _json;
-    }
-    UserSubscribeState& fromJson(const Json::Value& _json) {
-        channelId = _json["channelId"].as<std::string>();
-        level = _json["level"].as<ChannelSubscribeLevel>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    UserSubscribeState& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::UserSubscribeState Json::Value::as<traQ::UserSubscribeState>() const { return traQ::UserSubscribeState(*this); }
+template <> traQ::UserSubscribeState Json::Value::as<traQ::UserSubscribeState>() const;
 
 #endif

@@ -25,24 +25,11 @@ struct Tag {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["id"] = (id);
-        _json["tag"] = (tag);
-        _json["users"] = Helper::toJson(users);
-        return _json;
-    }
-    Tag& fromJson(const Json::Value& _json) {
-        id = _json["id"].as<std::string>();
-        tag = _json["tag"].as<std::string>();
-        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
-            users.emplace_back((*_it).as<std::string>());    
-        }
-        return *this;
-    }
+    Json::Value toJson() const;
+    Tag& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::Tag Json::Value::as<traQ::Tag>() const { return traQ::Tag(*this); }
+template <> traQ::Tag Json::Value::as<traQ::Tag>() const;
 
 #endif

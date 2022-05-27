@@ -26,24 +26,11 @@ struct ChannelList {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["public"] = Helper::toJson(public);
-        _json["dm"] = Helper::toJson(dm);
-        return _json;
-    }
-    ChannelList& fromJson(const Json::Value& _json) {
-        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
-            public.emplace_back((*_it));    
-        }
-        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
-            dm.emplace_back((*_it));    
-        }
-        return *this;
-    }
+    Json::Value toJson() const;
+    ChannelList& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::ChannelList Json::Value::as<traQ::ChannelList>() const { return traQ::ChannelList(*this); }
+template <> traQ::ChannelList Json::Value::as<traQ::ChannelList>() const;
 
 #endif

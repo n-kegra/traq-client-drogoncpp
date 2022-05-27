@@ -23,20 +23,11 @@ struct BotUser {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["id"] = (id);
-        _json["botUserId"] = (botUserId);
-        return _json;
-    }
-    BotUser& fromJson(const Json::Value& _json) {
-        id = _json["id"].as<std::string>();
-        botUserId = _json["botUserId"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    BotUser& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::BotUser Json::Value::as<traQ::BotUser>() const { return traQ::BotUser(*this); }
+template <> traQ::BotUser Json::Value::as<traQ::BotUser>() const;
 
 #endif

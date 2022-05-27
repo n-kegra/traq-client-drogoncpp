@@ -22,18 +22,11 @@ struct PostUserTagRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["tag"] = (tag);
-        return _json;
-    }
-    PostUserTagRequest& fromJson(const Json::Value& _json) {
-        tag = _json["tag"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostUserTagRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::PostUserTagRequest Json::Value::as<traQ::PostUserTagRequest>() const { return traQ::PostUserTagRequest(*this); }
+template <> traQ::PostUserTagRequest Json::Value::as<traQ::PostUserTagRequest>() const;
 
 #endif

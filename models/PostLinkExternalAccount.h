@@ -22,18 +22,11 @@ struct PostLinkExternalAccount {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["providerName"] = (providerName);
-        return _json;
-    }
-    PostLinkExternalAccount& fromJson(const Json::Value& _json) {
-        providerName = _json["providerName"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostLinkExternalAccount& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::PostLinkExternalAccount Json::Value::as<traQ::PostLinkExternalAccount>() const { return traQ::PostLinkExternalAccount(*this); }
+template <> traQ::PostLinkExternalAccount Json::Value::as<traQ::PostLinkExternalAccount>() const;
 
 #endif

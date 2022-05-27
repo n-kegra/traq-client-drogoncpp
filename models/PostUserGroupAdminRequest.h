@@ -22,18 +22,11 @@ struct PostUserGroupAdminRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["id"] = (id);
-        return _json;
-    }
-    PostUserGroupAdminRequest& fromJson(const Json::Value& _json) {
-        id = _json["id"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostUserGroupAdminRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::PostUserGroupAdminRequest Json::Value::as<traQ::PostUserGroupAdminRequest>() const { return traQ::PostUserGroupAdminRequest(*this); }
+template <> traQ::PostUserGroupAdminRequest Json::Value::as<traQ::PostUserGroupAdminRequest>() const;
 
 #endif

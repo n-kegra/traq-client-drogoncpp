@@ -22,20 +22,11 @@ struct WebRTCUserStateSessionsInner {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["state"] = (state);
-        _json["sessionId"] = (sessionId);
-        return _json;
-    }
-    WebRTCUserStateSessionsInner& fromJson(const Json::Value& _json) {
-        state = _json["state"].as<std::string>();
-        sessionId = _json["sessionId"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    WebRTCUserStateSessionsInner& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::WebRTCUserStateSessionsInner Json::Value::as<traQ::WebRTCUserStateSessionsInner>() const { return traQ::WebRTCUserStateSessionsInner(*this); }
+template <> traQ::WebRTCUserStateSessionsInner Json::Value::as<traQ::WebRTCUserStateSessionsInner>() const;
 
 #endif

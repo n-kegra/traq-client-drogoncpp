@@ -23,20 +23,11 @@ struct UserSettings {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["id"] = (id);
-        _json["notifyCitation"] = (notifyCitation);
-        return _json;
-    }
-    UserSettings& fromJson(const Json::Value& _json) {
-        id = _json["id"].as<std::string>();
-        notifyCitation = _json["notifyCitation"].as<bool>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    UserSettings& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::UserSettings Json::Value::as<traQ::UserSettings>() const { return traQ::UserSettings(*this); }
+template <> traQ::UserSettings Json::Value::as<traQ::UserSettings>() const;
 
 #endif

@@ -22,18 +22,11 @@ struct ChannelTopic {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["topic"] = (topic);
-        return _json;
-    }
-    ChannelTopic& fromJson(const Json::Value& _json) {
-        topic = _json["topic"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    ChannelTopic& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::ChannelTopic Json::Value::as<traQ::ChannelTopic>() const { return traQ::ChannelTopic(*this); }
+template <> traQ::ChannelTopic Json::Value::as<traQ::ChannelTopic>() const;
 
 #endif

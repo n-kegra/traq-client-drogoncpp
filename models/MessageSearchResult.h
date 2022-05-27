@@ -25,22 +25,11 @@ struct MessageSearchResult {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["totalHits"] = (totalHits);
-        _json["hits"] = Helper::toJson(hits);
-        return _json;
-    }
-    MessageSearchResult& fromJson(const Json::Value& _json) {
-        totalHits = _json["totalHits"].as<int64_t>();
-        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
-            hits.emplace_back((*_it));    
-        }
-        return *this;
-    }
+    Json::Value toJson() const;
+    MessageSearchResult& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::MessageSearchResult Json::Value::as<traQ::MessageSearchResult>() const { return traQ::MessageSearchResult(*this); }
+template <> traQ::MessageSearchResult Json::Value::as<traQ::MessageSearchResult>() const;
 
 #endif

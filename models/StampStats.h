@@ -23,20 +23,11 @@ struct StampStats {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["count"] = (count);
-        _json["totalCount"] = (totalCount);
-        return _json;
-    }
-    StampStats& fromJson(const Json::Value& _json) {
-        count = _json["count"].as<int64_t>();
-        totalCount = _json["totalCount"].as<int64_t>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    StampStats& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::StampStats Json::Value::as<traQ::StampStats>() const { return traQ::StampStats(*this); }
+template <> traQ::StampStats Json::Value::as<traQ::StampStats>() const;
 
 #endif

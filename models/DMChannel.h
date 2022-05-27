@@ -23,20 +23,11 @@ struct DMChannel {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["id"] = (id);
-        _json["userId"] = (userId);
-        return _json;
-    }
-    DMChannel& fromJson(const Json::Value& _json) {
-        id = _json["id"].as<std::string>();
-        userId = _json["userId"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    DMChannel& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::DMChannel Json::Value::as<traQ::DMChannel>() const { return traQ::DMChannel(*this); }
+template <> traQ::DMChannel Json::Value::as<traQ::DMChannel>() const;
 
 #endif

@@ -22,18 +22,11 @@ struct PostClipFolderMessageRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["messageId"] = (messageId);
-        return _json;
-    }
-    PostClipFolderMessageRequest& fromJson(const Json::Value& _json) {
-        messageId = _json["messageId"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostClipFolderMessageRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::PostClipFolderMessageRequest Json::Value::as<traQ::PostClipFolderMessageRequest>() const { return traQ::PostClipFolderMessageRequest(*this); }
+template <> traQ::PostClipFolderMessageRequest Json::Value::as<traQ::PostClipFolderMessageRequest>() const;
 
 #endif

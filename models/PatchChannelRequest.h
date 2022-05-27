@@ -25,24 +25,11 @@ struct PatchChannelRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["name"] = (name);
-        _json["archived"] = (archived);
-        _json["force"] = (force);
-        _json["parent"] = (parent);
-        return _json;
-    }
-    PatchChannelRequest& fromJson(const Json::Value& _json) {
-        name = _json["name"].as<std::string>();
-        archived = _json["archived"].as<bool>();
-        force = _json["force"].as<bool>();
-        parent = _json["parent"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PatchChannelRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::PatchChannelRequest Json::Value::as<traQ::PatchChannelRequest>() const { return traQ::PatchChannelRequest(*this); }
+template <> traQ::PatchChannelRequest Json::Value::as<traQ::PatchChannelRequest>() const;
 
 #endif

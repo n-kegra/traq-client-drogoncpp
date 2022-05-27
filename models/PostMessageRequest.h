@@ -23,20 +23,11 @@ struct PostMessageRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["content"] = (content);
-        _json["embed"] = (embed);
-        return _json;
-    }
-    PostMessageRequest& fromJson(const Json::Value& _json) {
-        content = _json["content"].as<std::string>();
-        embed = _json["embed"].as<bool>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostMessageRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::PostMessageRequest Json::Value::as<traQ::PostMessageRequest>() const { return traQ::PostMessageRequest(*this); }
+template <> traQ::PostMessageRequest Json::Value::as<traQ::PostMessageRequest>() const;
 
 #endif

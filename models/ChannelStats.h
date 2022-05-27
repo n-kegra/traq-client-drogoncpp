@@ -28,28 +28,11 @@ struct ChannelStats {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["totalMessageCount"] = (totalMessageCount);
-        _json["stamps"] = Helper::toJson(stamps);
-        _json["users"] = Helper::toJson(users);
-        _json["datetime"] = (datetime);
-        return _json;
-    }
-    ChannelStats& fromJson(const Json::Value& _json) {
-        totalMessageCount = _json["totalMessageCount"].as<int64_t>();
-        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
-            stamps.emplace_back((*_it));    
-        }
-        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
-            users.emplace_back((*_it));    
-        }
-        datetime = _json["datetime"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    ChannelStats& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::ChannelStats Json::Value::as<traQ::ChannelStats>() const { return traQ::ChannelStats(*this); }
+template <> traQ::ChannelStats Json::Value::as<traQ::ChannelStats>() const;
 
 #endif

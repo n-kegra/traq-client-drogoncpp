@@ -22,18 +22,11 @@ struct PostMyFCMDeviceRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["token"] = (token);
-        return _json;
-    }
-    PostMyFCMDeviceRequest& fromJson(const Json::Value& _json) {
-        token = _json["token"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostMyFCMDeviceRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::PostMyFCMDeviceRequest Json::Value::as<traQ::PostMyFCMDeviceRequest>() const { return traQ::PostMyFCMDeviceRequest(*this); }
+template <> traQ::PostMyFCMDeviceRequest Json::Value::as<traQ::PostMyFCMDeviceRequest>() const;
 
 #endif

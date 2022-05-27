@@ -23,22 +23,11 @@ struct VersionFlags {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["externalLogin"] = Helper::toJson(externalLogin);
-        _json["signUpAllowed"] = (signUpAllowed);
-        return _json;
-    }
-    VersionFlags& fromJson(const Json::Value& _json) {
-        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
-            externalLogin.emplace_back((*_it).as<std::string>());    
-        }
-        signUpAllowed = _json["signUpAllowed"].as<bool>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    VersionFlags& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::VersionFlags Json::Value::as<traQ::VersionFlags>() const { return traQ::VersionFlags(*this); }
+template <> traQ::VersionFlags Json::Value::as<traQ::VersionFlags>() const;
 
 #endif

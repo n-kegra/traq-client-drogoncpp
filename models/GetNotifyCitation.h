@@ -22,18 +22,11 @@ struct GetNotifyCitation {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["notifyCitation"] = (notifyCitation);
-        return _json;
-    }
-    GetNotifyCitation& fromJson(const Json::Value& _json) {
-        notifyCitation = _json["notifyCitation"].as<bool>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    GetNotifyCitation& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::GetNotifyCitation Json::Value::as<traQ::GetNotifyCitation>() const { return traQ::GetNotifyCitation(*this); }
+template <> traQ::GetNotifyCitation Json::Value::as<traQ::GetNotifyCitation>() const;
 
 #endif

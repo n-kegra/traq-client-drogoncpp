@@ -32,36 +32,11 @@ struct Message {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["id"] = (id);
-        _json["userId"] = (userId);
-        _json["channelId"] = (channelId);
-        _json["content"] = (content);
-        _json["createdAt"] = (createdAt);
-        _json["updatedAt"] = (updatedAt);
-        _json["pinned"] = (pinned);
-        _json["stamps"] = Helper::toJson(stamps);
-        _json["threadId"] = (threadId);
-        return _json;
-    }
-    Message& fromJson(const Json::Value& _json) {
-        id = _json["id"].as<std::string>();
-        userId = _json["userId"].as<std::string>();
-        channelId = _json["channelId"].as<std::string>();
-        content = _json["content"].as<std::string>();
-        createdAt = _json["createdAt"].as<std::string>();
-        updatedAt = _json["updatedAt"].as<std::string>();
-        pinned = _json["pinned"].as<bool>();
-        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
-            stamps.emplace_back((*_it));    
-        }
-        threadId = _json["threadId"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    Message& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::Message Json::Value::as<traQ::Message>() const { return traQ::Message(*this); }
+template <> traQ::Message Json::Value::as<traQ::Message>() const;
 
 #endif

@@ -27,26 +27,11 @@ struct ActiveOAuth2Token {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["id"] = (id);
-        _json["clientId"] = (clientId);
-        _json["scopes"] = Helper::toJson(scopes);
-        _json["issuedAt"] = (issuedAt);
-        return _json;
-    }
-    ActiveOAuth2Token& fromJson(const Json::Value& _json) {
-        id = _json["id"].as<std::string>();
-        clientId = _json["clientId"].as<std::string>();
-        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
-            scopes.emplace_back((*_it).as<OAuth2Scope>());    
-        }
-        issuedAt = _json["issuedAt"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    ActiveOAuth2Token& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::ActiveOAuth2Token Json::Value::as<traQ::ActiveOAuth2Token>() const { return traQ::ActiveOAuth2Token(*this); }
+template <> traQ::ActiveOAuth2Token Json::Value::as<traQ::ActiveOAuth2Token>() const;
 
 #endif

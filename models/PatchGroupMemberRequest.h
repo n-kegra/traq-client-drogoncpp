@@ -22,18 +22,11 @@ struct PatchGroupMemberRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["role"] = (role);
-        return _json;
-    }
-    PatchGroupMemberRequest& fromJson(const Json::Value& _json) {
-        role = _json["role"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PatchGroupMemberRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::PatchGroupMemberRequest Json::Value::as<traQ::PatchGroupMemberRequest>() const { return traQ::PatchGroupMemberRequest(*this); }
+template <> traQ::PatchGroupMemberRequest Json::Value::as<traQ::PatchGroupMemberRequest>() const;
 
 #endif

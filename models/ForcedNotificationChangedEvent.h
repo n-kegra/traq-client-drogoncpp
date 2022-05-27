@@ -23,20 +23,11 @@ struct ForcedNotificationChangedEvent {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["userId"] = (userId);
-        _json["force"] = (force);
-        return _json;
-    }
-    ForcedNotificationChangedEvent& fromJson(const Json::Value& _json) {
-        userId = _json["userId"].as<std::string>();
-        force = _json["force"].as<bool>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    ForcedNotificationChangedEvent& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::ForcedNotificationChangedEvent Json::Value::as<traQ::ForcedNotificationChangedEvent>() const { return traQ::ForcedNotificationChangedEvent(*this); }
+template <> traQ::ForcedNotificationChangedEvent Json::Value::as<traQ::ForcedNotificationChangedEvent>() const;
 
 #endif

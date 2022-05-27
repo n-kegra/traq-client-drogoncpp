@@ -23,20 +23,11 @@ struct StampHistoryEntry {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["stampId"] = (stampId);
-        _json["datetime"] = (datetime);
-        return _json;
-    }
-    StampHistoryEntry& fromJson(const Json::Value& _json) {
-        stampId = _json["stampId"].as<drogon::UploadFile>();
-        datetime = _json["datetime"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    StampHistoryEntry& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::StampHistoryEntry Json::Value::as<traQ::StampHistoryEntry>() const { return traQ::StampHistoryEntry(*this); }
+template <> traQ::StampHistoryEntry Json::Value::as<traQ::StampHistoryEntry>() const;
 
 #endif

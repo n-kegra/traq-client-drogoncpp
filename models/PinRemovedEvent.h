@@ -23,20 +23,11 @@ struct PinRemovedEvent {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["userId"] = (userId);
-        _json["messageId"] = (messageId);
-        return _json;
-    }
-    PinRemovedEvent& fromJson(const Json::Value& _json) {
-        userId = _json["userId"].as<std::string>();
-        messageId = _json["messageId"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PinRemovedEvent& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::PinRemovedEvent Json::Value::as<traQ::PinRemovedEvent>() const { return traQ::PinRemovedEvent(*this); }
+template <> traQ::PinRemovedEvent Json::Value::as<traQ::PinRemovedEvent>() const;
 
 #endif

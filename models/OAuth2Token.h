@@ -26,28 +26,11 @@ struct OAuth2Token {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["accessUnderscoretoken"] = (accessUnderscoretoken);
-        _json["tokenUnderscoretype"] = (tokenUnderscoretype);
-        _json["expiresUnderscorein"] = (expiresUnderscorein);
-        _json["refreshUnderscoretoken"] = (refreshUnderscoretoken);
-        _json["scope"] = (scope);
-        _json["idUnderscoretoken"] = (idUnderscoretoken);
-        return _json;
-    }
-    OAuth2Token& fromJson(const Json::Value& _json) {
-        accessUnderscoretoken = _json["accessUnderscoretoken"].as<std::string>();
-        tokenUnderscoretype = _json["tokenUnderscoretype"].as<std::string>();
-        expiresUnderscorein = _json["expiresUnderscorein"].as<int32_t>();
-        refreshUnderscoretoken = _json["refreshUnderscoretoken"].as<std::string>();
-        scope = _json["scope"].as<std::string>();
-        idUnderscoretoken = _json["idUnderscoretoken"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    OAuth2Token& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::OAuth2Token Json::Value::as<traQ::OAuth2Token>() const { return traQ::OAuth2Token(*this); }
+template <> traQ::OAuth2Token Json::Value::as<traQ::OAuth2Token>() const;
 
 #endif

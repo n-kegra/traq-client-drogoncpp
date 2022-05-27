@@ -30,34 +30,11 @@ struct Webhook {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["id"] = (id);
-        _json["botUserId"] = (botUserId);
-        _json["displayName"] = (displayName);
-        _json["description"] = (description);
-        _json["secure"] = (secure);
-        _json["channelId"] = (channelId);
-        _json["ownerId"] = (ownerId);
-        _json["createdAt"] = (createdAt);
-        _json["updatedAt"] = (updatedAt);
-        return _json;
-    }
-    Webhook& fromJson(const Json::Value& _json) {
-        id = _json["id"].as<std::string>();
-        botUserId = _json["botUserId"].as<std::string>();
-        displayName = _json["displayName"].as<std::string>();
-        description = _json["description"].as<std::string>();
-        secure = _json["secure"].as<bool>();
-        channelId = _json["channelId"].as<std::string>();
-        ownerId = _json["ownerId"].as<std::string>();
-        createdAt = _json["createdAt"].as<std::string>();
-        updatedAt = _json["updatedAt"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    Webhook& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::Webhook Json::Value::as<traQ::Webhook>() const { return traQ::Webhook(*this); }
+template <> traQ::Webhook Json::Value::as<traQ::Webhook>() const;
 
 #endif

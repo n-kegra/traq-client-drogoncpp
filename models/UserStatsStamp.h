@@ -24,22 +24,11 @@ struct UserStatsStamp {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["id"] = (id);
-        _json["count"] = (count);
-        _json["total"] = (total);
-        return _json;
-    }
-    UserStatsStamp& fromJson(const Json::Value& _json) {
-        id = _json["id"].as<std::string>();
-        count = _json["count"].as<int64_t>();
-        total = _json["total"].as<int64_t>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    UserStatsStamp& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::UserStatsStamp Json::Value::as<traQ::UserStatsStamp>() const { return traQ::UserStatsStamp(*this); }
+template <> traQ::UserStatsStamp Json::Value::as<traQ::UserStatsStamp>() const;
 
 #endif

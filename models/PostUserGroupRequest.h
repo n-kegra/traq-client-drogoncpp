@@ -24,22 +24,11 @@ struct PostUserGroupRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["name"] = (name);
-        _json["description"] = (description);
-        _json["type"] = (type);
-        return _json;
-    }
-    PostUserGroupRequest& fromJson(const Json::Value& _json) {
-        name = _json["name"].as<std::string>();
-        description = _json["description"].as<std::string>();
-        type = _json["type"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostUserGroupRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::PostUserGroupRequest Json::Value::as<traQ::PostUserGroupRequest>() const { return traQ::PostUserGroupRequest(*this); }
+template <> traQ::PostUserGroupRequest Json::Value::as<traQ::PostUserGroupRequest>() const;
 
 #endif

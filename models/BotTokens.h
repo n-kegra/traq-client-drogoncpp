@@ -23,20 +23,11 @@ struct BotTokens {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["verificationToken"] = (verificationToken);
-        _json["accessToken"] = (accessToken);
-        return _json;
-    }
-    BotTokens& fromJson(const Json::Value& _json) {
-        verificationToken = _json["verificationToken"].as<std::string>();
-        accessToken = _json["accessToken"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    BotTokens& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::BotTokens Json::Value::as<traQ::BotTokens>() const { return traQ::BotTokens(*this); }
+template <> traQ::BotTokens Json::Value::as<traQ::BotTokens>() const;
 
 #endif

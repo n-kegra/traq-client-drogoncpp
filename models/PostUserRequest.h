@@ -23,20 +23,11 @@ struct PostUserRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["name"] = (name);
-        _json["password"] = (password);
-        return _json;
-    }
-    PostUserRequest& fromJson(const Json::Value& _json) {
-        name = _json["name"].as<std::string>();
-        password = _json["password"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostUserRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> traQ::PostUserRequest Json::Value::as<traQ::PostUserRequest>() const { return traQ::PostUserRequest(*this); }
+template <> traQ::PostUserRequest Json::Value::as<traQ::PostUserRequest>() const;
 
 #endif

@@ -15,6 +15,7 @@ namespace Helper {
             break;
         default:
             delimiter = ',';
+            break;
         }
 
         switch(style) {
@@ -22,7 +23,9 @@ namespace Helper {
         case SerializeStyle::matrix:
             str += name;
             str += "=";
+            break;
         default:
+            break;
         }
 
         if(value.isArray()){
