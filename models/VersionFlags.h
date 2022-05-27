@@ -15,6 +15,7 @@ struct VersionFlags {
     std::vector<std::string> externalLogin;
     bool signUpAllowed;
 
+    VersionFlags() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,13 +30,15 @@ struct VersionFlags {
         return _json;
     }
     VersionFlags& fromJson(const Json::Value& _json) {
-        Json::Value _json;
-        externalLogin = _json["externalLogin"].as<std::vector<std::string>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            externalLogin.emplace_back((*_it).as<std::string>());    
+        }
         signUpAllowed = _json["signUpAllowed"].as<bool>();
         return *this;
     }
 };
 
 }
+template <> traQ::VersionFlags Json::Value::as<traQ::VersionFlags>() const { return traQ::VersionFlags(*this); }
 
 #endif

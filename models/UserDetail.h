@@ -29,6 +29,7 @@ struct UserDetail {
     std::string bio;
     std::string homeChannel;
 
+    UserDetail() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -54,7 +55,6 @@ struct UserDetail {
         return _json;
     }
     UserDetail& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         state = _json["state"].as<UserAccountState>();
         bot = _json["bot"].as<bool>();
@@ -64,8 +64,12 @@ struct UserDetail {
         twitterId = _json["twitterId"].as<std::string>();
         lastOnline = _json["lastOnline"].as<std::string>();
         updatedAt = _json["updatedAt"].as<std::string>();
-        tags = _json["tags"].as<std::vector<UserTag>>();
-        groups = _json["groups"].as<std::vector<std::string>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            tags.emplace_back((*_it));    
+        }
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            groups.emplace_back((*_it).as<std::string>());    
+        }
         bio = _json["bio"].as<std::string>();
         homeChannel = _json["homeChannel"].as<std::string>();
         return *this;
@@ -73,5 +77,6 @@ struct UserDetail {
 };
 
 }
+template <> traQ::UserDetail Json::Value::as<traQ::UserDetail>() const { return traQ::UserDetail(*this); }
 
 #endif

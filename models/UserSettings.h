@@ -15,6 +15,7 @@ struct UserSettings {
     std::string id;
     bool notifyCitation;
 
+    UserSettings() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct UserSettings {
         return _json;
     }
     UserSettings& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         notifyCitation = _json["notifyCitation"].as<bool>();
         return *this;
@@ -37,5 +37,6 @@ struct UserSettings {
 };
 
 }
+template <> traQ::UserSettings Json::Value::as<traQ::UserSettings>() const { return traQ::UserSettings(*this); }
 
 #endif

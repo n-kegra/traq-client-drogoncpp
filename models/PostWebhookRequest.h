@@ -17,6 +17,7 @@ struct PostWebhookRequest {
     std::string channelId;
     std::string secret;
 
+    PostWebhookRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -33,7 +34,6 @@ struct PostWebhookRequest {
         return _json;
     }
     PostWebhookRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         name = _json["name"].as<std::string>();
         description = _json["description"].as<std::string>();
         channelId = _json["channelId"].as<std::string>();
@@ -43,5 +43,6 @@ struct PostWebhookRequest {
 };
 
 }
+template <> traQ::PostWebhookRequest Json::Value::as<traQ::PostWebhookRequest>() const { return traQ::PostWebhookRequest(*this); }
 
 #endif

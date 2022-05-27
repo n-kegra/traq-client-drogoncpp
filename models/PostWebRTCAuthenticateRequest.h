@@ -14,6 +14,7 @@ namespace traQ {
 struct PostWebRTCAuthenticateRequest {
     std::string peerId;
 
+    PostWebRTCAuthenticateRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -27,12 +28,12 @@ struct PostWebRTCAuthenticateRequest {
         return _json;
     }
     PostWebRTCAuthenticateRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         peerId = _json["peerId"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::PostWebRTCAuthenticateRequest Json::Value::as<traQ::PostWebRTCAuthenticateRequest>() const { return traQ::PostWebRTCAuthenticateRequest(*this); }
 
 #endif

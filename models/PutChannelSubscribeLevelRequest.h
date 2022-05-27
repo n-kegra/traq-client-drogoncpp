@@ -15,6 +15,7 @@ namespace traQ {
 struct PutChannelSubscribeLevelRequest {
     ChannelSubscribeLevel level;
 
+    PutChannelSubscribeLevelRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -28,12 +29,12 @@ struct PutChannelSubscribeLevelRequest {
         return _json;
     }
     PutChannelSubscribeLevelRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         level = _json["level"].as<ChannelSubscribeLevel>();
         return *this;
     }
 };
 
 }
+template <> traQ::PutChannelSubscribeLevelRequest Json::Value::as<traQ::PutChannelSubscribeLevelRequest>() const { return traQ::PutChannelSubscribeLevelRequest(*this); }
 
 #endif

@@ -16,6 +16,7 @@ struct NameChangedEvent {
     std::string before;
     std::string after;
 
+    NameChangedEvent() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -31,7 +32,6 @@ struct NameChangedEvent {
         return _json;
     }
     NameChangedEvent& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         userId = _json["userId"].as<std::string>();
         before = _json["before"].as<std::string>();
         after = _json["after"].as<std::string>();
@@ -40,5 +40,6 @@ struct NameChangedEvent {
 };
 
 }
+template <> traQ::NameChangedEvent Json::Value::as<traQ::NameChangedEvent>() const { return traQ::NameChangedEvent(*this); }
 
 #endif

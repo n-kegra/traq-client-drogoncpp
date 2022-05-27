@@ -21,6 +21,7 @@ struct User {
     UserAccountState state;
     std::string updatedAt;
 
+    User() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -40,7 +41,6 @@ struct User {
         return _json;
     }
     User& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         name = _json["name"].as<std::string>();
         displayName = _json["displayName"].as<std::string>();
@@ -53,5 +53,6 @@ struct User {
 };
 
 }
+template <> traQ::User Json::Value::as<traQ::User>() const { return traQ::User(*this); }
 
 #endif

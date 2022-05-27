@@ -14,6 +14,7 @@ namespace traQ {
 struct PostBotActionLeaveRequest {
     std::string channelId;
 
+    PostBotActionLeaveRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -27,12 +28,12 @@ struct PostBotActionLeaveRequest {
         return _json;
     }
     PostBotActionLeaveRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         channelId = _json["channelId"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::PostBotActionLeaveRequest Json::Value::as<traQ::PostBotActionLeaveRequest>() const { return traQ::PostBotActionLeaveRequest(*this); }
 
 #endif

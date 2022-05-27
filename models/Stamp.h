@@ -20,6 +20,7 @@ struct Stamp {
     std::string fileId;
     bool isUnicode;
 
+    Stamp() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -39,7 +40,6 @@ struct Stamp {
         return _json;
     }
     Stamp& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         name = _json["name"].as<std::string>();
         creatorId = _json["creatorId"].as<std::string>();
@@ -52,5 +52,6 @@ struct Stamp {
 };
 
 }
+template <> traQ::Stamp Json::Value::as<traQ::Stamp>() const { return traQ::Stamp(*this); }
 
 #endif

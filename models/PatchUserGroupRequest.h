@@ -16,6 +16,7 @@ struct PatchUserGroupRequest {
     std::string description;
     std::string type;
 
+    PatchUserGroupRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -31,7 +32,6 @@ struct PatchUserGroupRequest {
         return _json;
     }
     PatchUserGroupRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         name = _json["name"].as<std::string>();
         description = _json["description"].as<std::string>();
         type = _json["type"].as<std::string>();
@@ -40,5 +40,6 @@ struct PatchUserGroupRequest {
 };
 
 }
+template <> traQ::PatchUserGroupRequest Json::Value::as<traQ::PatchUserGroupRequest>() const { return traQ::PatchUserGroupRequest(*this); }
 
 #endif

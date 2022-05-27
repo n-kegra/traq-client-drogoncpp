@@ -14,6 +14,7 @@ namespace traQ {
 struct PostUserTagRequest {
     std::string tag;
 
+    PostUserTagRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -27,12 +28,12 @@ struct PostUserTagRequest {
         return _json;
     }
     PostUserTagRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         tag = _json["tag"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::PostUserTagRequest Json::Value::as<traQ::PostUserTagRequest>() const { return traQ::PostUserTagRequest(*this); }
 
 #endif

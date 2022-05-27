@@ -14,6 +14,7 @@ namespace traQ {
 struct PostLinkExternalAccount {
     std::string providerName;
 
+    PostLinkExternalAccount() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -27,12 +28,12 @@ struct PostLinkExternalAccount {
         return _json;
     }
     PostLinkExternalAccount& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         providerName = _json["providerName"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::PostLinkExternalAccount Json::Value::as<traQ::PostLinkExternalAccount>() const { return traQ::PostLinkExternalAccount(*this); }
 
 #endif

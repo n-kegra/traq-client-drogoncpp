@@ -15,6 +15,7 @@ struct ForcedNotificationChangedEvent {
     std::string userId;
     bool force;
 
+    ForcedNotificationChangedEvent() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct ForcedNotificationChangedEvent {
         return _json;
     }
     ForcedNotificationChangedEvent& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         userId = _json["userId"].as<std::string>();
         force = _json["force"].as<bool>();
         return *this;
@@ -37,5 +37,6 @@ struct ForcedNotificationChangedEvent {
 };
 
 }
+template <> traQ::ForcedNotificationChangedEvent Json::Value::as<traQ::ForcedNotificationChangedEvent>() const { return traQ::ForcedNotificationChangedEvent(*this); }
 
 #endif

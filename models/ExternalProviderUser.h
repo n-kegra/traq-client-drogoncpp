@@ -16,6 +16,7 @@ struct ExternalProviderUser {
     std::string linkedAt;
     std::string externalName;
 
+    ExternalProviderUser() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -31,7 +32,6 @@ struct ExternalProviderUser {
         return _json;
     }
     ExternalProviderUser& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         providerName = _json["providerName"].as<std::string>();
         linkedAt = _json["linkedAt"].as<std::string>();
         externalName = _json["externalName"].as<std::string>();
@@ -40,5 +40,6 @@ struct ExternalProviderUser {
 };
 
 }
+template <> traQ::ExternalProviderUser Json::Value::as<traQ::ExternalProviderUser>() const { return traQ::ExternalProviderUser(*this); }
 
 #endif

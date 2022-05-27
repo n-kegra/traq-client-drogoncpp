@@ -15,6 +15,7 @@ struct PostMessageRequest {
     std::string content;
     bool embed;
 
+    PostMessageRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct PostMessageRequest {
         return _json;
     }
     PostMessageRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         content = _json["content"].as<std::string>();
         embed = _json["embed"].as<bool>();
         return *this;
@@ -37,5 +37,6 @@ struct PostMessageRequest {
 };
 
 }
+template <> traQ::PostMessageRequest Json::Value::as<traQ::PostMessageRequest>() const { return traQ::PostMessageRequest(*this); }
 
 #endif

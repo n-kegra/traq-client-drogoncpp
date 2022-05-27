@@ -31,6 +31,7 @@ struct MyUserDetail {
     std::vector<UserPermission> permissions;
     std::string homeChannel;
 
+    MyUserDetail() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -57,11 +58,14 @@ struct MyUserDetail {
         return _json;
     }
     MyUserDetail& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         bio = _json["bio"].as<std::string>();
-        groups = _json["groups"].as<std::vector<std::string>>();
-        tags = _json["tags"].as<std::vector<UserTag>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            groups.emplace_back((*_it).as<std::string>());    
+        }
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            tags.emplace_back((*_it));    
+        }
         updatedAt = _json["updatedAt"].as<std::string>();
         lastOnline = _json["lastOnline"].as<std::string>();
         twitterId = _json["twitterId"].as<std::string>();
@@ -70,12 +74,15 @@ struct MyUserDetail {
         iconFileId = _json["iconFileId"].as<std::string>();
         bot = _json["bot"].as<bool>();
         state = _json["state"].as<UserAccountState>();
-        permissions = _json["permissions"].as<std::vector<UserPermission>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            permissions.emplace_back((*_it).as<UserPermission>());    
+        }
         homeChannel = _json["homeChannel"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::MyUserDetail Json::Value::as<traQ::MyUserDetail>() const { return traQ::MyUserDetail(*this); }
 
 #endif

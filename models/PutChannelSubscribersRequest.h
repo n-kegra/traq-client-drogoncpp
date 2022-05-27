@@ -15,6 +15,7 @@ namespace traQ {
 struct PutChannelSubscribersRequest {
     std::vector<std::string> on;
 
+    PutChannelSubscribersRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -28,12 +29,14 @@ struct PutChannelSubscribersRequest {
         return _json;
     }
     PutChannelSubscribersRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
-        on = _json["on"].as<std::vector<std::string>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            on.emplace_back((*_it).as<std::string>());    
+        }
         return *this;
     }
 };
 
 }
+template <> traQ::PutChannelSubscribersRequest Json::Value::as<traQ::PutChannelSubscribersRequest>() const { return traQ::PutChannelSubscribersRequest(*this); }
 
 #endif

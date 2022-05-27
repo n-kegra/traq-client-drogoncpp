@@ -15,6 +15,7 @@ struct PostChannelRequest {
     std::string name;
     std::string parent;
 
+    PostChannelRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct PostChannelRequest {
         return _json;
     }
     PostChannelRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         name = _json["name"].as<std::string>();
         parent = _json["parent"].as<std::string>();
         return *this;
@@ -37,5 +37,6 @@ struct PostChannelRequest {
 };
 
 }
+template <> traQ::PostChannelRequest Json::Value::as<traQ::PostChannelRequest>() const { return traQ::PostChannelRequest(*this); }
 
 #endif

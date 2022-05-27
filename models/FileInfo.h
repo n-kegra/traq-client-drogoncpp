@@ -27,6 +27,7 @@ struct FileInfo {
     std::string channelId;
     std::string uploaderId;
 
+    FileInfo() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -50,7 +51,6 @@ struct FileInfo {
         return _json;
     }
     FileInfo& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         name = _json["name"].as<std::string>();
         mime = _json["mime"].as<std::string>();
@@ -58,8 +58,10 @@ struct FileInfo {
         md5 = _json["md5"].as<std::string>();
         isAnimatedImage = _json["isAnimatedImage"].as<bool>();
         createdAt = _json["createdAt"].as<std::string>();
-        thumbnails = _json["thumbnails"].as<std::vector<ThumbnailInfo>>();
-        thumbnail = _json["thumbnail"].as<FileInfoThumbnail>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            thumbnails.emplace_back((*_it));    
+        }
+        thumbnail.fromJson(_json["thumbnail"]);
         channelId = _json["channelId"].as<std::string>();
         uploaderId = _json["uploaderId"].as<std::string>();
         return *this;
@@ -67,5 +69,6 @@ struct FileInfo {
 };
 
 }
+template <> traQ::FileInfo Json::Value::as<traQ::FileInfo>() const { return traQ::FileInfo(*this); }
 
 #endif

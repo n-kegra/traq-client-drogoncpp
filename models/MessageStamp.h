@@ -18,6 +18,7 @@ struct MessageStamp {
     std::string createdAt;
     std::string updatedAt;
 
+    MessageStamp() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -35,7 +36,6 @@ struct MessageStamp {
         return _json;
     }
     MessageStamp& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         userId = _json["userId"].as<std::string>();
         stampId = _json["stampId"].as<std::string>();
         count = _json["count"].as<int32_t>();
@@ -46,5 +46,6 @@ struct MessageStamp {
 };
 
 }
+template <> traQ::MessageStamp Json::Value::as<traQ::MessageStamp>() const { return traQ::MessageStamp(*this); }
 
 #endif

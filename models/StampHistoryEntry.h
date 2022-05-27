@@ -15,6 +15,7 @@ struct StampHistoryEntry {
     drogon::UploadFile stampId;
     std::string datetime;
 
+    StampHistoryEntry() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct StampHistoryEntry {
         return _json;
     }
     StampHistoryEntry& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         stampId = _json["stampId"].as<drogon::UploadFile>();
         datetime = _json["datetime"].as<std::string>();
         return *this;
@@ -37,5 +37,6 @@ struct StampHistoryEntry {
 };
 
 }
+template <> traQ::StampHistoryEntry Json::Value::as<traQ::StampHistoryEntry>() const { return traQ::StampHistoryEntry(*this); }
 
 #endif

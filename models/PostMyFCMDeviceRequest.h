@@ -14,6 +14,7 @@ namespace traQ {
 struct PostMyFCMDeviceRequest {
     std::string token;
 
+    PostMyFCMDeviceRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -27,12 +28,12 @@ struct PostMyFCMDeviceRequest {
         return _json;
     }
     PostMyFCMDeviceRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         token = _json["token"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::PostMyFCMDeviceRequest Json::Value::as<traQ::PostMyFCMDeviceRequest>() const { return traQ::PostMyFCMDeviceRequest(*this); }
 
 #endif

@@ -15,6 +15,7 @@ struct PutMyPasswordRequest {
     std::string password;
     std::string newPassword;
 
+    PutMyPasswordRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct PutMyPasswordRequest {
         return _json;
     }
     PutMyPasswordRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         password = _json["password"].as<std::string>();
         newPassword = _json["newPassword"].as<std::string>();
         return *this;
@@ -37,5 +37,6 @@ struct PutMyPasswordRequest {
 };
 
 }
+template <> traQ::PutMyPasswordRequest Json::Value::as<traQ::PutMyPasswordRequest>() const { return traQ::PutMyPasswordRequest(*this); }
 
 #endif

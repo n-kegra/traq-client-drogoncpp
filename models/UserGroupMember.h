@@ -15,6 +15,7 @@ struct UserGroupMember {
     std::string id;
     std::string role;
 
+    UserGroupMember() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct UserGroupMember {
         return _json;
     }
     UserGroupMember& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         role = _json["role"].as<std::string>();
         return *this;
@@ -37,5 +37,6 @@ struct UserGroupMember {
 };
 
 }
+template <> traQ::UserGroupMember Json::Value::as<traQ::UserGroupMember>() const { return traQ::UserGroupMember(*this); }
 
 #endif

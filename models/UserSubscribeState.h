@@ -16,6 +16,7 @@ struct UserSubscribeState {
     std::string channelId;
     ChannelSubscribeLevel level;
 
+    UserSubscribeState() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -30,7 +31,6 @@ struct UserSubscribeState {
         return _json;
     }
     UserSubscribeState& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         channelId = _json["channelId"].as<std::string>();
         level = _json["level"].as<ChannelSubscribeLevel>();
         return *this;
@@ -38,5 +38,6 @@ struct UserSubscribeState {
 };
 
 }
+template <> traQ::UserSubscribeState Json::Value::as<traQ::UserSubscribeState>() const { return traQ::UserSubscribeState(*this); }
 
 #endif

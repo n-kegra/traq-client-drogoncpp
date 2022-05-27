@@ -16,6 +16,7 @@ struct PostUserGroupRequest {
     std::string description;
     std::string type;
 
+    PostUserGroupRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -31,7 +32,6 @@ struct PostUserGroupRequest {
         return _json;
     }
     PostUserGroupRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         name = _json["name"].as<std::string>();
         description = _json["description"].as<std::string>();
         type = _json["type"].as<std::string>();
@@ -40,5 +40,6 @@ struct PostUserGroupRequest {
 };
 
 }
+template <> traQ::PostUserGroupRequest Json::Value::as<traQ::PostUserGroupRequest>() const { return traQ::PostUserGroupRequest(*this); }
 
 #endif

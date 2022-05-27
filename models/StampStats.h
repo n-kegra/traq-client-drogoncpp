@@ -15,6 +15,7 @@ struct StampStats {
     int64_t count;
     int64_t totalCount;
 
+    StampStats() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct StampStats {
         return _json;
     }
     StampStats& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         count = _json["count"].as<int64_t>();
         totalCount = _json["totalCount"].as<int64_t>();
         return *this;
@@ -37,5 +37,6 @@ struct StampStats {
 };
 
 }
+template <> traQ::StampStats Json::Value::as<traQ::StampStats>() const { return traQ::StampStats(*this); }
 
 #endif

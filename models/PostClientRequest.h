@@ -19,6 +19,7 @@ struct PostClientRequest {
     std::vector<OAuth2Scope> scopes;
     std::string description;
 
+    PostClientRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -35,15 +36,17 @@ struct PostClientRequest {
         return _json;
     }
     PostClientRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         name = _json["name"].as<std::string>();
         callbackUrl = _json["callbackUrl"].as<std::string>();
-        scopes = _json["scopes"].as<std::vector<OAuth2Scope>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            scopes.emplace_back((*_it).as<OAuth2Scope>());    
+        }
         description = _json["description"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::PostClientRequest Json::Value::as<traQ::PostClientRequest>() const { return traQ::PostClientRequest(*this); }
 
 #endif

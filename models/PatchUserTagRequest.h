@@ -14,6 +14,7 @@ namespace traQ {
 struct PatchUserTagRequest {
     bool isLocked;
 
+    PatchUserTagRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -27,12 +28,12 @@ struct PatchUserTagRequest {
         return _json;
     }
     PatchUserTagRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         isLocked = _json["isLocked"].as<bool>();
         return *this;
     }
 };
 
 }
+template <> traQ::PatchUserTagRequest Json::Value::as<traQ::PatchUserTagRequest>() const { return traQ::PatchUserTagRequest(*this); }
 
 #endif

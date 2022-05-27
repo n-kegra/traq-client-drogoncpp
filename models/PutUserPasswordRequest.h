@@ -14,6 +14,7 @@ namespace traQ {
 struct PutUserPasswordRequest {
     std::string newPassword;
 
+    PutUserPasswordRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -27,12 +28,12 @@ struct PutUserPasswordRequest {
         return _json;
     }
     PutUserPasswordRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         newPassword = _json["newPassword"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::PutUserPasswordRequest Json::Value::as<traQ::PutUserPasswordRequest>() const { return traQ::PutUserPasswordRequest(*this); }
 
 #endif

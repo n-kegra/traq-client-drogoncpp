@@ -14,6 +14,7 @@ namespace traQ {
 struct PostUserGroupAdminRequest {
     std::string id;
 
+    PostUserGroupAdminRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -27,12 +28,12 @@ struct PostUserGroupAdminRequest {
         return _json;
     }
     PostUserGroupAdminRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::PostUserGroupAdminRequest Json::Value::as<traQ::PostUserGroupAdminRequest>() const { return traQ::PostUserGroupAdminRequest(*this); }
 
 #endif

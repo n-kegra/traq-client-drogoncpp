@@ -15,6 +15,7 @@ struct PinRemovedEvent {
     std::string userId;
     std::string messageId;
 
+    PinRemovedEvent() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct PinRemovedEvent {
         return _json;
     }
     PinRemovedEvent& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         userId = _json["userId"].as<std::string>();
         messageId = _json["messageId"].as<std::string>();
         return *this;
@@ -37,5 +37,6 @@ struct PinRemovedEvent {
 };
 
 }
+template <> traQ::PinRemovedEvent Json::Value::as<traQ::PinRemovedEvent>() const { return traQ::PinRemovedEvent(*this); }
 
 #endif

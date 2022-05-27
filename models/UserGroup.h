@@ -24,6 +24,7 @@ struct UserGroup {
     std::string updatedAt;
     std::vector<std::string> admins;
 
+    UserGroup() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -45,20 +46,24 @@ struct UserGroup {
         return _json;
     }
     UserGroup& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         name = _json["name"].as<std::string>();
         description = _json["description"].as<std::string>();
         type = _json["type"].as<std::string>();
         icon = _json["icon"].as<std::string>();
-        members = _json["members"].as<std::vector<UserGroupMember>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            members.emplace_back((*_it));    
+        }
         createdAt = _json["createdAt"].as<std::string>();
         updatedAt = _json["updatedAt"].as<std::string>();
-        admins = _json["admins"].as<std::vector<std::string>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            admins.emplace_back((*_it).as<std::string>());    
+        }
         return *this;
     }
 };
 
 }
+template <> traQ::UserGroup Json::Value::as<traQ::UserGroup>() const { return traQ::UserGroup(*this); }
 
 #endif

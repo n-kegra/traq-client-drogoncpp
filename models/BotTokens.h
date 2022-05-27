@@ -15,6 +15,7 @@ struct BotTokens {
     std::string verificationToken;
     std::string accessToken;
 
+    BotTokens() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct BotTokens {
         return _json;
     }
     BotTokens& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         verificationToken = _json["verificationToken"].as<std::string>();
         accessToken = _json["accessToken"].as<std::string>();
         return *this;
@@ -37,5 +37,6 @@ struct BotTokens {
 };
 
 }
+template <> traQ::BotTokens Json::Value::as<traQ::BotTokens>() const { return traQ::BotTokens(*this); }
 
 #endif

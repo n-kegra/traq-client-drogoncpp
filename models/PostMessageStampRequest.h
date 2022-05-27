@@ -14,6 +14,7 @@ namespace traQ {
 struct PostMessageStampRequest {
     int32_t count;
 
+    PostMessageStampRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -27,12 +28,12 @@ struct PostMessageStampRequest {
         return _json;
     }
     PostMessageStampRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         count = _json["count"].as<int32_t>();
         return *this;
     }
 };
 
 }
+template <> traQ::PostMessageStampRequest Json::Value::as<traQ::PostMessageStampRequest>() const { return traQ::PostMessageStampRequest(*this); }
 
 #endif

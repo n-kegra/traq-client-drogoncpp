@@ -18,6 +18,7 @@ struct ClipFolder {
     std::string ownerId;
     std::string description;
 
+    ClipFolder() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -35,7 +36,6 @@ struct ClipFolder {
         return _json;
     }
     ClipFolder& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         name = _json["name"].as<std::string>();
         createdAt = _json["createdAt"].as<std::string>();
@@ -46,5 +46,6 @@ struct ClipFolder {
 };
 
 }
+template <> traQ::ClipFolder Json::Value::as<traQ::ClipFolder>() const { return traQ::ClipFolder(*this); }
 
 #endif

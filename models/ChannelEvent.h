@@ -17,6 +17,7 @@ struct ChannelEvent {
     std::string datetime;
     ChannelEventDetail detail;
 
+    ChannelEvent() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -32,14 +33,14 @@ struct ChannelEvent {
         return _json;
     }
     ChannelEvent& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         type = _json["type"].as<std::string>();
         datetime = _json["datetime"].as<std::string>();
-        detail = _json["detail"].as<ChannelEventDetail>();
+        detail.fromJson(_json["detail"]);
         return *this;
     }
 };
 
 }
+template <> traQ::ChannelEvent Json::Value::as<traQ::ChannelEvent>() const { return traQ::ChannelEvent(*this); }
 
 #endif

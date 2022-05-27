@@ -18,6 +18,7 @@ struct PatchUserRequest {
     UserAccountState state;
     std::string role;
 
+    PatchUserRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -34,7 +35,6 @@ struct PatchUserRequest {
         return _json;
     }
     PatchUserRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         displayName = _json["displayName"].as<std::string>();
         twitterId = _json["twitterId"].as<std::string>();
         state = _json["state"].as<UserAccountState>();
@@ -44,5 +44,6 @@ struct PatchUserRequest {
 };
 
 }
+template <> traQ::PatchUserRequest Json::Value::as<traQ::PatchUserRequest>() const { return traQ::PatchUserRequest(*this); }
 
 #endif

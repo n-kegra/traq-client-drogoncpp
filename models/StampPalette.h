@@ -21,6 +21,7 @@ struct StampPalette {
     std::string updatedAt;
     std::string description;
 
+    StampPalette() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -40,10 +41,11 @@ struct StampPalette {
         return _json;
     }
     StampPalette& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         name = _json["name"].as<std::string>();
-        stamps = _json["stamps"].as<std::vector<std::string>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            stamps.emplace_back((*_it).as<std::string>());    
+        }
         creatorId = _json["creatorId"].as<std::string>();
         createdAt = _json["createdAt"].as<std::string>();
         updatedAt = _json["updatedAt"].as<std::string>();
@@ -53,5 +55,6 @@ struct StampPalette {
 };
 
 }
+template <> traQ::StampPalette Json::Value::as<traQ::StampPalette>() const { return traQ::StampPalette(*this); }
 
 #endif

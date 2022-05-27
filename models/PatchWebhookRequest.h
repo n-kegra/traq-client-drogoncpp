@@ -18,6 +18,7 @@ struct PatchWebhookRequest {
     std::string secret;
     std::string ownerId;
 
+    PatchWebhookRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -35,7 +36,6 @@ struct PatchWebhookRequest {
         return _json;
     }
     PatchWebhookRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         name = _json["name"].as<std::string>();
         description = _json["description"].as<std::string>();
         channelId = _json["channelId"].as<std::string>();
@@ -46,5 +46,6 @@ struct PatchWebhookRequest {
 };
 
 }
+template <> traQ::PatchWebhookRequest Json::Value::as<traQ::PatchWebhookRequest>() const { return traQ::PatchWebhookRequest(*this); }
 
 #endif

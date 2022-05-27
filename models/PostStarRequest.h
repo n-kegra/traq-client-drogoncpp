@@ -14,6 +14,7 @@ namespace traQ {
 struct PostStarRequest {
     std::string channelId;
 
+    PostStarRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -27,12 +28,12 @@ struct PostStarRequest {
         return _json;
     }
     PostStarRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         channelId = _json["channelId"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::PostStarRequest Json::Value::as<traQ::PostStarRequest>() const { return traQ::PostStarRequest(*this); }
 
 #endif

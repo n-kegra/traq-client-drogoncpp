@@ -18,6 +18,7 @@ struct UserTag {
     std::string createdAt;
     std::string updatedAt;
 
+    UserTag() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -35,7 +36,6 @@ struct UserTag {
         return _json;
     }
     UserTag& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         tagId = _json["tagId"].as<std::string>();
         tag = _json["tag"].as<std::string>();
         isLocked = _json["isLocked"].as<bool>();
@@ -46,5 +46,6 @@ struct UserTag {
 };
 
 }
+template <> traQ::UserTag Json::Value::as<traQ::UserTag>() const { return traQ::UserTag(*this); }
 
 #endif

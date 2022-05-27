@@ -17,6 +17,7 @@ struct PatchClientRequest {
     std::string callbackUrl;
     std::string developerId;
 
+    PatchClientRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -33,7 +34,6 @@ struct PatchClientRequest {
         return _json;
     }
     PatchClientRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         name = _json["name"].as<std::string>();
         description = _json["description"].as<std::string>();
         callbackUrl = _json["callbackUrl"].as<std::string>();
@@ -43,5 +43,6 @@ struct PatchClientRequest {
 };
 
 }
+template <> traQ::PatchClientRequest Json::Value::as<traQ::PatchClientRequest>() const { return traQ::PatchClientRequest(*this); }
 
 #endif

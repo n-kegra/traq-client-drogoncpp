@@ -18,6 +18,7 @@ struct UnreadChannel {
     std::string since;
     std::string updatedAt;
 
+    UnreadChannel() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -35,7 +36,6 @@ struct UnreadChannel {
         return _json;
     }
     UnreadChannel& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         channelId = _json["channelId"].as<std::string>();
         count = _json["count"].as<int32_t>();
         noticeable = _json["noticeable"].as<bool>();
@@ -46,5 +46,6 @@ struct UnreadChannel {
 };
 
 }
+template <> traQ::UnreadChannel Json::Value::as<traQ::UnreadChannel>() const { return traQ::UnreadChannel(*this); }
 
 #endif

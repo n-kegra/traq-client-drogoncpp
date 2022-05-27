@@ -15,6 +15,7 @@ struct VisibilityChangedEvent {
     std::string userId;
     bool visibility;
 
+    VisibilityChangedEvent() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct VisibilityChangedEvent {
         return _json;
     }
     VisibilityChangedEvent& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         userId = _json["userId"].as<std::string>();
         visibility = _json["visibility"].as<bool>();
         return *this;
@@ -37,5 +37,6 @@ struct VisibilityChangedEvent {
 };
 
 }
+template <> traQ::VisibilityChangedEvent Json::Value::as<traQ::VisibilityChangedEvent>() const { return traQ::VisibilityChangedEvent(*this); }
 
 #endif

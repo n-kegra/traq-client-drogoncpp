@@ -18,6 +18,7 @@ struct PostStampPaletteRequest {
     std::string name;
     std::string description;
 
+    PostStampPaletteRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -33,8 +34,9 @@ struct PostStampPaletteRequest {
         return _json;
     }
     PostStampPaletteRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
-        stamps = _json["stamps"].as<std::set<std::string>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            stamps.emplace_back((*_it).as<std::string>());    
+        }
         name = _json["name"].as<std::string>();
         description = _json["description"].as<std::string>();
         return *this;
@@ -42,5 +44,6 @@ struct PostStampPaletteRequest {
 };
 
 }
+template <> traQ::PostStampPaletteRequest Json::Value::as<traQ::PostStampPaletteRequest>() const { return traQ::PostStampPaletteRequest(*this); }
 
 #endif

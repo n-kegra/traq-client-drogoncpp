@@ -15,6 +15,7 @@ struct PostUserRequest {
     std::string name;
     std::string password;
 
+    PostUserRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct PostUserRequest {
         return _json;
     }
     PostUserRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         name = _json["name"].as<std::string>();
         password = _json["password"].as<std::string>();
         return *this;
@@ -37,5 +37,6 @@ struct PostUserRequest {
 };
 
 }
+template <> traQ::PostUserRequest Json::Value::as<traQ::PostUserRequest>() const { return traQ::PostUserRequest(*this); }
 
 #endif

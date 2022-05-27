@@ -17,6 +17,7 @@ struct SubscribersChangedEvent {
     std::vector<std::string> on;
     std::vector<std::string> off;
 
+    SubscribersChangedEvent() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -32,14 +33,18 @@ struct SubscribersChangedEvent {
         return _json;
     }
     SubscribersChangedEvent& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         userId = _json["userId"].as<std::string>();
-        on = _json["on"].as<std::vector<std::string>>();
-        off = _json["off"].as<std::vector<std::string>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            on.emplace_back((*_it).as<std::string>());    
+        }
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            off.emplace_back((*_it).as<std::string>());    
+        }
         return *this;
     }
 };
 
 }
+template <> traQ::SubscribersChangedEvent Json::Value::as<traQ::SubscribersChangedEvent>() const { return traQ::SubscribersChangedEvent(*this); }
 
 #endif

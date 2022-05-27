@@ -16,6 +16,7 @@ struct UserStatsStamp {
     int64_t count;
     int64_t total;
 
+    UserStatsStamp() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -31,7 +32,6 @@ struct UserStatsStamp {
         return _json;
     }
     UserStatsStamp& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         count = _json["count"].as<int64_t>();
         total = _json["total"].as<int64_t>();
@@ -40,5 +40,6 @@ struct UserStatsStamp {
 };
 
 }
+template <> traQ::UserStatsStamp Json::Value::as<traQ::UserStatsStamp>() const { return traQ::UserStatsStamp(*this); }
 
 #endif

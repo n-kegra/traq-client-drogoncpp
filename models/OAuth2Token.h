@@ -18,6 +18,7 @@ struct OAuth2Token {
     std::string scope;
     std::string idUnderscoretoken;
 
+    OAuth2Token() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -36,7 +37,6 @@ struct OAuth2Token {
         return _json;
     }
     OAuth2Token& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         accessUnderscoretoken = _json["accessUnderscoretoken"].as<std::string>();
         tokenUnderscoretype = _json["tokenUnderscoretype"].as<std::string>();
         expiresUnderscorein = _json["expiresUnderscorein"].as<int32_t>();
@@ -48,5 +48,6 @@ struct OAuth2Token {
 };
 
 }
+template <> traQ::OAuth2Token Json::Value::as<traQ::OAuth2Token>() const { return traQ::OAuth2Token(*this); }
 
 #endif

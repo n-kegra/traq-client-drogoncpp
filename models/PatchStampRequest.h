@@ -15,6 +15,7 @@ struct PatchStampRequest {
     std::string name;
     std::string creatorId;
 
+    PatchStampRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct PatchStampRequest {
         return _json;
     }
     PatchStampRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         name = _json["name"].as<std::string>();
         creatorId = _json["creatorId"].as<std::string>();
         return *this;
@@ -37,5 +37,6 @@ struct PatchStampRequest {
 };
 
 }
+template <> traQ::PatchStampRequest Json::Value::as<traQ::PatchStampRequest>() const { return traQ::PatchStampRequest(*this); }
 
 #endif

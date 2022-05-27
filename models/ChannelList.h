@@ -18,6 +18,7 @@ struct ChannelList {
     std::vector<Channel> public;
     std::vector<DMChannel> dm;
 
+    ChannelList() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -32,13 +33,17 @@ struct ChannelList {
         return _json;
     }
     ChannelList& fromJson(const Json::Value& _json) {
-        Json::Value _json;
-        public = _json["public"].as<std::vector<Channel>>();
-        dm = _json["dm"].as<std::vector<DMChannel>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            public.emplace_back((*_it));    
+        }
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            dm.emplace_back((*_it));    
+        }
         return *this;
     }
 };
 
 }
+template <> traQ::ChannelList Json::Value::as<traQ::ChannelList>() const { return traQ::ChannelList(*this); }
 
 #endif

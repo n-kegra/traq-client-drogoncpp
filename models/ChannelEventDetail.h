@@ -32,6 +32,7 @@ struct ChannelEventDetail {
     bool force;
     std::string channelId;
 
+    ChannelEventDetail() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -53,12 +54,15 @@ struct ChannelEventDetail {
         return _json;
     }
     ChannelEventDetail& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         userId = _json["userId"].as<std::string>();
         before = _json["before"].as<std::string>();
         after = _json["after"].as<std::string>();
-        on = _json["on"].as<std::vector<std::string>>();
-        off = _json["off"].as<std::vector<std::string>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            on.emplace_back((*_it).as<std::string>());    
+        }
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            off.emplace_back((*_it).as<std::string>());    
+        }
         messageId = _json["messageId"].as<std::string>();
         visibility = _json["visibility"].as<bool>();
         force = _json["force"].as<bool>();
@@ -68,5 +72,6 @@ struct ChannelEventDetail {
 };
 
 }
+template <> traQ::ChannelEventDetail Json::Value::as<traQ::ChannelEventDetail>() const { return traQ::ChannelEventDetail(*this); }
 
 #endif

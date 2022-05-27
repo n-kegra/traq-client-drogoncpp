@@ -22,6 +22,7 @@ struct OAuth2ClientDetail {
     std::string callbackUrl;
     std::string secret;
 
+    OAuth2ClientDetail() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -41,12 +42,13 @@ struct OAuth2ClientDetail {
         return _json;
     }
     OAuth2ClientDetail& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         developerId = _json["developerId"].as<std::string>();
         description = _json["description"].as<std::string>();
         name = _json["name"].as<std::string>();
-        scopes = _json["scopes"].as<std::vector<OAuth2Scope>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            scopes.emplace_back((*_it).as<OAuth2Scope>());    
+        }
         callbackUrl = _json["callbackUrl"].as<std::string>();
         secret = _json["secret"].as<std::string>();
         return *this;
@@ -54,5 +56,6 @@ struct OAuth2ClientDetail {
 };
 
 }
+template <> traQ::OAuth2ClientDetail Json::Value::as<traQ::OAuth2ClientDetail>() const { return traQ::OAuth2ClientDetail(*this); }
 
 #endif

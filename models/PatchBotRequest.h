@@ -22,6 +22,7 @@ struct PatchBotRequest {
     std::string developerId;
     std::vector<std::string> subscribeEvents;
 
+    PatchBotRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -41,18 +42,20 @@ struct PatchBotRequest {
         return _json;
     }
     PatchBotRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         displayName = _json["displayName"].as<std::string>();
         description = _json["description"].as<std::string>();
         privileged = _json["privileged"].as<bool>();
         mode = _json["mode"].as<BotMode>();
         endpoint = _json["endpoint"].as<std::string>();
         developerId = _json["developerId"].as<std::string>();
-        subscribeEvents = _json["subscribeEvents"].as<std::vector<std::string>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            subscribeEvents.emplace_back((*_it).as<std::string>());    
+        }
         return *this;
     }
 };
 
 }
+template <> traQ::PatchBotRequest Json::Value::as<traQ::PatchBotRequest>() const { return traQ::PatchBotRequest(*this); }
 
 #endif

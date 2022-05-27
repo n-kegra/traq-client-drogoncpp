@@ -15,6 +15,7 @@ struct BotUser {
     std::string id;
     std::string botUserId;
 
+    BotUser() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct BotUser {
         return _json;
     }
     BotUser& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         botUserId = _json["botUserId"].as<std::string>();
         return *this;
@@ -37,5 +37,6 @@ struct BotUser {
 };
 
 }
+template <> traQ::BotUser Json::Value::as<traQ::BotUser>() const { return traQ::BotUser(*this); }
 
 #endif

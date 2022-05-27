@@ -17,6 +17,7 @@ struct Pin {
     std::string pinnedAt;
     Message message;
 
+    Pin() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -32,14 +33,14 @@ struct Pin {
         return _json;
     }
     Pin& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         userId = _json["userId"].as<std::string>();
         pinnedAt = _json["pinnedAt"].as<std::string>();
-        message = _json["message"].as<Message>();
+        message.fromJson(_json["message"]);
         return *this;
     }
 };
 
 }
+template <> traQ::Pin Json::Value::as<traQ::Pin>() const { return traQ::Pin(*this); }
 
 #endif

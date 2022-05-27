@@ -15,6 +15,7 @@ struct DMChannel {
     std::string id;
     std::string userId;
 
+    DMChannel() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct DMChannel {
         return _json;
     }
     DMChannel& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         userId = _json["userId"].as<std::string>();
         return *this;
@@ -37,5 +37,6 @@ struct DMChannel {
 };
 
 }
+template <> traQ::DMChannel Json::Value::as<traQ::DMChannel>() const { return traQ::DMChannel(*this); }
 
 #endif

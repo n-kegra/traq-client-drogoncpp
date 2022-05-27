@@ -17,6 +17,7 @@ struct Version {
     std::string version;
     VersionFlags flags;
 
+    Version() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -32,14 +33,14 @@ struct Version {
         return _json;
     }
     Version& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         revision = _json["revision"].as<std::string>();
         version = _json["version"].as<std::string>();
-        flags = _json["flags"].as<VersionFlags>();
+        flags.fromJson(_json["flags"]);
         return *this;
     }
 };
 
 }
+template <> traQ::Version Json::Value::as<traQ::Version>() const { return traQ::Version(*this); }
 
 #endif

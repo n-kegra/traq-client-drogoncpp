@@ -20,6 +20,7 @@ struct BotEventLog {
     int32_t code;
     std::string datetime;
 
+    BotEventLog() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -38,7 +39,6 @@ struct BotEventLog {
         return _json;
     }
     BotEventLog& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         botId = _json["botId"].as<std::string>();
         requestId = _json["requestId"].as<std::string>();
         event = _json["event"].as<std::string>();
@@ -50,5 +50,6 @@ struct BotEventLog {
 };
 
 }
+template <> traQ::BotEventLog Json::Value::as<traQ::BotEventLog>() const { return traQ::BotEventLog(*this); }
 
 #endif

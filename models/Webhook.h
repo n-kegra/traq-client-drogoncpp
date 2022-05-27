@@ -22,6 +22,7 @@ struct Webhook {
     std::string createdAt;
     std::string updatedAt;
 
+    Webhook() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -43,7 +44,6 @@ struct Webhook {
         return _json;
     }
     Webhook& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         botUserId = _json["botUserId"].as<std::string>();
         displayName = _json["displayName"].as<std::string>();
@@ -58,5 +58,6 @@ struct Webhook {
 };
 
 }
+template <> traQ::Webhook Json::Value::as<traQ::Webhook>() const { return traQ::Webhook(*this); }
 
 #endif

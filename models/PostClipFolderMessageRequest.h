@@ -14,6 +14,7 @@ namespace traQ {
 struct PostClipFolderMessageRequest {
     std::string messageId;
 
+    PostClipFolderMessageRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -27,12 +28,12 @@ struct PostClipFolderMessageRequest {
         return _json;
     }
     PostClipFolderMessageRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         messageId = _json["messageId"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::PostClipFolderMessageRequest Json::Value::as<traQ::PostClipFolderMessageRequest>() const { return traQ::PostClipFolderMessageRequest(*this); }
 
 #endif

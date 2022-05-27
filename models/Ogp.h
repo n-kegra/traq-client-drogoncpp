@@ -21,6 +21,7 @@ struct Ogp {
     std::string description;
     std::vector<OgpMedia> videos;
 
+    Ogp() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -39,17 +40,21 @@ struct Ogp {
         return _json;
     }
     Ogp& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         type = _json["type"].as<std::string>();
         title = _json["title"].as<std::string>();
         url = _json["url"].as<std::string>();
-        images = _json["images"].as<std::vector<OgpMedia>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            images.emplace_back((*_it));    
+        }
         description = _json["description"].as<std::string>();
-        videos = _json["videos"].as<std::vector<OgpMedia>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            videos.emplace_back((*_it));    
+        }
         return *this;
     }
 };
 
 }
+template <> traQ::Ogp Json::Value::as<traQ::Ogp>() const { return traQ::Ogp(*this); }
 
 #endif

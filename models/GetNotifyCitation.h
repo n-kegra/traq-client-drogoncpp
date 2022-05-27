@@ -14,6 +14,7 @@ namespace traQ {
 struct GetNotifyCitation {
     bool notifyCitation;
 
+    GetNotifyCitation() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -27,12 +28,12 @@ struct GetNotifyCitation {
         return _json;
     }
     GetNotifyCitation& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         notifyCitation = _json["notifyCitation"].as<bool>();
         return *this;
     }
 };
 
 }
+template <> traQ::GetNotifyCitation Json::Value::as<traQ::GetNotifyCitation>() const { return traQ::GetNotifyCitation(*this); }
 
 #endif

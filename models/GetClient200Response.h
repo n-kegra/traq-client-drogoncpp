@@ -23,6 +23,7 @@ struct GetClient200Response {
     std::string callbackUrl;
     std::string secret;
 
+    GetClient200Response() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -42,12 +43,13 @@ struct GetClient200Response {
         return _json;
     }
     GetClient200Response& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         name = _json["name"].as<std::string>();
         description = _json["description"].as<std::string>();
         developerId = _json["developerId"].as<std::string>();
-        scopes = _json["scopes"].as<std::vector<OAuth2Scope>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            scopes.emplace_back((*_it).as<OAuth2Scope>());    
+        }
         callbackUrl = _json["callbackUrl"].as<std::string>();
         secret = _json["secret"].as<std::string>();
         return *this;
@@ -55,5 +57,6 @@ struct GetClient200Response {
 };
 
 }
+template <> traQ::GetClient200Response Json::Value::as<traQ::GetClient200Response>() const { return traQ::GetClient200Response(*this); }
 
 #endif

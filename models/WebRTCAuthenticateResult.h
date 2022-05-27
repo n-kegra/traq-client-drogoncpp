@@ -17,6 +17,7 @@ struct WebRTCAuthenticateResult {
     int64_t timestamp;
     std::string authToken;
 
+    WebRTCAuthenticateResult() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -33,7 +34,6 @@ struct WebRTCAuthenticateResult {
         return _json;
     }
     WebRTCAuthenticateResult& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         peerId = _json["peerId"].as<std::string>();
         ttl = _json["ttl"].as<int32_t>();
         timestamp = _json["timestamp"].as<int64_t>();
@@ -43,5 +43,6 @@ struct WebRTCAuthenticateResult {
 };
 
 }
+template <> traQ::WebRTCAuthenticateResult Json::Value::as<traQ::WebRTCAuthenticateResult>() const { return traQ::WebRTCAuthenticateResult(*this); }
 
 #endif

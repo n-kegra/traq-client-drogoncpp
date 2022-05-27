@@ -16,6 +16,7 @@ struct FileInfoThumbnail {
     int32_t width;
     int32_t height;
 
+    FileInfoThumbnail() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -31,7 +32,6 @@ struct FileInfoThumbnail {
         return _json;
     }
     FileInfoThumbnail& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         mime = _json["mime"].as<std::string>();
         width = _json["width"].as<int32_t>();
         height = _json["height"].as<int32_t>();
@@ -40,5 +40,6 @@ struct FileInfoThumbnail {
 };
 
 }
+template <> traQ::FileInfoThumbnail Json::Value::as<traQ::FileInfoThumbnail>() const { return traQ::FileInfoThumbnail(*this); }
 
 #endif

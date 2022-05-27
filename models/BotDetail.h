@@ -30,6 +30,7 @@ struct BotDetail {
     bool privileged;
     std::vector<std::string> channels;
 
+    BotDetail() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -55,24 +56,28 @@ struct BotDetail {
         return _json;
     }
     BotDetail& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         updatedAt = _json["updatedAt"].as<std::string>();
         createdAt = _json["createdAt"].as<std::string>();
         mode = _json["mode"].as<BotMode>();
         state = _json["state"].as<BotState>();
-        subscribeEvents = _json["subscribeEvents"].as<std::vector<std::string>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            subscribeEvents.emplace_back((*_it).as<std::string>());    
+        }
         developerId = _json["developerId"].as<std::string>();
         description = _json["description"].as<std::string>();
         botUserId = _json["botUserId"].as<std::string>();
-        tokens = _json["tokens"].as<BotTokens>();
+        tokens.fromJson(_json["tokens"]);
         endpoint = _json["endpoint"].as<std::string>();
         privileged = _json["privileged"].as<bool>();
-        channels = _json["channels"].as<std::vector<std::string>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            channels.emplace_back((*_it).as<std::string>());    
+        }
         return *this;
     }
 };
 
 }
+template <> traQ::BotDetail Json::Value::as<traQ::BotDetail>() const { return traQ::BotDetail(*this); }
 
 #endif

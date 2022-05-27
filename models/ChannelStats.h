@@ -20,6 +20,7 @@ struct ChannelStats {
     std::vector<ChannelStatsUser> users;
     std::string datetime;
 
+    ChannelStats() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -36,15 +37,19 @@ struct ChannelStats {
         return _json;
     }
     ChannelStats& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         totalMessageCount = _json["totalMessageCount"].as<int64_t>();
-        stamps = _json["stamps"].as<std::vector<ChannelStatsStamp>>();
-        users = _json["users"].as<std::vector<ChannelStatsUser>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            stamps.emplace_back((*_it));    
+        }
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            users.emplace_back((*_it));    
+        }
         datetime = _json["datetime"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::ChannelStats Json::Value::as<traQ::ChannelStats>() const { return traQ::ChannelStats(*this); }
 
 #endif

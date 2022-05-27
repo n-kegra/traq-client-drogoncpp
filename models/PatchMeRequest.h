@@ -17,6 +17,7 @@ struct PatchMeRequest {
     std::string bio;
     std::string homeChannel;
 
+    PatchMeRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -33,7 +34,6 @@ struct PatchMeRequest {
         return _json;
     }
     PatchMeRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         displayName = _json["displayName"].as<std::string>();
         twitterId = _json["twitterId"].as<std::string>();
         bio = _json["bio"].as<std::string>();
@@ -43,5 +43,6 @@ struct PatchMeRequest {
 };
 
 }
+template <> traQ::PatchMeRequest Json::Value::as<traQ::PatchMeRequest>() const { return traQ::PatchMeRequest(*this); }
 
 #endif

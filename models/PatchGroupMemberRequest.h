@@ -14,6 +14,7 @@ namespace traQ {
 struct PatchGroupMemberRequest {
     std::string role;
 
+    PatchGroupMemberRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -27,12 +28,12 @@ struct PatchGroupMemberRequest {
         return _json;
     }
     PatchGroupMemberRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         role = _json["role"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::PatchGroupMemberRequest Json::Value::as<traQ::PatchGroupMemberRequest>() const { return traQ::PatchGroupMemberRequest(*this); }
 
 #endif

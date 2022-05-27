@@ -14,6 +14,7 @@ namespace traQ {
 struct PostUnlinkExternalAccount {
     std::string providerName;
 
+    PostUnlinkExternalAccount() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -27,12 +28,12 @@ struct PostUnlinkExternalAccount {
         return _json;
     }
     PostUnlinkExternalAccount& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         providerName = _json["providerName"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::PostUnlinkExternalAccount Json::Value::as<traQ::PostUnlinkExternalAccount>() const { return traQ::PostUnlinkExternalAccount(*this); }
 
 #endif

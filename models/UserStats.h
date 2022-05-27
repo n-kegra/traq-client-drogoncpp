@@ -18,6 +18,7 @@ struct UserStats {
     std::vector<UserStatsStamp> stamps;
     std::string datetime;
 
+    UserStats() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -33,14 +34,16 @@ struct UserStats {
         return _json;
     }
     UserStats& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         totalMessageCount = _json["totalMessageCount"].as<int64_t>();
-        stamps = _json["stamps"].as<std::vector<UserStatsStamp>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            stamps.emplace_back((*_it));    
+        }
         datetime = _json["datetime"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::UserStats Json::Value::as<traQ::UserStats>() const { return traQ::UserStats(*this); }
 
 #endif

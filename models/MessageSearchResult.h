@@ -17,6 +17,7 @@ struct MessageSearchResult {
     int64_t totalHits;
     std::vector<Message> hits;
 
+    MessageSearchResult() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -31,13 +32,15 @@ struct MessageSearchResult {
         return _json;
     }
     MessageSearchResult& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         totalHits = _json["totalHits"].as<int64_t>();
-        hits = _json["hits"].as<std::vector<Message>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            hits.emplace_back((*_it));    
+        }
         return *this;
     }
 };
 
 }
+template <> traQ::MessageSearchResult Json::Value::as<traQ::MessageSearchResult>() const { return traQ::MessageSearchResult(*this); }
 
 #endif

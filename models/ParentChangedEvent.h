@@ -16,6 +16,7 @@ struct ParentChangedEvent {
     std::string before;
     std::string after;
 
+    ParentChangedEvent() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -31,7 +32,6 @@ struct ParentChangedEvent {
         return _json;
     }
     ParentChangedEvent& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         userId = _json["userId"].as<std::string>();
         before = _json["before"].as<std::string>();
         after = _json["after"].as<std::string>();
@@ -40,5 +40,6 @@ struct ParentChangedEvent {
 };
 
 }
+template <> traQ::ParentChangedEvent Json::Value::as<traQ::ParentChangedEvent>() const { return traQ::ParentChangedEvent(*this); }
 
 #endif

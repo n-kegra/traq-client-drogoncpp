@@ -17,6 +17,7 @@ struct MyChannelViewState {
     std::string channelId;
     ChannelViewState state;
 
+    MyChannelViewState() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -32,7 +33,6 @@ struct MyChannelViewState {
         return _json;
     }
     MyChannelViewState& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         key = _json["key"].as<std::string>();
         channelId = _json["channelId"].as<std::string>();
         state = _json["state"].as<ChannelViewState>();
@@ -41,5 +41,6 @@ struct MyChannelViewState {
 };
 
 }
+template <> traQ::MyChannelViewState Json::Value::as<traQ::MyChannelViewState>() const { return traQ::MyChannelViewState(*this); }
 
 #endif

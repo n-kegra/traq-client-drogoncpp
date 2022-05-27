@@ -16,6 +16,7 @@ struct PatchChannelSubscribersRequest {
     std::vector<std::string> on;
     std::vector<std::string> off;
 
+    PatchChannelSubscribersRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -30,13 +31,17 @@ struct PatchChannelSubscribersRequest {
         return _json;
     }
     PatchChannelSubscribersRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
-        on = _json["on"].as<std::vector<std::string>>();
-        off = _json["off"].as<std::vector<std::string>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            on.emplace_back((*_it).as<std::string>());    
+        }
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            off.emplace_back((*_it).as<std::string>());    
+        }
         return *this;
     }
 };
 
 }
+template <> traQ::PatchChannelSubscribersRequest Json::Value::as<traQ::PatchChannelSubscribersRequest>() const { return traQ::PatchChannelSubscribersRequest(*this); }
 
 #endif

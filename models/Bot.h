@@ -25,6 +25,7 @@ struct Bot {
     std::string createdAt;
     std::string updatedAt;
 
+    Bot() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -46,12 +47,13 @@ struct Bot {
         return _json;
     }
     Bot& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         botUserId = _json["botUserId"].as<std::string>();
         description = _json["description"].as<std::string>();
         developerId = _json["developerId"].as<std::string>();
-        subscribeEvents = _json["subscribeEvents"].as<std::vector<std::string>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            subscribeEvents.emplace_back((*_it).as<std::string>());    
+        }
         mode = _json["mode"].as<BotMode>();
         state = _json["state"].as<BotState>();
         createdAt = _json["createdAt"].as<std::string>();
@@ -61,5 +63,6 @@ struct Bot {
 };
 
 }
+template <> traQ::Bot Json::Value::as<traQ::Bot>() const { return traQ::Bot(*this); }
 
 #endif

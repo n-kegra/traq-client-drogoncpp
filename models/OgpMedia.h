@@ -18,6 +18,7 @@ struct OgpMedia {
     int32_t width;
     int32_t height;
 
+    OgpMedia() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -35,7 +36,6 @@ struct OgpMedia {
         return _json;
     }
     OgpMedia& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         url = _json["url"].as<std::string>();
         secureUrl = _json["secureUrl"].as<std::string>();
         type = _json["type"].as<std::string>();
@@ -46,5 +46,6 @@ struct OgpMedia {
 };
 
 }
+template <> traQ::OgpMedia Json::Value::as<traQ::OgpMedia>() const { return traQ::OgpMedia(*this); }
 
 #endif

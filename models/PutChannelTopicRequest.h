@@ -14,6 +14,7 @@ namespace traQ {
 struct PutChannelTopicRequest {
     std::string topic;
 
+    PutChannelTopicRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -27,12 +28,12 @@ struct PutChannelTopicRequest {
         return _json;
     }
     PutChannelTopicRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         topic = _json["topic"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::PutChannelTopicRequest Json::Value::as<traQ::PutChannelTopicRequest>() const { return traQ::PutChannelTopicRequest(*this); }
 
 #endif

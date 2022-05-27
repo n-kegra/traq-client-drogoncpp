@@ -24,6 +24,7 @@ struct Message {
     std::vector<MessageStamp> stamps;
     std::string threadId;
 
+    Message() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -45,7 +46,6 @@ struct Message {
         return _json;
     }
     Message& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         userId = _json["userId"].as<std::string>();
         channelId = _json["channelId"].as<std::string>();
@@ -53,12 +53,15 @@ struct Message {
         createdAt = _json["createdAt"].as<std::string>();
         updatedAt = _json["updatedAt"].as<std::string>();
         pinned = _json["pinned"].as<bool>();
-        stamps = _json["stamps"].as<std::vector<MessageStamp>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            stamps.emplace_back((*_it));    
+        }
         threadId = _json["threadId"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::Message Json::Value::as<traQ::Message>() const { return traQ::Message(*this); }
 
 #endif

@@ -19,6 +19,7 @@ struct ActivityTimelineMessage {
     std::string createdAt;
     std::string updatedAt;
 
+    ActivityTimelineMessage() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -37,7 +38,6 @@ struct ActivityTimelineMessage {
         return _json;
     }
     ActivityTimelineMessage& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         userId = _json["userId"].as<std::string>();
         channelId = _json["channelId"].as<std::string>();
@@ -49,5 +49,6 @@ struct ActivityTimelineMessage {
 };
 
 }
+template <> traQ::ActivityTimelineMessage Json::Value::as<traQ::ActivityTimelineMessage>() const { return traQ::ActivityTimelineMessage(*this); }
 
 #endif

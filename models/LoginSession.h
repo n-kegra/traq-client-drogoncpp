@@ -15,6 +15,7 @@ struct LoginSession {
     std::string id;
     std::string issuedAt;
 
+    LoginSession() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct LoginSession {
         return _json;
     }
     LoginSession& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         issuedAt = _json["issuedAt"].as<std::string>();
         return *this;
@@ -37,5 +37,6 @@ struct LoginSession {
 };
 
 }
+template <> traQ::LoginSession Json::Value::as<traQ::LoginSession>() const { return traQ::LoginSession(*this); }
 
 #endif

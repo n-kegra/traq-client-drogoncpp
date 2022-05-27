@@ -15,6 +15,7 @@ struct ChannelStatsUser {
     std::string id;
     int64_t messageCount;
 
+    ChannelStatsUser() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct ChannelStatsUser {
         return _json;
     }
     ChannelStatsUser& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         messageCount = _json["messageCount"].as<int64_t>();
         return *this;
@@ -37,5 +37,6 @@ struct ChannelStatsUser {
 };
 
 }
+template <> traQ::ChannelStatsUser Json::Value::as<traQ::ChannelStatsUser>() const { return traQ::ChannelStatsUser(*this); }
 
 #endif

@@ -15,6 +15,7 @@ struct ChildCreatedEvent {
     std::string userId;
     std::string channelId;
 
+    ChildCreatedEvent() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -29,7 +30,6 @@ struct ChildCreatedEvent {
         return _json;
     }
     ChildCreatedEvent& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         userId = _json["userId"].as<std::string>();
         channelId = _json["channelId"].as<std::string>();
         return *this;
@@ -37,5 +37,6 @@ struct ChildCreatedEvent {
 };
 
 }
+template <> traQ::ChildCreatedEvent Json::Value::as<traQ::ChildCreatedEvent>() const { return traQ::ChildCreatedEvent(*this); }
 
 #endif

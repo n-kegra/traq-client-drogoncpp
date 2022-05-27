@@ -18,6 +18,7 @@ struct PatchStampPaletteRequest {
     std::string description;
     std::set<std::string> stamps;
 
+    PatchStampPaletteRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -33,14 +34,16 @@ struct PatchStampPaletteRequest {
         return _json;
     }
     PatchStampPaletteRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         name = _json["name"].as<std::string>();
         description = _json["description"].as<std::string>();
-        stamps = _json["stamps"].as<std::set<std::string>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            stamps.emplace_back((*_it).as<std::string>());    
+        }
         return *this;
     }
 };
 
 }
+template <> traQ::PatchStampPaletteRequest Json::Value::as<traQ::PatchStampPaletteRequest>() const { return traQ::PatchStampPaletteRequest(*this); }
 
 #endif

@@ -16,6 +16,7 @@ struct ClippedMessage {
     Message message;
     std::string clippedAt;
 
+    ClippedMessage() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -30,13 +31,13 @@ struct ClippedMessage {
         return _json;
     }
     ClippedMessage& fromJson(const Json::Value& _json) {
-        Json::Value _json;
-        message = _json["message"].as<Message>();
+        message.fromJson(_json["message"]);
         clippedAt = _json["clippedAt"].as<std::string>();
         return *this;
     }
 };
 
 }
+template <> traQ::ClippedMessage Json::Value::as<traQ::ClippedMessage>() const { return traQ::ClippedMessage(*this); }
 
 #endif

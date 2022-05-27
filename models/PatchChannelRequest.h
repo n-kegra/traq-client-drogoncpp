@@ -17,6 +17,7 @@ struct PatchChannelRequest {
     bool force;
     std::string parent;
 
+    PatchChannelRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -33,7 +34,6 @@ struct PatchChannelRequest {
         return _json;
     }
     PatchChannelRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         name = _json["name"].as<std::string>();
         archived = _json["archived"].as<bool>();
         force = _json["force"].as<bool>();
@@ -43,5 +43,6 @@ struct PatchChannelRequest {
 };
 
 }
+template <> traQ::PatchChannelRequest Json::Value::as<traQ::PatchChannelRequest>() const { return traQ::PatchChannelRequest(*this); }
 
 #endif

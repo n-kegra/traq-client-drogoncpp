@@ -17,6 +17,7 @@ struct Tag {
     std::string tag;
     std::vector<std::string> users;
 
+    Tag() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -32,14 +33,16 @@ struct Tag {
         return _json;
     }
     Tag& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         id = _json["id"].as<std::string>();
         tag = _json["tag"].as<std::string>();
-        users = _json["users"].as<std::vector<std::string>>();
+        for (auto _it = _json.begin(); _it != _json.end(); _it++) {
+            users.emplace_back((*_it).as<std::string>());    
+        }
         return *this;
     }
 };
 
 }
+template <> traQ::Tag Json::Value::as<traQ::Tag>() const { return traQ::Tag(*this); }
 
 #endif

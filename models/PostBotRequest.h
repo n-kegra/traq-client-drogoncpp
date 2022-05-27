@@ -19,6 +19,7 @@ struct PostBotRequest {
     BotMode mode;
     std::string endpoint;
 
+    PostBotRequest() = default;
     operator Json::Value() const {
         return this->toJson();
     }
@@ -36,7 +37,6 @@ struct PostBotRequest {
         return _json;
     }
     PostBotRequest& fromJson(const Json::Value& _json) {
-        Json::Value _json;
         name = _json["name"].as<std::string>();
         displayName = _json["displayName"].as<std::string>();
         description = _json["description"].as<std::string>();
@@ -47,5 +47,6 @@ struct PostBotRequest {
 };
 
 }
+template <> traQ::PostBotRequest Json::Value::as<traQ::PostBotRequest>() const { return traQ::PostBotRequest(*this); }
 
 #endif
