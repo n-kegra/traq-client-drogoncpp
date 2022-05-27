@@ -1,6 +1,6 @@
 #include "VisibilityChangedEvent.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value VisibilityChangedEvent::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ VisibilityChangedEvent& VisibilityChangedEvent::fromJson(const Json::Value& _jso
 }
 
 }
-template <> traQ::VisibilityChangedEvent Json::Value::as<traQ::VisibilityChangedEvent>() const {
-    return traQ::VisibilityChangedEvent(*this);
+template <> traQAPI::VisibilityChangedEvent Json::Value::as<traQAPI::VisibilityChangedEvent>() const {
+    return traQAPI::VisibilityChangedEvent(*this);
 }

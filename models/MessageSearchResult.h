@@ -10,7 +10,7 @@
 #include "../models/Message.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // メッセージ検索結果
 struct MessageSearchResult {
@@ -30,6 +30,6 @@ struct MessageSearchResult {
 };
 
 }
-template <> traQ::MessageSearchResult Json::Value::as<traQ::MessageSearchResult>() const;
+template <> traQAPI::MessageSearchResult Json::Value::as<traQAPI::MessageSearchResult>() const;
 
 #endif

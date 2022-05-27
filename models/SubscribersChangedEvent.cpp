@@ -1,6 +1,6 @@
 #include "SubscribersChangedEvent.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value SubscribersChangedEvent::toJson() const {
     Json::Value _json;
@@ -21,6 +21,6 @@ SubscribersChangedEvent& SubscribersChangedEvent::fromJson(const Json::Value& _j
 }
 
 }
-template <> traQ::SubscribersChangedEvent Json::Value::as<traQ::SubscribersChangedEvent>() const {
-    return traQ::SubscribersChangedEvent(*this);
+template <> traQAPI::SubscribersChangedEvent Json::Value::as<traQAPI::SubscribersChangedEvent>() const {
+    return traQAPI::SubscribersChangedEvent(*this);
 }

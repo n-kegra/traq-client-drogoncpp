@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // Timelineアクテビティ用メッセージ
 struct ActivityTimelineMessage {
@@ -32,6 +32,6 @@ struct ActivityTimelineMessage {
 };
 
 }
-template <> traQ::ActivityTimelineMessage Json::Value::as<traQ::ActivityTimelineMessage>() const;
+template <> traQAPI::ActivityTimelineMessage Json::Value::as<traQAPI::ActivityTimelineMessage>() const;
 
 #endif

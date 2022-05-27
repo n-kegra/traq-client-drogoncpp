@@ -9,7 +9,7 @@
 
 #include "../models/ChannelEventDetail.h"
 
-namespace traQ {
+namespace traQAPI {
 
 // チャンネルイベント
 struct ChannelEvent {
@@ -30,6 +30,6 @@ struct ChannelEvent {
 };
 
 }
-template <> traQ::ChannelEvent Json::Value::as<traQ::ChannelEvent>() const;
+template <> traQAPI::ChannelEvent Json::Value::as<traQAPI::ChannelEvent>() const;
 
 #endif

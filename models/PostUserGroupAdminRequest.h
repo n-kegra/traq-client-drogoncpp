@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // グループ管理者追加リクエスト
 struct PostUserGroupAdminRequest {
@@ -27,6 +27,6 @@ struct PostUserGroupAdminRequest {
 };
 
 }
-template <> traQ::PostUserGroupAdminRequest Json::Value::as<traQ::PostUserGroupAdminRequest>() const;
+template <> traQAPI::PostUserGroupAdminRequest Json::Value::as<traQAPI::PostUserGroupAdminRequest>() const;
 
 #endif

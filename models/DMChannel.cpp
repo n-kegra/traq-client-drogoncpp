@@ -1,6 +1,6 @@
 #include "DMChannel.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value DMChannel::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ DMChannel& DMChannel::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::DMChannel Json::Value::as<traQ::DMChannel>() const {
-    return traQ::DMChannel(*this);
+template <> traQAPI::DMChannel Json::Value::as<traQAPI::DMChannel>() const {
+    return traQAPI::DMChannel(*this);
 }

@@ -10,7 +10,7 @@
 #include "../models/BotMode.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // BOT情報変更リクエスト
 struct PatchBotRequest {
@@ -35,6 +35,6 @@ struct PatchBotRequest {
 };
 
 }
-template <> traQ::PatchBotRequest Json::Value::as<traQ::PatchBotRequest>() const;
+template <> traQAPI::PatchBotRequest Json::Value::as<traQAPI::PatchBotRequest>() const;
 
 #endif

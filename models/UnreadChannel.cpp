@@ -1,6 +1,6 @@
 #include "UnreadChannel.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value UnreadChannel::toJson() const {
     Json::Value _json;
@@ -21,6 +21,6 @@ UnreadChannel& UnreadChannel::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::UnreadChannel Json::Value::as<traQ::UnreadChannel>() const {
-    return traQ::UnreadChannel(*this);
+template <> traQAPI::UnreadChannel Json::Value::as<traQAPI::UnreadChannel>() const {
+    return traQAPI::UnreadChannel(*this);
 }

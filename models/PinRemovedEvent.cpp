@@ -1,6 +1,6 @@
 #include "PinRemovedEvent.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PinRemovedEvent::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ PinRemovedEvent& PinRemovedEvent::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::PinRemovedEvent Json::Value::as<traQ::PinRemovedEvent>() const {
-    return traQ::PinRemovedEvent(*this);
+template <> traQAPI::PinRemovedEvent Json::Value::as<traQAPI::PinRemovedEvent>() const {
+    return traQAPI::PinRemovedEvent(*this);
 }

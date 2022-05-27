@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // ピン情報
 struct MessagePin {
@@ -28,6 +28,6 @@ struct MessagePin {
 };
 
 }
-template <> traQ::MessagePin Json::Value::as<traQ::MessagePin>() const;
+template <> traQAPI::MessagePin Json::Value::as<traQAPI::MessagePin>() const;
 
 #endif

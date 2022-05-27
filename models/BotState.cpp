@@ -1,6 +1,6 @@
 #include "BotState.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value BotState::toJson() const {
     switch(this->value) {
@@ -32,6 +32,6 @@ BotState& BotState::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::BotState Json::Value::as<traQ::BotState>() const {
-    return traQ::BotState(*this);
+template <> traQAPI::BotState Json::Value::as<traQAPI::BotState>() const {
+    return traQAPI::BotState(*this);
 }

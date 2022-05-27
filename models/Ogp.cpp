@@ -1,6 +1,6 @@
 #include "Ogp.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value Ogp::toJson() const {
     Json::Value _json;
@@ -27,6 +27,6 @@ Ogp& Ogp::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::Ogp Json::Value::as<traQ::Ogp>() const {
-    return traQ::Ogp(*this);
+template <> traQAPI::Ogp Json::Value::as<traQAPI::Ogp>() const {
+    return traQAPI::Ogp(*this);
 }

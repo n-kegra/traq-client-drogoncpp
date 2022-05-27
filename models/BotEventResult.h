@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // イベント配送結果
 struct BotEventResult {
@@ -33,6 +33,6 @@ struct BotEventResult {
 };
 
 }
-template <> traQ::BotEventResult Json::Value::as<traQ::BotEventResult>() const;
+template <> traQAPI::BotEventResult Json::Value::as<traQAPI::BotEventResult>() const;
 
 #endif

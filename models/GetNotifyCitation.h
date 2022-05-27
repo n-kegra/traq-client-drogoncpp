@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // メッセージ引用通知の設定情報
 struct GetNotifyCitation {
@@ -27,6 +27,6 @@ struct GetNotifyCitation {
 };
 
 }
-template <> traQ::GetNotifyCitation Json::Value::as<traQ::GetNotifyCitation>() const;
+template <> traQAPI::GetNotifyCitation Json::Value::as<traQAPI::GetNotifyCitation>() const;
 
 #endif

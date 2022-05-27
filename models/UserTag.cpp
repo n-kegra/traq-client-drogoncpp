@@ -1,6 +1,6 @@
 #include "UserTag.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value UserTag::toJson() const {
     Json::Value _json;
@@ -21,6 +21,6 @@ UserTag& UserTag::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::UserTag Json::Value::as<traQ::UserTag>() const {
-    return traQ::UserTag(*this);
+template <> traQAPI::UserTag Json::Value::as<traQAPI::UserTag>() const {
+    return traQAPI::UserTag(*this);
 }

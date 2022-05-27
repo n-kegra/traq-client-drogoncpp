@@ -10,7 +10,7 @@
 #include "../models/UserStatsStamp.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // ユーザー統計情報
 struct UserStats {
@@ -31,6 +31,6 @@ struct UserStats {
 };
 
 }
-template <> traQ::UserStats Json::Value::as<traQ::UserStats>() const;
+template <> traQAPI::UserStats Json::Value::as<traQAPI::UserStats>() const;
 
 #endif

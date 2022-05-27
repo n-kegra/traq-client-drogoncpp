@@ -9,7 +9,7 @@
 
 #include "../models/BotEventResult.h"
 
-namespace traQ {
+namespace traQAPI {
 
 // BOTイベントログ
 struct BotEventLog {
@@ -33,6 +33,6 @@ struct BotEventLog {
 };
 
 }
-template <> traQ::BotEventLog Json::Value::as<traQ::BotEventLog>() const;
+template <> traQAPI::BotEventLog Json::Value::as<traQAPI::BotEventLog>() const;
 
 #endif

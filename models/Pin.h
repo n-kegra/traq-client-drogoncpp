@@ -9,7 +9,7 @@
 
 #include "../models/Message.h"
 
-namespace traQ {
+namespace traQAPI {
 
 // ピン情報(メッセージ本体付き)
 struct Pin {
@@ -30,6 +30,6 @@ struct Pin {
 };
 
 }
-template <> traQ::Pin Json::Value::as<traQ::Pin>() const;
+template <> traQAPI::Pin Json::Value::as<traQAPI::Pin>() const;
 
 #endif

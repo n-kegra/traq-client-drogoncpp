@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // ユーザータグ
 struct UserTag {
@@ -31,6 +31,6 @@ struct UserTag {
 };
 
 }
-template <> traQ::UserTag Json::Value::as<traQ::UserTag>() const;
+template <> traQAPI::UserTag Json::Value::as<traQAPI::UserTag>() const;
 
 #endif

@@ -1,6 +1,6 @@
 #include "BotTokens.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value BotTokens::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ BotTokens& BotTokens::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::BotTokens Json::Value::as<traQ::BotTokens>() const {
-    return traQ::BotTokens(*this);
+template <> traQAPI::BotTokens Json::Value::as<traQAPI::BotTokens>() const {
+    return traQAPI::BotTokens(*this);
 }

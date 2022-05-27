@@ -1,6 +1,6 @@
 #include "ChildCreatedEvent.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ChildCreatedEvent::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ ChildCreatedEvent& ChildCreatedEvent::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::ChildCreatedEvent Json::Value::as<traQ::ChildCreatedEvent>() const {
-    return traQ::ChildCreatedEvent(*this);
+template <> traQAPI::ChildCreatedEvent Json::Value::as<traQAPI::ChildCreatedEvent>() const {
+    return traQAPI::ChildCreatedEvent(*this);
 }

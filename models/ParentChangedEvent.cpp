@@ -1,6 +1,6 @@
 #include "ParentChangedEvent.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ParentChangedEvent::toJson() const {
     Json::Value _json;
@@ -17,6 +17,6 @@ ParentChangedEvent& ParentChangedEvent::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::ParentChangedEvent Json::Value::as<traQ::ParentChangedEvent>() const {
-    return traQ::ParentChangedEvent(*this);
+template <> traQAPI::ParentChangedEvent Json::Value::as<traQAPI::ParentChangedEvent>() const {
+    return traQAPI::ParentChangedEvent(*this);
 }

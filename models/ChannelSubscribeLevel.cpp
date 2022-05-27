@@ -1,6 +1,6 @@
 #include "ChannelSubscribeLevel.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ChannelSubscribeLevel::toJson() const {
     switch(this->value) {
@@ -32,6 +32,6 @@ ChannelSubscribeLevel& ChannelSubscribeLevel::fromJson(const Json::Value& _json)
 }
 
 }
-template <> traQ::ChannelSubscribeLevel Json::Value::as<traQ::ChannelSubscribeLevel>() const {
-    return traQ::ChannelSubscribeLevel(*this);
+template <> traQAPI::ChannelSubscribeLevel Json::Value::as<traQAPI::ChannelSubscribeLevel>() const {
+    return traQAPI::ChannelSubscribeLevel(*this);
 }

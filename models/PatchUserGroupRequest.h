@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // ユーザーグループ編集リクエスト
 struct PatchUserGroupRequest {
@@ -29,6 +29,6 @@ struct PatchUserGroupRequest {
 };
 
 }
-template <> traQ::PatchUserGroupRequest Json::Value::as<traQ::PatchUserGroupRequest>() const;
+template <> traQAPI::PatchUserGroupRequest Json::Value::as<traQAPI::PatchUserGroupRequest>() const;
 
 #endif

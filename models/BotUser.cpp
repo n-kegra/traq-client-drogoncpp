@@ -1,6 +1,6 @@
 #include "BotUser.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value BotUser::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ BotUser& BotUser::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::BotUser Json::Value::as<traQ::BotUser>() const {
-    return traQ::BotUser(*this);
+template <> traQAPI::BotUser Json::Value::as<traQAPI::BotUser>() const {
+    return traQAPI::BotUser(*this);
 }

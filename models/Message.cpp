@@ -1,6 +1,6 @@
 #include "Message.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value Message::toJson() const {
     Json::Value _json;
@@ -31,6 +31,6 @@ Message& Message::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::Message Json::Value::as<traQ::Message>() const {
-    return traQ::Message(*this);
+template <> traQAPI::Message Json::Value::as<traQAPI::Message>() const {
+    return traQAPI::Message(*this);
 }

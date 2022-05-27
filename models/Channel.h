@@ -9,7 +9,7 @@
 
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // チャンネル
 struct Channel {
@@ -34,6 +34,6 @@ struct Channel {
 };
 
 }
-template <> traQ::Channel Json::Value::as<traQ::Channel>() const;
+template <> traQAPI::Channel Json::Value::as<traQAPI::Channel>() const;
 
 #endif

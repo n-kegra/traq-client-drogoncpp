@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // チャンネル可視状態変更イベント
 struct VisibilityChangedEvent {
@@ -28,6 +28,6 @@ struct VisibilityChangedEvent {
 };
 
 }
-template <> traQ::VisibilityChangedEvent Json::Value::as<traQ::VisibilityChangedEvent>() const;
+template <> traQAPI::VisibilityChangedEvent Json::Value::as<traQAPI::VisibilityChangedEvent>() const;
 
 #endif

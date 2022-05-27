@@ -1,6 +1,6 @@
 #include "UserStats.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value UserStats::toJson() const {
     Json::Value _json;
@@ -19,6 +19,6 @@ UserStats& UserStats::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::UserStats Json::Value::as<traQ::UserStats>() const {
-    return traQ::UserStats(*this);
+template <> traQAPI::UserStats Json::Value::as<traQAPI::UserStats>() const {
+    return traQAPI::UserStats(*this);
 }

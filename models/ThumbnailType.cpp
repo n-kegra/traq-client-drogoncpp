@@ -1,6 +1,6 @@
 #include "ThumbnailType.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ThumbnailType::toJson() const {
     switch(this->value) {
@@ -27,6 +27,6 @@ ThumbnailType& ThumbnailType::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::ThumbnailType Json::Value::as<traQ::ThumbnailType>() const {
-    return traQ::ThumbnailType(*this);
+template <> traQAPI::ThumbnailType Json::Value::as<traQAPI::ThumbnailType>() const {
+    return traQAPI::ThumbnailType(*this);
 }

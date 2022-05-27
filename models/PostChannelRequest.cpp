@@ -1,6 +1,6 @@
 #include "PostChannelRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostChannelRequest::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ PostChannelRequest& PostChannelRequest::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::PostChannelRequest Json::Value::as<traQ::PostChannelRequest>() const {
-    return traQ::PostChannelRequest(*this);
+template <> traQAPI::PostChannelRequest Json::Value::as<traQAPI::PostChannelRequest>() const {
+    return traQAPI::PostChannelRequest(*this);
 }

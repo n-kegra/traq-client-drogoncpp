@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // OGPに含まれる画像の情報
 struct OgpMedia {
@@ -31,6 +31,6 @@ struct OgpMedia {
 };
 
 }
-template <> traQ::OgpMedia Json::Value::as<traQ::OgpMedia>() const;
+template <> traQAPI::OgpMedia Json::Value::as<traQAPI::OgpMedia>() const;
 
 #endif

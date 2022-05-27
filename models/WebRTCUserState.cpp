@@ -1,6 +1,6 @@
 #include "WebRTCUserState.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value WebRTCUserState::toJson() const {
     Json::Value _json;
@@ -19,6 +19,6 @@ WebRTCUserState& WebRTCUserState::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::WebRTCUserState Json::Value::as<traQ::WebRTCUserState>() const {
-    return traQ::WebRTCUserState(*this);
+template <> traQAPI::WebRTCUserState Json::Value::as<traQAPI::WebRTCUserState>() const {
+    return traQAPI::WebRTCUserState(*this);
 }

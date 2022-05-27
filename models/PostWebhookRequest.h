@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // Webhook作成リクエスト
 struct PostWebhookRequest {
@@ -30,6 +30,6 @@ struct PostWebhookRequest {
 };
 
 }
-template <> traQ::PostWebhookRequest Json::Value::as<traQ::PostWebhookRequest>() const;
+template <> traQAPI::PostWebhookRequest Json::Value::as<traQAPI::PostWebhookRequest>() const;
 
 #endif

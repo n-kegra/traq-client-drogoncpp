@@ -1,6 +1,6 @@
 #include "ChannelViewState.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ChannelViewState::toJson() const {
     switch(this->value) {
@@ -32,6 +32,6 @@ ChannelViewState& ChannelViewState::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::ChannelViewState Json::Value::as<traQ::ChannelViewState>() const {
-    return traQ::ChannelViewState(*this);
+template <> traQAPI::ChannelViewState Json::Value::as<traQAPI::ChannelViewState>() const {
+    return traQAPI::ChannelViewState(*this);
 }

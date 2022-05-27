@@ -1,6 +1,6 @@
 #include "PostMessageRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostMessageRequest::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ PostMessageRequest& PostMessageRequest::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::PostMessageRequest Json::Value::as<traQ::PostMessageRequest>() const {
-    return traQ::PostMessageRequest(*this);
+template <> traQAPI::PostMessageRequest Json::Value::as<traQAPI::PostMessageRequest>() const {
+    return traQAPI::PostMessageRequest(*this);
 }

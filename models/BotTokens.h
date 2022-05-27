@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // BOTのトークン情報
 struct BotTokens {
@@ -28,6 +28,6 @@ struct BotTokens {
 };
 
 }
-template <> traQ::BotTokens Json::Value::as<traQ::BotTokens>() const;
+template <> traQAPI::BotTokens Json::Value::as<traQAPI::BotTokens>() const;
 
 #endif

@@ -10,7 +10,7 @@
 #include "../models/WebRTCUserStateSessionsInner.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // WebRTC状態
 struct WebRTCUserState {
@@ -31,6 +31,6 @@ struct WebRTCUserState {
 };
 
 }
-template <> traQ::WebRTCUserState Json::Value::as<traQ::WebRTCUserState>() const;
+template <> traQAPI::WebRTCUserState Json::Value::as<traQAPI::WebRTCUserState>() const;
 
 #endif

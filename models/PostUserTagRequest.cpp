@@ -1,6 +1,6 @@
 #include "PostUserTagRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostUserTagRequest::toJson() const {
     Json::Value _json;
@@ -13,6 +13,6 @@ PostUserTagRequest& PostUserTagRequest::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::PostUserTagRequest Json::Value::as<traQ::PostUserTagRequest>() const {
-    return traQ::PostUserTagRequest(*this);
+template <> traQAPI::PostUserTagRequest Json::Value::as<traQAPI::PostUserTagRequest>() const {
+    return traQAPI::PostUserTagRequest(*this);
 }

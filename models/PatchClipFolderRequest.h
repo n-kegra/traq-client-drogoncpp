@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // クリップフォルダ情報編集リクエスト
 struct PatchClipFolderRequest {
@@ -28,6 +28,6 @@ struct PatchClipFolderRequest {
 };
 
 }
-template <> traQ::PatchClipFolderRequest Json::Value::as<traQ::PatchClipFolderRequest>() const;
+template <> traQAPI::PatchClipFolderRequest Json::Value::as<traQAPI::PatchClipFolderRequest>() const;
 
 #endif

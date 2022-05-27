@@ -1,6 +1,6 @@
 #include "BotMode.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value BotMode::toJson() const {
     switch(this->value) {
@@ -27,6 +27,6 @@ BotMode& BotMode::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::BotMode Json::Value::as<traQ::BotMode>() const {
-    return traQ::BotMode(*this);
+template <> traQAPI::BotMode Json::Value::as<traQAPI::BotMode>() const {
+    return traQAPI::BotMode(*this);
 }

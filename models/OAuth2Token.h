@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 struct OAuth2Token {
     std::string accessUnderscoretoken;
@@ -31,6 +31,6 @@ struct OAuth2Token {
 };
 
 }
-template <> traQ::OAuth2Token Json::Value::as<traQ::OAuth2Token>() const;
+template <> traQAPI::OAuth2Token Json::Value::as<traQAPI::OAuth2Token>() const;
 
 #endif

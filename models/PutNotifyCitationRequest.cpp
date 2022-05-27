@@ -1,6 +1,6 @@
 #include "PutNotifyCitationRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PutNotifyCitationRequest::toJson() const {
     Json::Value _json;
@@ -13,6 +13,6 @@ PutNotifyCitationRequest& PutNotifyCitationRequest::fromJson(const Json::Value& 
 }
 
 }
-template <> traQ::PutNotifyCitationRequest Json::Value::as<traQ::PutNotifyCitationRequest>() const {
-    return traQ::PutNotifyCitationRequest(*this);
+template <> traQAPI::PutNotifyCitationRequest Json::Value::as<traQAPI::PutNotifyCitationRequest>() const {
+    return traQAPI::PutNotifyCitationRequest(*this);
 }

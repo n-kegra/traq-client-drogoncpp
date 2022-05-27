@@ -11,7 +11,7 @@
 #include "../models/DMChannel.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // GET /channelsレスポンス
 struct ChannelList {
@@ -31,6 +31,6 @@ struct ChannelList {
 };
 
 }
-template <> traQ::ChannelList Json::Value::as<traQ::ChannelList>() const;
+template <> traQAPI::ChannelList Json::Value::as<traQAPI::ChannelList>() const;
 
 #endif

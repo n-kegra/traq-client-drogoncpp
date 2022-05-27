@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // スター追加リクエスト
 struct PostStarRequest {
@@ -27,6 +27,6 @@ struct PostStarRequest {
 };
 
 }
-template <> traQ::PostStarRequest Json::Value::as<traQ::PostStarRequest>() const;
+template <> traQAPI::PostStarRequest Json::Value::as<traQAPI::PostStarRequest>() const;
 
 #endif

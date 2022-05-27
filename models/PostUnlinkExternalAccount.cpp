@@ -1,6 +1,6 @@
 #include "PostUnlinkExternalAccount.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostUnlinkExternalAccount::toJson() const {
     Json::Value _json;
@@ -13,6 +13,6 @@ PostUnlinkExternalAccount& PostUnlinkExternalAccount::fromJson(const Json::Value
 }
 
 }
-template <> traQ::PostUnlinkExternalAccount Json::Value::as<traQ::PostUnlinkExternalAccount>() const {
-    return traQ::PostUnlinkExternalAccount(*this);
+template <> traQAPI::PostUnlinkExternalAccount Json::Value::as<traQAPI::PostUnlinkExternalAccount>() const {
+    return traQAPI::PostUnlinkExternalAccount(*this);
 }

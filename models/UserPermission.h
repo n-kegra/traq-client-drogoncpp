@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // ユーザー権限
 struct UserPermission {
@@ -110,6 +110,6 @@ struct UserPermission {
 };
 
 }
-template <> traQ::UserPermission Json::Value::as<traQ::UserPermission>() const;
+template <> traQAPI::UserPermission Json::Value::as<traQAPI::UserPermission>() const;
 
 #endif

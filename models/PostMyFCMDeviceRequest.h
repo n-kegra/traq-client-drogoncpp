@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // FCMデバイス登録リクエスト
 struct PostMyFCMDeviceRequest {
@@ -27,6 +27,6 @@ struct PostMyFCMDeviceRequest {
 };
 
 }
-template <> traQ::PostMyFCMDeviceRequest Json::Value::as<traQ::PostMyFCMDeviceRequest>() const;
+template <> traQAPI::PostMyFCMDeviceRequest Json::Value::as<traQAPI::PostMyFCMDeviceRequest>() const;
 
 #endif

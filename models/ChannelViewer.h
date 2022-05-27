@@ -9,7 +9,7 @@
 
 #include "../models/ChannelViewState.h"
 
-namespace traQ {
+namespace traQAPI {
 
 // チャンネル閲覧者情報
 struct ChannelViewer {
@@ -30,6 +30,6 @@ struct ChannelViewer {
 };
 
 }
-template <> traQ::ChannelViewer Json::Value::as<traQ::ChannelViewer>() const;
+template <> traQAPI::ChannelViewer Json::Value::as<traQAPI::ChannelViewer>() const;
 
 #endif

@@ -9,7 +9,7 @@
 
 #include "../models/ChannelSubscribeLevel.h"
 
-namespace traQ {
+namespace traQAPI {
 
 // ユーザーのチャンネル購読状態
 struct UserSubscribeState {
@@ -29,6 +29,6 @@ struct UserSubscribeState {
 };
 
 }
-template <> traQ::UserSubscribeState Json::Value::as<traQ::UserSubscribeState>() const;
+template <> traQAPI::UserSubscribeState Json::Value::as<traQAPI::UserSubscribeState>() const;
 
 #endif

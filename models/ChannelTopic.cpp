@@ -1,6 +1,6 @@
 #include "ChannelTopic.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ChannelTopic::toJson() const {
     Json::Value _json;
@@ -13,6 +13,6 @@ ChannelTopic& ChannelTopic::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::ChannelTopic Json::Value::as<traQ::ChannelTopic>() const {
-    return traQ::ChannelTopic(*this);
+template <> traQAPI::ChannelTopic Json::Value::as<traQAPI::ChannelTopic>() const {
+    return traQAPI::ChannelTopic(*this);
 }

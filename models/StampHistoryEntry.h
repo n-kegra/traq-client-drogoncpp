@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // スタンプ履歴の1項目
 struct StampHistoryEntry {
@@ -28,6 +28,6 @@ struct StampHistoryEntry {
 };
 
 }
-template <> traQ::StampHistoryEntry Json::Value::as<traQ::StampHistoryEntry>() const;
+template <> traQAPI::StampHistoryEntry Json::Value::as<traQAPI::StampHistoryEntry>() const;
 
 #endif

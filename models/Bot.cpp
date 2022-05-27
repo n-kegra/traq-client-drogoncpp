@@ -1,6 +1,6 @@
 #include "Bot.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value Bot::toJson() const {
     Json::Value _json;
@@ -31,6 +31,6 @@ Bot& Bot::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::Bot Json::Value::as<traQ::Bot>() const {
-    return traQ::Bot(*this);
+template <> traQAPI::Bot Json::Value::as<traQAPI::Bot>() const {
+    return traQAPI::Bot(*this);
 }

@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // 未読チャンネル情報
 struct UnreadChannel {
@@ -31,6 +31,6 @@ struct UnreadChannel {
 };
 
 }
-template <> traQ::UnreadChannel Json::Value::as<traQ::UnreadChannel>() const;
+template <> traQAPI::UnreadChannel Json::Value::as<traQAPI::UnreadChannel>() const;
 
 #endif

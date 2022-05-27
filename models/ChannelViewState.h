@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // 閲覧状態
 struct ChannelViewState {
@@ -32,6 +32,6 @@ struct ChannelViewState {
 };
 
 }
-template <> traQ::ChannelViewState Json::Value::as<traQ::ChannelViewState>() const;
+template <> traQAPI::ChannelViewState Json::Value::as<traQAPI::ChannelViewState>() const;
 
 #endif

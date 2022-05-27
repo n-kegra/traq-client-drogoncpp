@@ -1,6 +1,6 @@
 #include "Pin.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value Pin::toJson() const {
     Json::Value _json;
@@ -17,6 +17,6 @@ Pin& Pin::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::Pin Json::Value::as<traQ::Pin>() const {
-    return traQ::Pin(*this);
+template <> traQAPI::Pin Json::Value::as<traQAPI::Pin>() const {
+    return traQAPI::Pin(*this);
 }

@@ -9,7 +9,7 @@
 
 #include "../models/ChannelSubscribeLevel.h"
 
-namespace traQ {
+namespace traQAPI {
 
 // チャンネル購読レベル変更リクエスト
 struct PutChannelSubscribeLevelRequest {
@@ -28,6 +28,6 @@ struct PutChannelSubscribeLevelRequest {
 };
 
 }
-template <> traQ::PutChannelSubscribeLevelRequest Json::Value::as<traQ::PutChannelSubscribeLevelRequest>() const;
+template <> traQAPI::PutChannelSubscribeLevelRequest Json::Value::as<traQAPI::PutChannelSubscribeLevelRequest>() const;
 
 #endif

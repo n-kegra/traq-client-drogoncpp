@@ -14,7 +14,7 @@
 #include "../models/BotTokens.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 struct GetBot200Response {
     std::string id;
@@ -44,6 +44,6 @@ struct GetBot200Response {
 };
 
 }
-template <> traQ::GetBot200Response Json::Value::as<traQ::GetBot200Response>() const;
+template <> traQAPI::GetBot200Response Json::Value::as<traQAPI::GetBot200Response>() const;
 
 #endif

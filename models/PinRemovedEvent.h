@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // ピン削除イベント
 struct PinRemovedEvent {
@@ -28,6 +28,6 @@ struct PinRemovedEvent {
 };
 
 }
-template <> traQ::PinRemovedEvent Json::Value::as<traQ::PinRemovedEvent>() const;
+template <> traQAPI::PinRemovedEvent Json::Value::as<traQAPI::PinRemovedEvent>() const;
 
 #endif

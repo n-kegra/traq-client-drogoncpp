@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 struct OAuth2ResponseType {
     enum class Value {
@@ -31,6 +31,6 @@ struct OAuth2ResponseType {
 };
 
 }
-template <> traQ::OAuth2ResponseType Json::Value::as<traQ::OAuth2ResponseType>() const;
+template <> traQAPI::OAuth2ResponseType Json::Value::as<traQAPI::OAuth2ResponseType>() const;
 
 #endif

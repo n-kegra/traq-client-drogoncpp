@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // メッセージ引用通知設定リクエスト
 struct PutNotifyCitationRequest {
@@ -27,6 +27,6 @@ struct PutNotifyCitationRequest {
 };
 
 }
-template <> traQ::PutNotifyCitationRequest Json::Value::as<traQ::PutNotifyCitationRequest>() const;
+template <> traQAPI::PutNotifyCitationRequest Json::Value::as<traQAPI::PutNotifyCitationRequest>() const;
 
 #endif

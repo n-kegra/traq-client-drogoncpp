@@ -1,6 +1,6 @@
 #include "Tag.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value Tag::toJson() const {
     Json::Value _json;
@@ -19,6 +19,6 @@ Tag& Tag::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::Tag Json::Value::as<traQ::Tag>() const {
-    return traQ::Tag(*this);
+template <> traQAPI::Tag Json::Value::as<traQAPI::Tag>() const {
+    return traQAPI::Tag(*this);
 }

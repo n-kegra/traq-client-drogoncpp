@@ -1,6 +1,6 @@
 #include "TopicChangedEvent.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value TopicChangedEvent::toJson() const {
     Json::Value _json;
@@ -17,6 +17,6 @@ TopicChangedEvent& TopicChangedEvent::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::TopicChangedEvent Json::Value::as<traQ::TopicChangedEvent>() const {
-    return traQ::TopicChangedEvent(*this);
+template <> traQAPI::TopicChangedEvent Json::Value::as<traQAPI::TopicChangedEvent>() const {
+    return traQAPI::TopicChangedEvent(*this);
 }

@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // スタンプ統計情報
 struct StampStats {
@@ -28,6 +28,6 @@ struct StampStats {
 };
 
 }
-template <> traQ::StampStats Json::Value::as<traQ::StampStats>() const;
+template <> traQAPI::StampStats Json::Value::as<traQAPI::StampStats>() const;
 
 #endif

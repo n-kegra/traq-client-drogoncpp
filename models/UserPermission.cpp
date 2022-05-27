@@ -1,6 +1,6 @@
 #include "UserPermission.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value UserPermission::toJson() const {
     switch(this->value) {
@@ -422,6 +422,6 @@ UserPermission& UserPermission::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::UserPermission Json::Value::as<traQ::UserPermission>() const {
-    return traQ::UserPermission(*this);
+template <> traQAPI::UserPermission Json::Value::as<traQAPI::UserPermission>() const {
+    return traQAPI::UserPermission(*this);
 }

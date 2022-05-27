@@ -1,6 +1,6 @@
 #include "MessageClip.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value MessageClip::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ MessageClip& MessageClip::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::MessageClip Json::Value::as<traQ::MessageClip>() const {
-    return traQ::MessageClip(*this);
+template <> traQAPI::MessageClip Json::Value::as<traQAPI::MessageClip>() const {
+    return traQAPI::MessageClip(*this);
 }

@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // BOTチャンネル退出リクエスト
 struct PostBotActionLeaveRequest {
@@ -27,6 +27,6 @@ struct PostBotActionLeaveRequest {
 };
 
 }
-template <> traQ::PostBotActionLeaveRequest Json::Value::as<traQ::PostBotActionLeaveRequest>() const;
+template <> traQAPI::PostBotActionLeaveRequest Json::Value::as<traQAPI::PostBotActionLeaveRequest>() const;
 
 #endif

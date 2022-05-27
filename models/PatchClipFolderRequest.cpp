@@ -1,6 +1,6 @@
 #include "PatchClipFolderRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PatchClipFolderRequest::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ PatchClipFolderRequest& PatchClipFolderRequest::fromJson(const Json::Value& _jso
 }
 
 }
-template <> traQ::PatchClipFolderRequest Json::Value::as<traQ::PatchClipFolderRequest>() const {
-    return traQ::PatchClipFolderRequest(*this);
+template <> traQAPI::PatchClipFolderRequest Json::Value::as<traQAPI::PatchClipFolderRequest>() const {
+    return traQAPI::PatchClipFolderRequest(*this);
 }

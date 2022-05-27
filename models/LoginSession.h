@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // ログインセッション情報
 struct LoginSession {
@@ -28,6 +28,6 @@ struct LoginSession {
 };
 
 }
-template <> traQ::LoginSession Json::Value::as<traQ::LoginSession>() const;
+template <> traQAPI::LoginSession Json::Value::as<traQAPI::LoginSession>() const;
 
 #endif

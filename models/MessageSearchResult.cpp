@@ -1,6 +1,6 @@
 #include "MessageSearchResult.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value MessageSearchResult::toJson() const {
     Json::Value _json;
@@ -17,6 +17,6 @@ MessageSearchResult& MessageSearchResult::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::MessageSearchResult Json::Value::as<traQ::MessageSearchResult>() const {
-    return traQ::MessageSearchResult(*this);
+template <> traQAPI::MessageSearchResult Json::Value::as<traQAPI::MessageSearchResult>() const {
+    return traQAPI::MessageSearchResult(*this);
 }

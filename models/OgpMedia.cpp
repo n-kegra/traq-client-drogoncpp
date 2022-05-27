@@ -1,6 +1,6 @@
 #include "OgpMedia.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value OgpMedia::toJson() const {
     Json::Value _json;
@@ -21,6 +21,6 @@ OgpMedia& OgpMedia::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::OgpMedia Json::Value::as<traQ::OgpMedia>() const {
-    return traQ::OgpMedia(*this);
+template <> traQAPI::OgpMedia Json::Value::as<traQAPI::OgpMedia>() const {
+    return traQAPI::OgpMedia(*this);
 }

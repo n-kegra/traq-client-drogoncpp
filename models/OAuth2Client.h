@@ -10,7 +10,7 @@
 #include "../models/OAuth2Scope.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // OAuth2クライアント情報
 struct OAuth2Client {
@@ -33,6 +33,6 @@ struct OAuth2Client {
 };
 
 }
-template <> traQ::OAuth2Client Json::Value::as<traQ::OAuth2Client>() const;
+template <> traQAPI::OAuth2Client Json::Value::as<traQAPI::OAuth2Client>() const;
 
 #endif

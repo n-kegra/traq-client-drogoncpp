@@ -1,6 +1,6 @@
 #include "ChannelList.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ChannelList::toJson() const {
     Json::Value _json;
@@ -19,6 +19,6 @@ ChannelList& ChannelList::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::ChannelList Json::Value::as<traQ::ChannelList>() const {
-    return traQ::ChannelList(*this);
+template <> traQAPI::ChannelList Json::Value::as<traQAPI::ChannelList>() const {
+    return traQAPI::ChannelList(*this);
 }

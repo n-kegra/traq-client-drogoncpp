@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // BOT状態 0: 停止 1: 有効 2: 一時停止
 struct BotState {
@@ -32,6 +32,6 @@ struct BotState {
 };
 
 }
-template <> traQ::BotState Json::Value::as<traQ::BotState>() const;
+template <> traQAPI::BotState Json::Value::as<traQAPI::BotState>() const;
 
 #endif

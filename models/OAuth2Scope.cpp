@@ -1,6 +1,6 @@
 #include "OAuth2Scope.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value OAuth2Scope::toJson() const {
     switch(this->value) {
@@ -32,6 +32,6 @@ OAuth2Scope& OAuth2Scope::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::OAuth2Scope Json::Value::as<traQ::OAuth2Scope>() const {
-    return traQ::OAuth2Scope(*this);
+template <> traQAPI::OAuth2Scope Json::Value::as<traQAPI::OAuth2Scope>() const {
+    return traQAPI::OAuth2Scope(*this);
 }

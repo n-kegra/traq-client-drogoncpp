@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // ユーザーパスワード変更リクエスト
 struct PutUserPasswordRequest {
@@ -27,6 +27,6 @@ struct PutUserPasswordRequest {
 };
 
 }
-template <> traQ::PutUserPasswordRequest Json::Value::as<traQ::PutUserPasswordRequest>() const;
+template <> traQAPI::PutUserPasswordRequest Json::Value::as<traQAPI::PutUserPasswordRequest>() const;
 
 #endif

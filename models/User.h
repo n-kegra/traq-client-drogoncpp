@@ -9,7 +9,7 @@
 
 #include "../models/UserAccountState.h"
 
-namespace traQ {
+namespace traQAPI {
 
 // ユーザー情報
 struct User {
@@ -34,6 +34,6 @@ struct User {
 };
 
 }
-template <> traQ::User Json::Value::as<traQ::User>() const;
+template <> traQAPI::User Json::Value::as<traQAPI::User>() const;
 
 #endif

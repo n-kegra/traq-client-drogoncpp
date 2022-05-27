@@ -1,6 +1,6 @@
 #include "LoginSession.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value LoginSession::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ LoginSession& LoginSession::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::LoginSession Json::Value::as<traQ::LoginSession>() const {
-    return traQ::LoginSession(*this);
+template <> traQAPI::LoginSession Json::Value::as<traQAPI::LoginSession>() const {
+    return traQAPI::LoginSession(*this);
 }

@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // POST /users/me/ex-accounts/link 用リクエストボディ
 struct PostLinkExternalAccount {
@@ -27,6 +27,6 @@ struct PostLinkExternalAccount {
 };
 
 }
-template <> traQ::PostLinkExternalAccount Json::Value::as<traQ::PostLinkExternalAccount>() const;
+template <> traQAPI::PostLinkExternalAccount Json::Value::as<traQAPI::PostLinkExternalAccount>() const;
 
 #endif

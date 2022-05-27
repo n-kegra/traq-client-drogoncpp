@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // サムネイル情報 サムネイルが存在しない場合はnullになります Deprecated: thumbnailsを参照してください
 struct FileInfoThumbnail {
@@ -29,6 +29,6 @@ struct FileInfoThumbnail {
 };
 
 }
-template <> traQ::FileInfoThumbnail Json::Value::as<traQ::FileInfoThumbnail>() const;
+template <> traQAPI::FileInfoThumbnail Json::Value::as<traQAPI::FileInfoThumbnail>() const;
 
 #endif

@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // クリップフォルダ作成リクエスト
 struct PostClipFolderRequest {
@@ -28,6 +28,6 @@ struct PostClipFolderRequest {
 };
 
 }
-template <> traQ::PostClipFolderRequest Json::Value::as<traQ::PostClipFolderRequest>() const;
+template <> traQAPI::PostClipFolderRequest Json::Value::as<traQAPI::PostClipFolderRequest>() const;
 
 #endif

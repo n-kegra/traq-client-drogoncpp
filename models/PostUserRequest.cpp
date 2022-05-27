@@ -1,6 +1,6 @@
 #include "PostUserRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostUserRequest::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ PostUserRequest& PostUserRequest::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::PostUserRequest Json::Value::as<traQ::PostUserRequest>() const {
-    return traQ::PostUserRequest(*this);
+template <> traQAPI::PostUserRequest Json::Value::as<traQAPI::PostUserRequest>() const {
+    return traQAPI::PostUserRequest(*this);
 }

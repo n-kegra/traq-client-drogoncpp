@@ -9,7 +9,7 @@
 
 #include "../models/VersionFlags.h"
 
-namespace traQ {
+namespace traQAPI {
 
 // バージョン・サーバーフラグ情報
 struct Version {
@@ -30,6 +30,6 @@ struct Version {
 };
 
 }
-template <> traQ::Version Json::Value::as<traQ::Version>() const;
+template <> traQAPI::Version Json::Value::as<traQAPI::Version>() const;
 
 #endif

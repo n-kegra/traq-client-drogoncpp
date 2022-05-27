@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // ユーザーグループメンバー
 struct UserGroupMember {
@@ -28,6 +28,6 @@ struct UserGroupMember {
 };
 
 }
-template <> traQ::UserGroupMember Json::Value::as<traQ::UserGroupMember>() const;
+template <> traQAPI::UserGroupMember Json::Value::as<traQAPI::UserGroupMember>() const;
 
 #endif

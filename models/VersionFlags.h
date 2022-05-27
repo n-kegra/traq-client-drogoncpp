@@ -9,7 +9,7 @@
 
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 struct VersionFlags {
     std::vector<std::string> externalLogin;
@@ -28,6 +28,6 @@ struct VersionFlags {
 };
 
 }
-template <> traQ::VersionFlags Json::Value::as<traQ::VersionFlags>() const;
+template <> traQAPI::VersionFlags Json::Value::as<traQAPI::VersionFlags>() const;
 
 #endif

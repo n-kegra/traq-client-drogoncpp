@@ -11,7 +11,7 @@
 #include "../models/UserTag.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // ユーザー詳細情報
 struct UserDetail {
@@ -42,6 +42,6 @@ struct UserDetail {
 };
 
 }
-template <> traQ::UserDetail Json::Value::as<traQ::UserDetail>() const;
+template <> traQAPI::UserDetail Json::Value::as<traQAPI::UserDetail>() const;
 
 #endif

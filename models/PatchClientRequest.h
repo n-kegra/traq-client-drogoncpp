@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // OAuth2クライアント情報変更リクエスト
 struct PatchClientRequest {
@@ -30,6 +30,6 @@ struct PatchClientRequest {
 };
 
 }
-template <> traQ::PatchClientRequest Json::Value::as<traQ::PatchClientRequest>() const;
+template <> traQAPI::PatchClientRequest Json::Value::as<traQAPI::PatchClientRequest>() const;
 
 #endif

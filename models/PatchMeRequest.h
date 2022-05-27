@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // 自分のユーザー情報変更リクエスト
 struct PatchMeRequest {
@@ -30,6 +30,6 @@ struct PatchMeRequest {
 };
 
 }
-template <> traQ::PatchMeRequest Json::Value::as<traQ::PatchMeRequest>() const;
+template <> traQAPI::PatchMeRequest Json::Value::as<traQAPI::PatchMeRequest>() const;
 
 #endif

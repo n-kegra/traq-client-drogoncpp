@@ -1,6 +1,6 @@
 #include "PatchGroupMemberRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PatchGroupMemberRequest::toJson() const {
     Json::Value _json;
@@ -13,6 +13,6 @@ PatchGroupMemberRequest& PatchGroupMemberRequest::fromJson(const Json::Value& _j
 }
 
 }
-template <> traQ::PatchGroupMemberRequest Json::Value::as<traQ::PatchGroupMemberRequest>() const {
-    return traQ::PatchGroupMemberRequest(*this);
+template <> traQAPI::PatchGroupMemberRequest Json::Value::as<traQAPI::PatchGroupMemberRequest>() const {
+    return traQAPI::PatchGroupMemberRequest(*this);
 }

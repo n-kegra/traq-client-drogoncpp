@@ -1,6 +1,6 @@
 #include "PostUserGroupAdminRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostUserGroupAdminRequest::toJson() const {
     Json::Value _json;
@@ -13,6 +13,6 @@ PostUserGroupAdminRequest& PostUserGroupAdminRequest::fromJson(const Json::Value
 }
 
 }
-template <> traQ::PostUserGroupAdminRequest Json::Value::as<traQ::PostUserGroupAdminRequest>() const {
-    return traQ::PostUserGroupAdminRequest(*this);
+template <> traQAPI::PostUserGroupAdminRequest Json::Value::as<traQAPI::PostUserGroupAdminRequest>() const {
+    return traQAPI::PostUserGroupAdminRequest(*this);
 }

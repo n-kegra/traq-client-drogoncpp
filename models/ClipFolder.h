@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // クリップフォルダ情報
 struct ClipFolder {
@@ -31,6 +31,6 @@ struct ClipFolder {
 };
 
 }
-template <> traQ::ClipFolder Json::Value::as<traQ::ClipFolder>() const;
+template <> traQAPI::ClipFolder Json::Value::as<traQAPI::ClipFolder>() const;
 
 #endif

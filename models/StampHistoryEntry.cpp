@@ -1,6 +1,6 @@
 #include "StampHistoryEntry.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value StampHistoryEntry::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ StampHistoryEntry& StampHistoryEntry::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::StampHistoryEntry Json::Value::as<traQ::StampHistoryEntry>() const {
-    return traQ::StampHistoryEntry(*this);
+template <> traQAPI::StampHistoryEntry Json::Value::as<traQAPI::StampHistoryEntry>() const {
+    return traQAPI::StampHistoryEntry(*this);
 }

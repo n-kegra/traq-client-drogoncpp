@@ -1,6 +1,6 @@
 #include "PatchChannelSubscribersRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PatchChannelSubscribersRequest::toJson() const {
     Json::Value _json;
@@ -19,6 +19,6 @@ PatchChannelSubscribersRequest& PatchChannelSubscribersRequest::fromJson(const J
 }
 
 }
-template <> traQ::PatchChannelSubscribersRequest Json::Value::as<traQ::PatchChannelSubscribersRequest>() const {
-    return traQ::PatchChannelSubscribersRequest(*this);
+template <> traQAPI::PatchChannelSubscribersRequest Json::Value::as<traQAPI::PatchChannelSubscribersRequest>() const {
+    return traQAPI::PatchChannelSubscribersRequest(*this);
 }

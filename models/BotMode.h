@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // BOT動作モード  HTTP: HTTP Mode WebSocket: WebSocket Mode
 struct BotMode {
@@ -31,6 +31,6 @@ struct BotMode {
 };
 
 }
-template <> traQ::BotMode Json::Value::as<traQ::BotMode>() const;
+template <> traQAPI::BotMode Json::Value::as<traQAPI::BotMode>() const;
 
 #endif

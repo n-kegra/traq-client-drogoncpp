@@ -1,6 +1,6 @@
 #include "PatchStampPaletteRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PatchStampPaletteRequest::toJson() const {
     Json::Value _json;
@@ -19,6 +19,6 @@ PatchStampPaletteRequest& PatchStampPaletteRequest::fromJson(const Json::Value& 
 }
 
 }
-template <> traQ::PatchStampPaletteRequest Json::Value::as<traQ::PatchStampPaletteRequest>() const {
-    return traQ::PatchStampPaletteRequest(*this);
+template <> traQAPI::PatchStampPaletteRequest Json::Value::as<traQAPI::PatchStampPaletteRequest>() const {
+    return traQAPI::PatchStampPaletteRequest(*this);
 }

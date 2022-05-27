@@ -9,7 +9,7 @@
 
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // タグ情報
 struct Tag {
@@ -30,6 +30,6 @@ struct Tag {
 };
 
 }
-template <> traQ::Tag Json::Value::as<traQ::Tag>() const;
+template <> traQAPI::Tag Json::Value::as<traQAPI::Tag>() const;
 
 #endif

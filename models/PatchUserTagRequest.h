@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // ユーザーのタグの編集リクエスト
 struct PatchUserTagRequest {
@@ -27,6 +27,6 @@ struct PatchUserTagRequest {
 };
 
 }
-template <> traQ::PatchUserTagRequest Json::Value::as<traQ::PatchUserTagRequest>() const;
+template <> traQAPI::PatchUserTagRequest Json::Value::as<traQAPI::PatchUserTagRequest>() const;
 
 #endif

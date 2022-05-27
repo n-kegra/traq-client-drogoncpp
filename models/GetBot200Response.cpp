@@ -1,6 +1,6 @@
 #include "GetBot200Response.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value GetBot200Response::toJson() const {
     Json::Value _json;
@@ -41,6 +41,6 @@ GetBot200Response& GetBot200Response::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::GetBot200Response Json::Value::as<traQ::GetBot200Response>() const {
-    return traQ::GetBot200Response(*this);
+template <> traQAPI::GetBot200Response Json::Value::as<traQAPI::GetBot200Response>() const {
+    return traQAPI::GetBot200Response(*this);
 }

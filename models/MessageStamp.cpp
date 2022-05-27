@@ -1,6 +1,6 @@
 #include "MessageStamp.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value MessageStamp::toJson() const {
     Json::Value _json;
@@ -21,6 +21,6 @@ MessageStamp& MessageStamp::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::MessageStamp Json::Value::as<traQ::MessageStamp>() const {
-    return traQ::MessageStamp(*this);
+template <> traQAPI::MessageStamp Json::Value::as<traQAPI::MessageStamp>() const {
+    return traQAPI::MessageStamp(*this);
 }

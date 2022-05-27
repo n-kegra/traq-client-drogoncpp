@@ -1,6 +1,6 @@
 #include "PostBotRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostBotRequest::toJson() const {
     Json::Value _json;
@@ -21,6 +21,6 @@ PostBotRequest& PostBotRequest::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::PostBotRequest Json::Value::as<traQ::PostBotRequest>() const {
-    return traQ::PostBotRequest(*this);
+template <> traQAPI::PostBotRequest Json::Value::as<traQAPI::PostBotRequest>() const {
+    return traQAPI::PostBotRequest(*this);
 }

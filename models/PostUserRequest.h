@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // ユーザー登録リクエスト
 struct PostUserRequest {
@@ -28,6 +28,6 @@ struct PostUserRequest {
 };
 
 }
-template <> traQ::PostUserRequest Json::Value::as<traQ::PostUserRequest>() const;
+template <> traQAPI::PostUserRequest Json::Value::as<traQAPI::PostUserRequest>() const;
 
 #endif

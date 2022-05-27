@@ -1,6 +1,6 @@
 #include "PostLinkExternalAccount.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostLinkExternalAccount::toJson() const {
     Json::Value _json;
@@ -13,6 +13,6 @@ PostLinkExternalAccount& PostLinkExternalAccount::fromJson(const Json::Value& _j
 }
 
 }
-template <> traQ::PostLinkExternalAccount Json::Value::as<traQ::PostLinkExternalAccount>() const {
-    return traQ::PostLinkExternalAccount(*this);
+template <> traQAPI::PostLinkExternalAccount Json::Value::as<traQAPI::PostLinkExternalAccount>() const {
+    return traQAPI::PostLinkExternalAccount(*this);
 }

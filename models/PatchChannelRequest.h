@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // チャンネル情報変更リクエスト
 struct PatchChannelRequest {
@@ -30,6 +30,6 @@ struct PatchChannelRequest {
 };
 
 }
-template <> traQ::PatchChannelRequest Json::Value::as<traQ::PatchChannelRequest>() const;
+template <> traQAPI::PatchChannelRequest Json::Value::as<traQAPI::PatchChannelRequest>() const;
 
 #endif

@@ -1,6 +1,6 @@
 #include "PostStarRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostStarRequest::toJson() const {
     Json::Value _json;
@@ -13,6 +13,6 @@ PostStarRequest& PostStarRequest::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::PostStarRequest Json::Value::as<traQ::PostStarRequest>() const {
-    return traQ::PostStarRequest(*this);
+template <> traQAPI::PostStarRequest Json::Value::as<traQAPI::PostStarRequest>() const {
+    return traQAPI::PostStarRequest(*this);
 }

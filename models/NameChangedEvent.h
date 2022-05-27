@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // チャンネル名変更イベント
 struct NameChangedEvent {
@@ -29,6 +29,6 @@ struct NameChangedEvent {
 };
 
 }
-template <> traQ::NameChangedEvent Json::Value::as<traQ::NameChangedEvent>() const;
+template <> traQAPI::NameChangedEvent Json::Value::as<traQAPI::NameChangedEvent>() const;
 
 #endif

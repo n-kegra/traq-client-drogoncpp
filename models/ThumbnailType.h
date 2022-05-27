@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // サムネイル画像のタイプ 
 struct ThumbnailType {
@@ -31,6 +31,6 @@ struct ThumbnailType {
 };
 
 }
-template <> traQ::ThumbnailType Json::Value::as<traQ::ThumbnailType>() const;
+template <> traQAPI::ThumbnailType Json::Value::as<traQAPI::ThumbnailType>() const;
 
 #endif

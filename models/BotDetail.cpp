@@ -1,6 +1,6 @@
 #include "BotDetail.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value BotDetail::toJson() const {
     Json::Value _json;
@@ -41,6 +41,6 @@ BotDetail& BotDetail::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::BotDetail Json::Value::as<traQ::BotDetail>() const {
-    return traQ::BotDetail(*this);
+template <> traQAPI::BotDetail Json::Value::as<traQAPI::BotDetail>() const {
+    return traQAPI::BotDetail(*this);
 }

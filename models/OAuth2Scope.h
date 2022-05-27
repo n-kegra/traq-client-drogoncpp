@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // OAuth2スコープ
 struct OAuth2Scope {
@@ -32,6 +32,6 @@ struct OAuth2Scope {
 };
 
 }
-template <> traQ::OAuth2Scope Json::Value::as<traQ::OAuth2Scope>() const;
+template <> traQAPI::OAuth2Scope Json::Value::as<traQAPI::OAuth2Scope>() const;
 
 #endif

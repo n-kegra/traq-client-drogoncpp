@@ -9,7 +9,7 @@
 
 #include "../models/BotMode.h"
 
-namespace traQ {
+namespace traQAPI {
 
 // BOT作成リクエスト
 struct PostBotRequest {
@@ -32,6 +32,6 @@ struct PostBotRequest {
 };
 
 }
-template <> traQ::PostBotRequest Json::Value::as<traQ::PostBotRequest>() const;
+template <> traQAPI::PostBotRequest Json::Value::as<traQAPI::PostBotRequest>() const;
 
 #endif

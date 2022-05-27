@@ -9,7 +9,7 @@
 
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // 購読者変更イベント
 struct SubscribersChangedEvent {
@@ -30,6 +30,6 @@ struct SubscribersChangedEvent {
 };
 
 }
-template <> traQ::SubscribersChangedEvent Json::Value::as<traQ::SubscribersChangedEvent>() const;
+template <> traQAPI::SubscribersChangedEvent Json::Value::as<traQAPI::SubscribersChangedEvent>() const;
 
 #endif

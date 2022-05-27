@@ -1,6 +1,6 @@
 #include "StampPalette.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value StampPalette::toJson() const {
     Json::Value _json;
@@ -27,6 +27,6 @@ StampPalette& StampPalette::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::StampPalette Json::Value::as<traQ::StampPalette>() const {
-    return traQ::StampPalette(*this);
+template <> traQAPI::StampPalette Json::Value::as<traQAPI::StampPalette>() const {
+    return traQAPI::StampPalette(*this);
 }

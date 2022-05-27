@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // チャンネル上の特定ユーザー統計情報
 struct ChannelStatsUser {
@@ -28,6 +28,6 @@ struct ChannelStatsUser {
 };
 
 }
-template <> traQ::ChannelStatsUser Json::Value::as<traQ::ChannelStatsUser>() const;
+template <> traQAPI::ChannelStatsUser Json::Value::as<traQAPI::ChannelStatsUser>() const;
 
 #endif

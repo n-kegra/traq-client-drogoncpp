@@ -1,6 +1,6 @@
 #include "WebRTCUserStateSessionsInner.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value WebRTCUserStateSessionsInner::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ WebRTCUserStateSessionsInner& WebRTCUserStateSessionsInner::fromJson(const Json:
 }
 
 }
-template <> traQ::WebRTCUserStateSessionsInner Json::Value::as<traQ::WebRTCUserStateSessionsInner>() const {
-    return traQ::WebRTCUserStateSessionsInner(*this);
+template <> traQAPI::WebRTCUserStateSessionsInner Json::Value::as<traQAPI::WebRTCUserStateSessionsInner>() const {
+    return traQAPI::WebRTCUserStateSessionsInner(*this);
 }

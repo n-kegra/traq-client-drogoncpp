@@ -1,6 +1,6 @@
 #include "PatchWebhookRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PatchWebhookRequest::toJson() const {
     Json::Value _json;
@@ -21,6 +21,6 @@ PatchWebhookRequest& PatchWebhookRequest::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::PatchWebhookRequest Json::Value::as<traQ::PatchWebhookRequest>() const {
-    return traQ::PatchWebhookRequest(*this);
+template <> traQAPI::PatchWebhookRequest Json::Value::as<traQAPI::PatchWebhookRequest>() const {
+    return traQAPI::PatchWebhookRequest(*this);
 }

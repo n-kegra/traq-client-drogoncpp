@@ -1,6 +1,6 @@
 #include "WebRTCAuthenticateResult.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value WebRTCAuthenticateResult::toJson() const {
     Json::Value _json;
@@ -19,6 +19,6 @@ WebRTCAuthenticateResult& WebRTCAuthenticateResult::fromJson(const Json::Value& 
 }
 
 }
-template <> traQ::WebRTCAuthenticateResult Json::Value::as<traQ::WebRTCAuthenticateResult>() const {
-    return traQ::WebRTCAuthenticateResult(*this);
+template <> traQAPI::WebRTCAuthenticateResult Json::Value::as<traQAPI::WebRTCAuthenticateResult>() const {
+    return traQAPI::WebRTCAuthenticateResult(*this);
 }

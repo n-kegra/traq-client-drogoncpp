@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // チャンネル上の特定スタンプ統計情報
 struct ChannelStatsStamp {
@@ -29,6 +29,6 @@ struct ChannelStatsStamp {
 };
 
 }
-template <> traQ::ChannelStatsStamp Json::Value::as<traQ::ChannelStatsStamp>() const;
+template <> traQAPI::ChannelStatsStamp Json::Value::as<traQAPI::ChannelStatsStamp>() const;
 
 #endif

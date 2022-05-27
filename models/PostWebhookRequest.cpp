@@ -1,6 +1,6 @@
 #include "PostWebhookRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostWebhookRequest::toJson() const {
     Json::Value _json;
@@ -19,6 +19,6 @@ PostWebhookRequest& PostWebhookRequest::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::PostWebhookRequest Json::Value::as<traQ::PostWebhookRequest>() const {
-    return traQ::PostWebhookRequest(*this);
+template <> traQAPI::PostWebhookRequest Json::Value::as<traQAPI::PostWebhookRequest>() const {
+    return traQAPI::PostWebhookRequest(*this);
 }

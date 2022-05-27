@@ -9,7 +9,7 @@
 
 #include "../models/Message.h"
 
-namespace traQ {
+namespace traQAPI {
 
 // クリップされたメッセージ
 struct ClippedMessage {
@@ -29,6 +29,6 @@ struct ClippedMessage {
 };
 
 }
-template <> traQ::ClippedMessage Json::Value::as<traQ::ClippedMessage>() const;
+template <> traQAPI::ClippedMessage Json::Value::as<traQAPI::ClippedMessage>() const;
 
 #endif

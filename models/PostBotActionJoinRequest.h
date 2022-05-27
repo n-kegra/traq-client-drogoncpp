@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // BOTチャンネル参加リクエスト
 struct PostBotActionJoinRequest {
@@ -27,6 +27,6 @@ struct PostBotActionJoinRequest {
 };
 
 }
-template <> traQ::PostBotActionJoinRequest Json::Value::as<traQ::PostBotActionJoinRequest>() const;
+template <> traQAPI::PostBotActionJoinRequest Json::Value::as<traQAPI::PostBotActionJoinRequest>() const;
 
 #endif

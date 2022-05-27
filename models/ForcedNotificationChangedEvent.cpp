@@ -1,6 +1,6 @@
 #include "ForcedNotificationChangedEvent.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ForcedNotificationChangedEvent::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ ForcedNotificationChangedEvent& ForcedNotificationChangedEvent::fromJson(const J
 }
 
 }
-template <> traQ::ForcedNotificationChangedEvent Json::Value::as<traQ::ForcedNotificationChangedEvent>() const {
-    return traQ::ForcedNotificationChangedEvent(*this);
+template <> traQAPI::ForcedNotificationChangedEvent Json::Value::as<traQAPI::ForcedNotificationChangedEvent>() const {
+    return traQAPI::ForcedNotificationChangedEvent(*this);
 }

@@ -11,7 +11,7 @@
 #include "../models/BotState.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // BOT情報
 struct Bot {
@@ -38,6 +38,6 @@ struct Bot {
 };
 
 }
-template <> traQ::Bot Json::Value::as<traQ::Bot>() const;
+template <> traQAPI::Bot Json::Value::as<traQAPI::Bot>() const;
 
 #endif

@@ -1,6 +1,6 @@
 #include "UserGroupMember.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value UserGroupMember::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ UserGroupMember& UserGroupMember::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::UserGroupMember Json::Value::as<traQ::UserGroupMember>() const {
-    return traQ::UserGroupMember(*this);
+template <> traQAPI::UserGroupMember Json::Value::as<traQAPI::UserGroupMember>() const {
+    return traQAPI::UserGroupMember(*this);
 }

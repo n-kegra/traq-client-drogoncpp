@@ -10,7 +10,7 @@
 #include "../models/OAuth2Scope.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // 有効なOAuth2トークン情報
 struct ActiveOAuth2Token {
@@ -32,6 +32,6 @@ struct ActiveOAuth2Token {
 };
 
 }
-template <> traQ::ActiveOAuth2Token Json::Value::as<traQ::ActiveOAuth2Token>() const;
+template <> traQAPI::ActiveOAuth2Token Json::Value::as<traQAPI::ActiveOAuth2Token>() const;
 
 #endif

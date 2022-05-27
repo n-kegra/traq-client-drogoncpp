@@ -1,6 +1,6 @@
 #include "ActivityTimelineMessage.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ActivityTimelineMessage::toJson() const {
     Json::Value _json;
@@ -23,6 +23,6 @@ ActivityTimelineMessage& ActivityTimelineMessage::fromJson(const Json::Value& _j
 }
 
 }
-template <> traQ::ActivityTimelineMessage Json::Value::as<traQ::ActivityTimelineMessage>() const {
-    return traQ::ActivityTimelineMessage(*this);
+template <> traQAPI::ActivityTimelineMessage Json::Value::as<traQAPI::ActivityTimelineMessage>() const {
+    return traQAPI::ActivityTimelineMessage(*this);
 }

@@ -9,7 +9,7 @@
 
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // 通知をオンにするユーザーのUUID配列
 struct PutChannelSubscribersRequest {
@@ -28,6 +28,6 @@ struct PutChannelSubscribersRequest {
 };
 
 }
-template <> traQ::PutChannelSubscribersRequest Json::Value::as<traQ::PutChannelSubscribersRequest>() const;
+template <> traQAPI::PutChannelSubscribersRequest Json::Value::as<traQAPI::PutChannelSubscribersRequest>() const;
 
 #endif

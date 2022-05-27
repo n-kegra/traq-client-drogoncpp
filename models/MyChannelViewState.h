@@ -9,7 +9,7 @@
 
 #include "../models/ChannelViewState.h"
 
-namespace traQ {
+namespace traQAPI {
 
 // 自身のチャンネル閲覧状態
 struct MyChannelViewState {
@@ -30,6 +30,6 @@ struct MyChannelViewState {
 };
 
 }
-template <> traQ::MyChannelViewState Json::Value::as<traQ::MyChannelViewState>() const;
+template <> traQAPI::MyChannelViewState Json::Value::as<traQAPI::MyChannelViewState>() const;
 
 #endif

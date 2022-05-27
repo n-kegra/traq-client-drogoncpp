@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // ユーザー設定の情報
 struct UserSettings {
@@ -28,6 +28,6 @@ struct UserSettings {
 };
 
 }
-template <> traQ::UserSettings Json::Value::as<traQ::UserSettings>() const;
+template <> traQAPI::UserSettings Json::Value::as<traQAPI::UserSettings>() const;
 
 #endif

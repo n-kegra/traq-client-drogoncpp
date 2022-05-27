@@ -1,6 +1,6 @@
 #include "PatchClientRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PatchClientRequest::toJson() const {
     Json::Value _json;
@@ -19,6 +19,6 @@ PatchClientRequest& PatchClientRequest::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::PatchClientRequest Json::Value::as<traQ::PatchClientRequest>() const {
-    return traQ::PatchClientRequest(*this);
+template <> traQAPI::PatchClientRequest Json::Value::as<traQAPI::PatchClientRequest>() const {
+    return traQAPI::PatchClientRequest(*this);
 }

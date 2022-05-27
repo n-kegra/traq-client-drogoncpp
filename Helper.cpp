@@ -1,6 +1,6 @@
 #include "Helper.h"
 
-namespace traQ {
+namespace traQAPI {
 
 namespace Helper {
     std::string serialize(SerializeStyle style, const std::string name, const Json::Value& value) {

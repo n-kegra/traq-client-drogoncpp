@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // 親チャンネル変更イベント
 struct ParentChangedEvent {
@@ -29,6 +29,6 @@ struct ParentChangedEvent {
 };
 
 }
-template <> traQ::ParentChangedEvent Json::Value::as<traQ::ParentChangedEvent>() const;
+template <> traQAPI::ParentChangedEvent Json::Value::as<traQAPI::ParentChangedEvent>() const;
 
 #endif

@@ -1,6 +1,6 @@
 #include "ChannelStatsStamp.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ChannelStatsStamp::toJson() const {
     Json::Value _json;
@@ -17,6 +17,6 @@ ChannelStatsStamp& ChannelStatsStamp::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::ChannelStatsStamp Json::Value::as<traQ::ChannelStatsStamp>() const {
-    return traQ::ChannelStatsStamp(*this);
+template <> traQAPI::ChannelStatsStamp Json::Value::as<traQAPI::ChannelStatsStamp>() const {
+    return traQAPI::ChannelStatsStamp(*this);
 }

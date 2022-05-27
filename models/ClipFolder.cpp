@@ -1,6 +1,6 @@
 #include "ClipFolder.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ClipFolder::toJson() const {
     Json::Value _json;
@@ -21,6 +21,6 @@ ClipFolder& ClipFolder::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::ClipFolder Json::Value::as<traQ::ClipFolder>() const {
-    return traQ::ClipFolder(*this);
+template <> traQAPI::ClipFolder Json::Value::as<traQAPI::ClipFolder>() const {
+    return traQAPI::ClipFolder(*this);
 }

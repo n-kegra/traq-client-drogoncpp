@@ -1,6 +1,6 @@
 #include "BotEventResult.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value BotEventResult::toJson() const {
     switch(this->value) {
@@ -37,6 +37,6 @@ BotEventResult& BotEventResult::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::BotEventResult Json::Value::as<traQ::BotEventResult>() const {
-    return traQ::BotEventResult(*this);
+template <> traQAPI::BotEventResult Json::Value::as<traQAPI::BotEventResult>() const {
+    return traQAPI::BotEventResult(*this);
 }

@@ -10,7 +10,7 @@
 #include "../models/OgpMedia.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // OGPの情報
 struct Ogp {
@@ -34,6 +34,6 @@ struct Ogp {
 };
 
 }
-template <> traQ::Ogp Json::Value::as<traQ::Ogp>() const;
+template <> traQAPI::Ogp Json::Value::as<traQAPI::Ogp>() const;
 
 #endif

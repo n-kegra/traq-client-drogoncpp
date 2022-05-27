@@ -1,6 +1,6 @@
 #include "UserSubscribeState.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value UserSubscribeState::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ UserSubscribeState& UserSubscribeState::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::UserSubscribeState Json::Value::as<traQ::UserSubscribeState>() const {
-    return traQ::UserSubscribeState(*this);
+template <> traQAPI::UserSubscribeState Json::Value::as<traQAPI::UserSubscribeState>() const {
+    return traQAPI::UserSubscribeState(*this);
 }

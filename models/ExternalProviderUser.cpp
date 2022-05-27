@@ -1,6 +1,6 @@
 #include "ExternalProviderUser.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ExternalProviderUser::toJson() const {
     Json::Value _json;
@@ -17,6 +17,6 @@ ExternalProviderUser& ExternalProviderUser::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::ExternalProviderUser Json::Value::as<traQ::ExternalProviderUser>() const {
-    return traQ::ExternalProviderUser(*this);
+template <> traQAPI::ExternalProviderUser Json::Value::as<traQAPI::ExternalProviderUser>() const {
+    return traQAPI::ExternalProviderUser(*this);
 }

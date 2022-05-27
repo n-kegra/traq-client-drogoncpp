@@ -1,6 +1,6 @@
 #include "PatchBotRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PatchBotRequest::toJson() const {
     Json::Value _json;
@@ -27,6 +27,6 @@ PatchBotRequest& PatchBotRequest::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::PatchBotRequest Json::Value::as<traQ::PatchBotRequest>() const {
-    return traQ::PatchBotRequest(*this);
+template <> traQAPI::PatchBotRequest Json::Value::as<traQAPI::PatchBotRequest>() const {
+    return traQAPI::PatchBotRequest(*this);
 }

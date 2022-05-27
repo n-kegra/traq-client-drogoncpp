@@ -1,6 +1,6 @@
 #include "PostClientRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostClientRequest::toJson() const {
     Json::Value _json;
@@ -21,6 +21,6 @@ PostClientRequest& PostClientRequest::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::PostClientRequest Json::Value::as<traQ::PostClientRequest>() const {
-    return traQ::PostClientRequest(*this);
+template <> traQAPI::PostClientRequest Json::Value::as<traQAPI::PostClientRequest>() const {
+    return traQAPI::PostClientRequest(*this);
 }

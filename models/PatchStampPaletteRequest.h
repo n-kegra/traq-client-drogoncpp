@@ -10,7 +10,7 @@
 #include <set>
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // スタンプパレット情報変更リクエスト
 struct PatchStampPaletteRequest {
@@ -31,6 +31,6 @@ struct PatchStampPaletteRequest {
 };
 
 }
-template <> traQ::PatchStampPaletteRequest Json::Value::as<traQ::PatchStampPaletteRequest>() const;
+template <> traQAPI::PatchStampPaletteRequest Json::Value::as<traQAPI::PatchStampPaletteRequest>() const;
 
 #endif

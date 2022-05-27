@@ -9,7 +9,7 @@
 
 #include "../models/ThumbnailType.h"
 
-namespace traQ {
+namespace traQAPI {
 
 struct ThumbnailInfo {
     ThumbnailType type;
@@ -30,6 +30,6 @@ struct ThumbnailInfo {
 };
 
 }
-template <> traQ::ThumbnailInfo Json::Value::as<traQ::ThumbnailInfo>() const;
+template <> traQAPI::ThumbnailInfo Json::Value::as<traQAPI::ThumbnailInfo>() const;
 
 #endif

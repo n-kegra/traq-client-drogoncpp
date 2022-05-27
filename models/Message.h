@@ -10,7 +10,7 @@
 #include "../models/MessageStamp.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // メッセージ
 struct Message {
@@ -37,6 +37,6 @@ struct Message {
 };
 
 }
-template <> traQ::Message Json::Value::as<traQ::Message>() const;
+template <> traQAPI::Message Json::Value::as<traQAPI::Message>() const;
 
 #endif

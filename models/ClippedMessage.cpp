@@ -1,6 +1,6 @@
 #include "ClippedMessage.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ClippedMessage::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ ClippedMessage& ClippedMessage::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::ClippedMessage Json::Value::as<traQ::ClippedMessage>() const {
-    return traQ::ClippedMessage(*this);
+template <> traQAPI::ClippedMessage Json::Value::as<traQAPI::ClippedMessage>() const {
+    return traQAPI::ClippedMessage(*this);
 }

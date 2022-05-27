@@ -1,6 +1,6 @@
 #include "PostMyFCMDeviceRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostMyFCMDeviceRequest::toJson() const {
     Json::Value _json;
@@ -13,6 +13,6 @@ PostMyFCMDeviceRequest& PostMyFCMDeviceRequest::fromJson(const Json::Value& _jso
 }
 
 }
-template <> traQ::PostMyFCMDeviceRequest Json::Value::as<traQ::PostMyFCMDeviceRequest>() const {
-    return traQ::PostMyFCMDeviceRequest(*this);
+template <> traQAPI::PostMyFCMDeviceRequest Json::Value::as<traQAPI::PostMyFCMDeviceRequest>() const {
+    return traQAPI::PostMyFCMDeviceRequest(*this);
 }

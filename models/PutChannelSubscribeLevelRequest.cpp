@@ -1,6 +1,6 @@
 #include "PutChannelSubscribeLevelRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PutChannelSubscribeLevelRequest::toJson() const {
     Json::Value _json;
@@ -13,6 +13,6 @@ PutChannelSubscribeLevelRequest& PutChannelSubscribeLevelRequest::fromJson(const
 }
 
 }
-template <> traQ::PutChannelSubscribeLevelRequest Json::Value::as<traQ::PutChannelSubscribeLevelRequest>() const {
-    return traQ::PutChannelSubscribeLevelRequest(*this);
+template <> traQAPI::PutChannelSubscribeLevelRequest Json::Value::as<traQAPI::PutChannelSubscribeLevelRequest>() const {
+    return traQAPI::PutChannelSubscribeLevelRequest(*this);
 }

@@ -1,6 +1,6 @@
 #include "OAuth2ResponseType.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value OAuth2ResponseType::toJson() const {
     switch(this->value) {
@@ -32,6 +32,6 @@ OAuth2ResponseType& OAuth2ResponseType::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::OAuth2ResponseType Json::Value::as<traQ::OAuth2ResponseType>() const {
-    return traQ::OAuth2ResponseType(*this);
+template <> traQAPI::OAuth2ResponseType Json::Value::as<traQAPI::OAuth2ResponseType>() const {
+    return traQAPI::OAuth2ResponseType(*this);
 }

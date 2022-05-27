@@ -1,6 +1,6 @@
 #include "FileInfoThumbnail.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value FileInfoThumbnail::toJson() const {
     Json::Value _json;
@@ -17,6 +17,6 @@ FileInfoThumbnail& FileInfoThumbnail::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::FileInfoThumbnail Json::Value::as<traQ::FileInfoThumbnail>() const {
-    return traQ::FileInfoThumbnail(*this);
+template <> traQAPI::FileInfoThumbnail Json::Value::as<traQAPI::FileInfoThumbnail>() const {
+    return traQAPI::FileInfoThumbnail(*this);
 }

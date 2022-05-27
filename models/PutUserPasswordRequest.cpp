@@ -1,6 +1,6 @@
 #include "PutUserPasswordRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PutUserPasswordRequest::toJson() const {
     Json::Value _json;
@@ -13,6 +13,6 @@ PutUserPasswordRequest& PutUserPasswordRequest::fromJson(const Json::Value& _jso
 }
 
 }
-template <> traQ::PutUserPasswordRequest Json::Value::as<traQ::PutUserPasswordRequest>() const {
-    return traQ::PutUserPasswordRequest(*this);
+template <> traQAPI::PutUserPasswordRequest Json::Value::as<traQAPI::PutUserPasswordRequest>() const {
+    return traQAPI::PutUserPasswordRequest(*this);
 }

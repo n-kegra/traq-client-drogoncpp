@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // 外部認証アカウントユーザー
 struct ExternalProviderUser {
@@ -29,6 +29,6 @@ struct ExternalProviderUser {
 };
 
 }
-template <> traQ::ExternalProviderUser Json::Value::as<traQ::ExternalProviderUser>() const;
+template <> traQAPI::ExternalProviderUser Json::Value::as<traQAPI::ExternalProviderUser>() const;
 
 #endif

@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // メッセージクリップ
 struct MessageClip {
@@ -28,6 +28,6 @@ struct MessageClip {
 };
 
 }
-template <> traQ::MessageClip Json::Value::as<traQ::MessageClip>() const;
+template <> traQAPI::MessageClip Json::Value::as<traQAPI::MessageClip>() const;
 
 #endif

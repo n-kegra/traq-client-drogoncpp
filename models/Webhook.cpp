@@ -1,6 +1,6 @@
 #include "Webhook.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value Webhook::toJson() const {
     Json::Value _json;
@@ -29,6 +29,6 @@ Webhook& Webhook::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::Webhook Json::Value::as<traQ::Webhook>() const {
-    return traQ::Webhook(*this);
+template <> traQAPI::Webhook Json::Value::as<traQAPI::Webhook>() const {
+    return traQAPI::Webhook(*this);
 }

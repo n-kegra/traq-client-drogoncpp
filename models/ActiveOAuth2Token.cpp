@@ -1,6 +1,6 @@
 #include "ActiveOAuth2Token.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ActiveOAuth2Token::toJson() const {
     Json::Value _json;
@@ -21,6 +21,6 @@ ActiveOAuth2Token& ActiveOAuth2Token::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::ActiveOAuth2Token Json::Value::as<traQ::ActiveOAuth2Token>() const {
-    return traQ::ActiveOAuth2Token(*this);
+template <> traQAPI::ActiveOAuth2Token Json::Value::as<traQAPI::ActiveOAuth2Token>() const {
+    return traQAPI::ActiveOAuth2Token(*this);
 }

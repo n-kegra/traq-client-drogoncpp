@@ -1,6 +1,6 @@
 #include "PostWebRTCAuthenticateRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostWebRTCAuthenticateRequest::toJson() const {
     Json::Value _json;
@@ -13,6 +13,6 @@ PostWebRTCAuthenticateRequest& PostWebRTCAuthenticateRequest::fromJson(const Jso
 }
 
 }
-template <> traQ::PostWebRTCAuthenticateRequest Json::Value::as<traQ::PostWebRTCAuthenticateRequest>() const {
-    return traQ::PostWebRTCAuthenticateRequest(*this);
+template <> traQAPI::PostWebRTCAuthenticateRequest Json::Value::as<traQAPI::PostWebRTCAuthenticateRequest>() const {
+    return traQAPI::PostWebRTCAuthenticateRequest(*this);
 }

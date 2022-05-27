@@ -11,7 +11,7 @@
 #include "../models/ChannelStatsUser.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // チャンネル統計情報
 struct ChannelStats {
@@ -33,6 +33,6 @@ struct ChannelStats {
 };
 
 }
-template <> traQ::ChannelStats Json::Value::as<traQ::ChannelStats>() const;
+template <> traQAPI::ChannelStats Json::Value::as<traQAPI::ChannelStats>() const;
 
 #endif

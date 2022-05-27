@@ -1,6 +1,6 @@
 #include "PostBotActionJoinRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostBotActionJoinRequest::toJson() const {
     Json::Value _json;
@@ -13,6 +13,6 @@ PostBotActionJoinRequest& PostBotActionJoinRequest::fromJson(const Json::Value& 
 }
 
 }
-template <> traQ::PostBotActionJoinRequest Json::Value::as<traQ::PostBotActionJoinRequest>() const {
-    return traQ::PostBotActionJoinRequest(*this);
+template <> traQAPI::PostBotActionJoinRequest Json::Value::as<traQAPI::PostBotActionJoinRequest>() const {
+    return traQAPI::PostBotActionJoinRequest(*this);
 }

@@ -1,6 +1,6 @@
 #include "ChannelViewer.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ChannelViewer::toJson() const {
     Json::Value _json;
@@ -17,6 +17,6 @@ ChannelViewer& ChannelViewer::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::ChannelViewer Json::Value::as<traQ::ChannelViewer>() const {
-    return traQ::ChannelViewer(*this);
+template <> traQAPI::ChannelViewer Json::Value::as<traQAPI::ChannelViewer>() const {
+    return traQAPI::ChannelViewer(*this);
 }

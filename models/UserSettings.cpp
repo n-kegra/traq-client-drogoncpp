@@ -1,6 +1,6 @@
 #include "UserSettings.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value UserSettings::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ UserSettings& UserSettings::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::UserSettings Json::Value::as<traQ::UserSettings>() const {
-    return traQ::UserSettings(*this);
+template <> traQAPI::UserSettings Json::Value::as<traQAPI::UserSettings>() const {
+    return traQAPI::UserSettings(*this);
 }

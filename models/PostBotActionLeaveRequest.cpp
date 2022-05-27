@@ -1,6 +1,6 @@
 #include "PostBotActionLeaveRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostBotActionLeaveRequest::toJson() const {
     Json::Value _json;
@@ -13,6 +13,6 @@ PostBotActionLeaveRequest& PostBotActionLeaveRequest::fromJson(const Json::Value
 }
 
 }
-template <> traQ::PostBotActionLeaveRequest Json::Value::as<traQ::PostBotActionLeaveRequest>() const {
-    return traQ::PostBotActionLeaveRequest(*this);
+template <> traQAPI::PostBotActionLeaveRequest Json::Value::as<traQAPI::PostBotActionLeaveRequest>() const {
+    return traQAPI::PostBotActionLeaveRequest(*this);
 }

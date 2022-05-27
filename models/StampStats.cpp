@@ -1,6 +1,6 @@
 #include "StampStats.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value StampStats::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ StampStats& StampStats::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::StampStats Json::Value::as<traQ::StampStats>() const {
-    return traQ::StampStats(*this);
+template <> traQAPI::StampStats Json::Value::as<traQAPI::StampStats>() const {
+    return traQAPI::StampStats(*this);
 }

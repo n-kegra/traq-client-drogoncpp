@@ -9,7 +9,7 @@
 
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // スタンプパレット情報
 struct StampPalette {
@@ -34,6 +34,6 @@ struct StampPalette {
 };
 
 }
-template <> traQ::StampPalette Json::Value::as<traQ::StampPalette>() const;
+template <> traQAPI::StampPalette Json::Value::as<traQAPI::StampPalette>() const;
 
 #endif

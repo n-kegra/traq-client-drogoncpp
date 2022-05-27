@@ -1,6 +1,6 @@
 #include "PutChannelTopicRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PutChannelTopicRequest::toJson() const {
     Json::Value _json;
@@ -13,6 +13,6 @@ PutChannelTopicRequest& PutChannelTopicRequest::fromJson(const Json::Value& _jso
 }
 
 }
-template <> traQ::PutChannelTopicRequest Json::Value::as<traQ::PutChannelTopicRequest>() const {
-    return traQ::PutChannelTopicRequest(*this);
+template <> traQAPI::PutChannelTopicRequest Json::Value::as<traQAPI::PutChannelTopicRequest>() const {
+    return traQAPI::PutChannelTopicRequest(*this);
 }

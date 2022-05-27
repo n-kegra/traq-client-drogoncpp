@@ -1,6 +1,6 @@
 #include "UserAccountState.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value UserAccountState::toJson() const {
     switch(this->value) {
@@ -32,6 +32,6 @@ UserAccountState& UserAccountState::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::UserAccountState Json::Value::as<traQ::UserAccountState>() const {
-    return traQ::UserAccountState(*this);
+template <> traQAPI::UserAccountState Json::Value::as<traQAPI::UserAccountState>() const {
+    return traQAPI::UserAccountState(*this);
 }

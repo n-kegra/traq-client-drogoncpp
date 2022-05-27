@@ -1,6 +1,6 @@
 #include "Version.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value Version::toJson() const {
     Json::Value _json;
@@ -17,6 +17,6 @@ Version& Version::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::Version Json::Value::as<traQ::Version>() const {
-    return traQ::Version(*this);
+template <> traQAPI::Version Json::Value::as<traQAPI::Version>() const {
+    return traQAPI::Version(*this);
 }

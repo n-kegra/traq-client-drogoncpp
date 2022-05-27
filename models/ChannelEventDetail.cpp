@@ -1,6 +1,6 @@
 #include "ChannelEventDetail.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ChannelEventDetail::toJson() const {
     Json::Value _json;
@@ -33,6 +33,6 @@ ChannelEventDetail& ChannelEventDetail::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::ChannelEventDetail Json::Value::as<traQ::ChannelEventDetail>() const {
-    return traQ::ChannelEventDetail(*this);
+template <> traQAPI::ChannelEventDetail Json::Value::as<traQAPI::ChannelEventDetail>() const {
+    return traQAPI::ChannelEventDetail(*this);
 }

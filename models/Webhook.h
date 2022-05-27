@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // Webhook情報
 struct Webhook {
@@ -35,6 +35,6 @@ struct Webhook {
 };
 
 }
-template <> traQ::Webhook Json::Value::as<traQ::Webhook>() const;
+template <> traQAPI::Webhook Json::Value::as<traQAPI::Webhook>() const;
 
 #endif

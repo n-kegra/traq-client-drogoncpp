@@ -18,7 +18,7 @@
 #include "../models/VisibilityChangedEvent.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // イベント内容
 struct ChannelEventDetail {
@@ -45,6 +45,6 @@ struct ChannelEventDetail {
 };
 
 }
-template <> traQ::ChannelEventDetail Json::Value::as<traQ::ChannelEventDetail>() const;
+template <> traQAPI::ChannelEventDetail Json::Value::as<traQAPI::ChannelEventDetail>() const;
 
 #endif

@@ -12,7 +12,7 @@
 #include "../models/BotTokens.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // BOT詳細情報
 struct BotDetail {
@@ -43,6 +43,6 @@ struct BotDetail {
 };
 
 }
-template <> traQ::BotDetail Json::Value::as<traQ::BotDetail>() const;
+template <> traQAPI::BotDetail Json::Value::as<traQAPI::BotDetail>() const;
 
 #endif

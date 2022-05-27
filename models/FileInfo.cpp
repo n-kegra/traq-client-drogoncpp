@@ -1,6 +1,6 @@
 #include "FileInfo.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value FileInfo::toJson() const {
     Json::Value _json;
@@ -35,6 +35,6 @@ FileInfo& FileInfo::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::FileInfo Json::Value::as<traQ::FileInfo>() const {
-    return traQ::FileInfo(*this);
+template <> traQAPI::FileInfo Json::Value::as<traQAPI::FileInfo>() const {
+    return traQAPI::FileInfo(*this);
 }

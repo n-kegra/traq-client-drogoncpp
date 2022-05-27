@@ -12,7 +12,7 @@
 #include "../models/OAuth2Scope.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 struct GetClient200Response {
     std::string id;
@@ -36,6 +36,6 @@ struct GetClient200Response {
 };
 
 }
-template <> traQ::GetClient200Response Json::Value::as<traQ::GetClient200Response>() const;
+template <> traQAPI::GetClient200Response Json::Value::as<traQAPI::GetClient200Response>() const;
 
 #endif

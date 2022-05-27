@@ -1,6 +1,6 @@
 #include "ChannelStatsUser.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value ChannelStatsUser::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ ChannelStatsUser& ChannelStatsUser::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::ChannelStatsUser Json::Value::as<traQ::ChannelStatsUser>() const {
-    return traQ::ChannelStatsUser(*this);
+template <> traQAPI::ChannelStatsUser Json::Value::as<traQAPI::ChannelStatsUser>() const {
+    return traQAPI::ChannelStatsUser(*this);
 }

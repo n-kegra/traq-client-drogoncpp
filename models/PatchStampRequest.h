@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // スタンプ情報変更リクエスト
 struct PatchStampRequest {
@@ -28,6 +28,6 @@ struct PatchStampRequest {
 };
 
 }
-template <> traQ::PatchStampRequest Json::Value::as<traQ::PatchStampRequest>() const;
+template <> traQAPI::PatchStampRequest Json::Value::as<traQAPI::PatchStampRequest>() const;
 
 #endif

@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // ユーザーアカウント状態 0: 停止 1: 有効 2: 一時停止
 struct UserAccountState {
@@ -32,6 +32,6 @@ struct UserAccountState {
 };
 
 }
-template <> traQ::UserAccountState Json::Value::as<traQ::UserAccountState>() const;
+template <> traQAPI::UserAccountState Json::Value::as<traQAPI::UserAccountState>() const;
 
 #endif

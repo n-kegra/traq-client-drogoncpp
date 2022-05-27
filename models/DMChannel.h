@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // ダイレクトメッセージチャンネル
 struct DMChannel {
@@ -28,6 +28,6 @@ struct DMChannel {
 };
 
 }
-template <> traQ::DMChannel Json::Value::as<traQ::DMChannel>() const;
+template <> traQAPI::DMChannel Json::Value::as<traQAPI::DMChannel>() const;
 
 #endif

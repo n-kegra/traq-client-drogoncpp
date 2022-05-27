@@ -9,7 +9,7 @@
 
 #include "../models/UserAccountState.h"
 
-namespace traQ {
+namespace traQAPI {
 
 // ユーザー情報編集リクエスト
 struct PatchUserRequest {
@@ -31,6 +31,6 @@ struct PatchUserRequest {
 };
 
 }
-template <> traQ::PatchUserRequest Json::Value::as<traQ::PatchUserRequest>() const;
+template <> traQAPI::PatchUserRequest Json::Value::as<traQAPI::PatchUserRequest>() const;
 
 #endif

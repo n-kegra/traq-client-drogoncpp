@@ -1,6 +1,6 @@
 #include "MessagePin.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value MessagePin::toJson() const {
     Json::Value _json;
@@ -15,6 +15,6 @@ MessagePin& MessagePin::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::MessagePin Json::Value::as<traQ::MessagePin>() const {
-    return traQ::MessagePin(*this);
+template <> traQAPI::MessagePin Json::Value::as<traQAPI::MessagePin>() const {
+    return traQAPI::MessagePin(*this);
 }

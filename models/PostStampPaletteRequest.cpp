@@ -1,6 +1,6 @@
 #include "PostStampPaletteRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostStampPaletteRequest::toJson() const {
     Json::Value _json;
@@ -19,6 +19,6 @@ PostStampPaletteRequest& PostStampPaletteRequest::fromJson(const Json::Value& _j
 }
 
 }
-template <> traQ::PostStampPaletteRequest Json::Value::as<traQ::PostStampPaletteRequest>() const {
-    return traQ::PostStampPaletteRequest(*this);
+template <> traQAPI::PostStampPaletteRequest Json::Value::as<traQAPI::PostStampPaletteRequest>() const {
+    return traQAPI::PostStampPaletteRequest(*this);
 }

@@ -1,6 +1,6 @@
 #include "VersionFlags.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value VersionFlags::toJson() const {
     Json::Value _json;
@@ -17,6 +17,6 @@ VersionFlags& VersionFlags::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::VersionFlags Json::Value::as<traQ::VersionFlags>() const {
-    return traQ::VersionFlags(*this);
+template <> traQAPI::VersionFlags Json::Value::as<traQAPI::VersionFlags>() const {
+    return traQAPI::VersionFlags(*this);
 }

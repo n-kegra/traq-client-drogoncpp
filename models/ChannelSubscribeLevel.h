@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // チャンネル購読レベル 0：無し 1：未読管理 2：未読管理+通知
 struct ChannelSubscribeLevel {
@@ -32,6 +32,6 @@ struct ChannelSubscribeLevel {
 };
 
 }
-template <> traQ::ChannelSubscribeLevel Json::Value::as<traQ::ChannelSubscribeLevel>() const;
+template <> traQAPI::ChannelSubscribeLevel Json::Value::as<traQAPI::ChannelSubscribeLevel>() const;
 
 #endif

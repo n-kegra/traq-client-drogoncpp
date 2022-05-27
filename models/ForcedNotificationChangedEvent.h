@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // チャンネル強制通知状態変更イベント
 struct ForcedNotificationChangedEvent {
@@ -28,6 +28,6 @@ struct ForcedNotificationChangedEvent {
 };
 
 }
-template <> traQ::ForcedNotificationChangedEvent Json::Value::as<traQ::ForcedNotificationChangedEvent>() const;
+template <> traQAPI::ForcedNotificationChangedEvent Json::Value::as<traQAPI::ForcedNotificationChangedEvent>() const;
 
 #endif

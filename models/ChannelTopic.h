@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // チャンネルトピック
 struct ChannelTopic {
@@ -27,6 +27,6 @@ struct ChannelTopic {
 };
 
 }
-template <> traQ::ChannelTopic Json::Value::as<traQ::ChannelTopic>() const;
+template <> traQAPI::ChannelTopic Json::Value::as<traQAPI::ChannelTopic>() const;
 
 #endif

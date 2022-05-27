@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // チャンネル作成リクエスト
 struct PostChannelRequest {
@@ -28,6 +28,6 @@ struct PostChannelRequest {
 };
 
 }
-template <> traQ::PostChannelRequest Json::Value::as<traQ::PostChannelRequest>() const;
+template <> traQAPI::PostChannelRequest Json::Value::as<traQAPI::PostChannelRequest>() const;
 
 #endif

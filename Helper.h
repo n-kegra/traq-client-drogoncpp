@@ -7,7 +7,7 @@
 #include <vector>
 #include <map>
 
-namespace traQ {
+namespace traQAPI {
 
 namespace Helper {
     enum class SerializeStyle {

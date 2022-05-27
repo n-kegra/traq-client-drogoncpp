@@ -1,6 +1,6 @@
 #include "MyUserDetail.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value MyUserDetail::toJson() const {
     Json::Value _json;
@@ -45,6 +45,6 @@ MyUserDetail& MyUserDetail::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::MyUserDetail Json::Value::as<traQ::MyUserDetail>() const {
-    return traQ::MyUserDetail(*this);
+template <> traQAPI::MyUserDetail Json::Value::as<traQAPI::MyUserDetail>() const {
+    return traQAPI::MyUserDetail(*this);
 }

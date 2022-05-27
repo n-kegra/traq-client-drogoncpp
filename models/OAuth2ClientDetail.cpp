@@ -1,6 +1,6 @@
 #include "OAuth2ClientDetail.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value OAuth2ClientDetail::toJson() const {
     Json::Value _json;
@@ -27,6 +27,6 @@ OAuth2ClientDetail& OAuth2ClientDetail::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::OAuth2ClientDetail Json::Value::as<traQ::OAuth2ClientDetail>() const {
-    return traQ::OAuth2ClientDetail(*this);
+template <> traQAPI::OAuth2ClientDetail Json::Value::as<traQAPI::OAuth2ClientDetail>() const {
+    return traQAPI::OAuth2ClientDetail(*this);
 }

@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // POST /users/me/ex-accounts/unlink 用リクエストボディ
 struct PostUnlinkExternalAccount {
@@ -27,6 +27,6 @@ struct PostUnlinkExternalAccount {
 };
 
 }
-template <> traQ::PostUnlinkExternalAccount Json::Value::as<traQ::PostUnlinkExternalAccount>() const;
+template <> traQAPI::PostUnlinkExternalAccount Json::Value::as<traQAPI::PostUnlinkExternalAccount>() const;
 
 #endif

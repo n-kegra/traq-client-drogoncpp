@@ -1,6 +1,6 @@
 #include "PostClipFolderMessageRequest.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value PostClipFolderMessageRequest::toJson() const {
     Json::Value _json;
@@ -13,6 +13,6 @@ PostClipFolderMessageRequest& PostClipFolderMessageRequest::fromJson(const Json:
 }
 
 }
-template <> traQ::PostClipFolderMessageRequest Json::Value::as<traQ::PostClipFolderMessageRequest>() const {
-    return traQ::PostClipFolderMessageRequest(*this);
+template <> traQAPI::PostClipFolderMessageRequest Json::Value::as<traQAPI::PostClipFolderMessageRequest>() const {
+    return traQAPI::PostClipFolderMessageRequest(*this);
 }

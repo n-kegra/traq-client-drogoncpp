@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 struct WebRTCUserStateSessionsInner {
     std::string state;
@@ -27,6 +27,6 @@ struct WebRTCUserStateSessionsInner {
 };
 
 }
-template <> traQ::WebRTCUserStateSessionsInner Json::Value::as<traQ::WebRTCUserStateSessionsInner>() const;
+template <> traQAPI::WebRTCUserStateSessionsInner Json::Value::as<traQAPI::WebRTCUserStateSessionsInner>() const;
 
 #endif

@@ -10,7 +10,7 @@
 #include "../models/UserGroupMember.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // ユーザーグループ
 struct UserGroup {
@@ -37,6 +37,6 @@ struct UserGroup {
 };
 
 }
-template <> traQ::UserGroup Json::Value::as<traQ::UserGroup>() const;
+template <> traQAPI::UserGroup Json::Value::as<traQAPI::UserGroup>() const;
 
 #endif

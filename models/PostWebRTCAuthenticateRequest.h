@@ -8,7 +8,7 @@
 #include "../helper.h"
 
 
-namespace traQ {
+namespace traQAPI {
 
 // skyway用認証リクエスト
 struct PostWebRTCAuthenticateRequest {
@@ -27,6 +27,6 @@ struct PostWebRTCAuthenticateRequest {
 };
 
 }
-template <> traQ::PostWebRTCAuthenticateRequest Json::Value::as<traQ::PostWebRTCAuthenticateRequest>() const;
+template <> traQAPI::PostWebRTCAuthenticateRequest Json::Value::as<traQAPI::PostWebRTCAuthenticateRequest>() const;
 
 #endif

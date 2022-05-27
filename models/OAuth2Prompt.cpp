@@ -1,6 +1,6 @@
 #include "OAuth2Prompt.h"
 
-namespace traQ {
+namespace traQAPI {
 
 Json::Value OAuth2Prompt::toJson() const {
     switch(this->value) {
@@ -22,6 +22,6 @@ OAuth2Prompt& OAuth2Prompt::fromJson(const Json::Value& _json) {
 }
 
 }
-template <> traQ::OAuth2Prompt Json::Value::as<traQ::OAuth2Prompt>() const {
-    return traQ::OAuth2Prompt(*this);
+template <> traQAPI::OAuth2Prompt Json::Value::as<traQAPI::OAuth2Prompt>() const {
+    return traQAPI::OAuth2Prompt(*this);
 }

@@ -9,7 +9,7 @@
 
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // チャンネル購読者編集リクエスト
 struct PatchChannelSubscribersRequest {
@@ -29,6 +29,6 @@ struct PatchChannelSubscribersRequest {
 };
 
 }
-template <> traQ::PatchChannelSubscribersRequest Json::Value::as<traQ::PatchChannelSubscribersRequest>() const;
+template <> traQAPI::PatchChannelSubscribersRequest Json::Value::as<traQAPI::PatchChannelSubscribersRequest>() const;
 
 #endif

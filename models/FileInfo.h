@@ -11,7 +11,7 @@
 #include "../models/ThumbnailInfo.h"
 #include <vector>
 
-namespace traQ {
+namespace traQAPI {
 
 // ファイル情報
 struct FileInfo {
@@ -40,6 +40,6 @@ struct FileInfo {
 };
 
 }
-template <> traQ::FileInfo Json::Value::as<traQ::FileInfo>() const;
+template <> traQAPI::FileInfo Json::Value::as<traQAPI::FileInfo>() const;
 
 #endif
