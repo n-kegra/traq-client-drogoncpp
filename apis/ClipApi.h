@@ -68,7 +68,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<ClippedMessage> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -100,7 +103,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<ClipFolder> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -198,7 +204,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<ClipFolder> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -225,7 +234,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<ClipFolder>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<ClipFolder> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<ClipFolder>());    
@@ -288,7 +300,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<ClippedMessage>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<ClippedMessage> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<ClippedMessage>());    
@@ -327,7 +342,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<MessageClip>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<MessageClip> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<MessageClip>());    

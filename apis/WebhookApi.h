@@ -88,7 +88,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<Webhook> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -186,7 +189,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<Webhook> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -221,7 +227,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<drogon::UploadFile> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -304,7 +313,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<Message>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<Message> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<Message>());    
@@ -343,7 +355,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<Webhook>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<Webhook> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<Webhook>());    

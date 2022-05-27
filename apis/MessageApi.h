@@ -106,7 +106,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<MessagePin> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -252,7 +255,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<Message>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<Message> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<Message>());    
@@ -291,7 +297,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<Message> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -326,7 +335,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<MessageClip>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<MessageClip> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<MessageClip>());    
@@ -365,7 +377,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<MessageStamp>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<MessageStamp> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<MessageStamp>());    
@@ -452,7 +467,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<Message>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<Message> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<Message>());    
@@ -491,7 +509,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<MessagePin> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -531,7 +552,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<Message> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -571,7 +595,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<Message> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -792,7 +819,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<MessageSearchResult> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 

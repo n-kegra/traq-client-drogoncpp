@@ -139,7 +139,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<Stamp> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -171,7 +174,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<StampPalette> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -332,7 +338,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<MessageStamp>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<MessageStamp> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<MessageStamp>());    
@@ -371,7 +380,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<StampHistoryEntry>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<StampHistoryEntry> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<StampHistoryEntry>());    
@@ -410,7 +422,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<Stamp> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -445,7 +460,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<drogon::UploadFile> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -480,7 +498,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<StampPalette> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -507,7 +528,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<StampPalette>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<StampPalette> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<StampPalette>());    
@@ -546,7 +570,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<StampStats> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -589,7 +616,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<Stamp>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<Stamp> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<Stamp>());    

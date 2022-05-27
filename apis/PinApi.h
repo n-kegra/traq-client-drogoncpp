@@ -59,7 +59,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<MessagePin> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -94,7 +97,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<Pin>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<Pin> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<Pin>());    
@@ -133,7 +139,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<MessagePin> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 

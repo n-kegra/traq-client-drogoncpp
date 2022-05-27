@@ -144,7 +144,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<BotDetail> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -250,7 +253,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<GetBot200Response> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -285,7 +291,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<drogon::UploadFile> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -336,7 +345,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<BotEventLog>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<BotEventLog> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<BotEventLog>());    
@@ -375,7 +387,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<Bot>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<Bot> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<Bot>());    
@@ -414,7 +429,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<BotUser>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<BotUser> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<BotUser>());    
@@ -550,7 +568,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<BotTokens> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 

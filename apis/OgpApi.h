@@ -58,7 +58,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<Ogp> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 

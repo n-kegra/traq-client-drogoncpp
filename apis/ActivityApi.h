@@ -74,7 +74,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<ActivityTimelineMessage>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<ActivityTimelineMessage> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<ActivityTimelineMessage>());    
@@ -105,7 +108,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<std::string>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<std::string> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<std::string>());    

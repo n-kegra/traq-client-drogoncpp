@@ -98,7 +98,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<std::string>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<std::string> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<std::string>());    
@@ -129,7 +132,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<UserSubscribeState>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<UserSubscribeState> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<UserSubscribeState>());    
@@ -160,7 +166,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<UnreadChannel>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<UnreadChannel> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<UnreadChannel>());    
@@ -191,7 +200,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<MyChannelViewState>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<MyChannelViewState> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<MyChannelViewState>());    

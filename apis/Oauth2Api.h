@@ -63,7 +63,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<OAuth2ClientDetail> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -169,7 +172,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<GetClient200Response> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 
@@ -204,7 +210,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<OAuth2Client>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<OAuth2Client> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<OAuth2Client>());    
@@ -235,7 +244,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<ActiveOAuth2Token>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<ActiveOAuth2Token> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<ActiveOAuth2Token>());    
@@ -561,7 +573,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<OAuth2Token> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             response_object.emplace(*response_json);
         }
 

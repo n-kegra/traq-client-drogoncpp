@@ -54,7 +54,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<ExternalProviderUser>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<ExternalProviderUser> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<ExternalProviderUser>());    
@@ -85,7 +88,10 @@ public:
         auto response_json = response->getJsonObject();
         std::optional<std::vector<LoginSession>> response_object;
 
-        if(response_json) {
+        if (result == drogon::ReqResult::Ok &&
+            200 <= response->getStatusCode() &&
+            300 > response->getStatusCode() &&
+            response_json) {
             std::vector<LoginSession> tmp;
             for (const auto& item : *response_json) {
                 tmp.emplace_back(item.as<LoginSession>());    
