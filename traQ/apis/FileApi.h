@@ -93,17 +93,8 @@ public:
 
         auto [result, response] = this->client->sendRequest(req);
 
-        auto response_json = response->getJsonObject();
-        std::optional<drogon::UploadFile> response_object;
 
-        if (result == drogon::ReqResult::Ok &&
-            200 <= response->getStatusCode() &&
-            300 > response->getStatusCode() &&
-            response_json) {
-            response_object.emplace(*response_json);
-        }
-
-        return std::forward_as_tuple(result, response, response_object);
+        return std::forward_as_tuple(result, response);
     }
 
 
@@ -275,17 +266,8 @@ public:
 
         auto [result, response] = this->client->sendRequest(req);
 
-        auto response_json = response->getJsonObject();
-        std::optional<drogon::UploadFile> response_object;
 
-        if (result == drogon::ReqResult::Ok &&
-            200 <= response->getStatusCode() &&
-            300 > response->getStatusCode() &&
-            response_json) {
-            response_object.emplace(*response_json);
-        }
-
-        return std::forward_as_tuple(result, response, response_object);
+        return std::forward_as_tuple(result, response);
     }
 
 
