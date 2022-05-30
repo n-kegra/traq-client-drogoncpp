@@ -15,7 +15,7 @@ namespace traQApi {
 
 // GET /channelsレスポンス
 struct ChannelList {
-    std::vector<Channel> public;
+    std::vector<Channel> Public;
     std::vector<DMChannel> dm;
 
     ChannelList() = default;

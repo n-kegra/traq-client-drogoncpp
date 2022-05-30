@@ -4,21 +4,21 @@ namespace traQApi {
 
 Json::Value OAuth2Token::toJson() const {
     Json::Value _json;
-    _json["accessUnderscoretoken"] = (accessUnderscoretoken);
-    _json["tokenUnderscoretype"] = (tokenUnderscoretype);
-    _json["expiresUnderscorein"] = (expiresUnderscorein);
-    _json["refreshUnderscoretoken"] = (refreshUnderscoretoken);
+    _json["access_token"] = (accessUnderscoretoken);
+    _json["token_type"] = (tokenUnderscoretype);
+    _json["expires_in"] = (expiresUnderscorein);
+    _json["refresh_token"] = (refreshUnderscoretoken);
     _json["scope"] = (scope);
-    _json["idUnderscoretoken"] = (idUnderscoretoken);
+    _json["id_token"] = (idUnderscoretoken);
     return _json;
 }
 OAuth2Token& OAuth2Token::fromJson(const Json::Value& _json) {
-    accessUnderscoretoken = _json["accessUnderscoretoken"].as<std::string>();
-    tokenUnderscoretype = _json["tokenUnderscoretype"].as<std::string>();
-    expiresUnderscorein = _json["expiresUnderscorein"].as<int32_t>();
-    refreshUnderscoretoken = _json["refreshUnderscoretoken"].as<std::string>();
+    accessUnderscoretoken = _json["access_token"].as<std::string>();
+    tokenUnderscoretype = _json["token_type"].as<std::string>();
+    expiresUnderscorein = _json["expires_in"].as<int32_t>();
+    refreshUnderscoretoken = _json["refresh_token"].as<std::string>();
     scope = _json["scope"].as<std::string>();
-    idUnderscoretoken = _json["idUnderscoretoken"].as<std::string>();
+    idUnderscoretoken = _json["id_token"].as<std::string>();
     return *this;
 }
 
