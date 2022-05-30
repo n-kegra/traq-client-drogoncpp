@@ -9,7 +9,7 @@ Json::Value StampHistoryEntry::toJson() const {
     return _json;
 }
 StampHistoryEntry& StampHistoryEntry::fromJson(const Json::Value& _json) {
-    stampId = _json["stampId"].as<drogon::UploadFile>();
+    stampId = _json["stampId"].as<std::string>();
     datetime = _json["datetime"].as<std::string>();
     return *this;
 }

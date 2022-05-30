@@ -12,7 +12,7 @@ namespace traQApi {
 
 // スタンプ履歴の1項目
 struct StampHistoryEntry {
-    drogon::UploadFile stampId;
+    std::string stampId;
     std::string datetime;
 
     StampHistoryEntry() = default;
