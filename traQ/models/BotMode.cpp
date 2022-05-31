@@ -8,7 +8,7 @@ Json::Value BotMode::toJson() const {
         return Json::Value("HTTP");
     case Value::eWebSocket:
         return Json::Value("WebSocket");
-    case Value::Unknown:
+    default:
         return Json::Value(Json::nullValue);
     }
 }

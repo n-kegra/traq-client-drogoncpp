@@ -4,26 +4,26 @@ namespace traQApi {
 
 Json::Value OAuth2ResponseType::toJson() const {
     switch(this->value) {
-    case Value::ecode:
+    case Value::eCode:
         return Json::Value("code");
-    case Value::etoken:
+    case Value::eToken:
         return Json::Value("token");
-    case Value::enone:
+    case Value::eNone:
         return Json::Value("none");
-    case Value::Unknown:
+    default:
         return Json::Value(Json::nullValue);
     }
 }
 OAuth2ResponseType& OAuth2ResponseType::fromJson(const Json::Value& _json) {
     std::string s = _json.asString();
     if (s == "code") {
-        this->value = Value::ecode;
+        this->value = Value::eCode;
     } else
     if (s == "token") {
-        this->value = Value::etoken;
+        this->value = Value::eToken;
     } else
     if (s == "none") {
-        this->value = Value::enone;
+        this->value = Value::eNone;
     } else
     {
         this->value = Value::Unknown;

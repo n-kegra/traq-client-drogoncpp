@@ -13,10 +13,10 @@ namespace traQApi {
 // イベント配送結果
 struct BotEventResult {
     enum class Value {
-        eok,
-        eng,
-        ene,
-        edp,
+        eOk,
+        eNg,
+        eNe,
+        eDp,
         Unknown,
     } value;
     BotEventResult() { value = Value::Unknown; };

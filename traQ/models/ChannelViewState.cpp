@@ -4,26 +4,26 @@ namespace traQApi {
 
 Json::Value ChannelViewState::toJson() const {
     switch(this->value) {
-    case Value::enone:
+    case Value::eNone:
         return Json::Value("none");
-    case Value::emonitoring:
+    case Value::eMonitoring:
         return Json::Value("monitoring");
-    case Value::eediting:
+    case Value::eEditing:
         return Json::Value("editing");
-    case Value::Unknown:
+    default:
         return Json::Value(Json::nullValue);
     }
 }
 ChannelViewState& ChannelViewState::fromJson(const Json::Value& _json) {
     std::string s = _json.asString();
     if (s == "none") {
-        this->value = Value::enone;
+        this->value = Value::eNone;
     } else
     if (s == "monitoring") {
-        this->value = Value::emonitoring;
+        this->value = Value::eMonitoring;
     } else
     if (s == "editing") {
-        this->value = Value::eediting;
+        this->value = Value::eEditing;
     } else
     {
         this->value = Value::Unknown;

@@ -12,7 +12,7 @@ namespace traQApi {
 
 struct OAuth2Prompt {
     enum class Value {
-        enone,
+        eNone,
         Unknown,
     } value;
     OAuth2Prompt() { value = Value::Unknown; };

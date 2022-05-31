@@ -13,9 +13,9 @@ namespace traQApi {
 // 閲覧状態
 struct ChannelViewState {
     enum class Value {
-        enone,
-        emonitoring,
-        eediting,
+        eNone,
+        eMonitoring,
+        eEditing,
         Unknown,
     } value;
     ChannelViewState() { value = Value::Unknown; };

@@ -13,8 +13,8 @@ namespace traQApi {
 // サムネイル画像のタイプ 
 struct ThumbnailType {
     enum class Value {
-        eimage,
-        ewaveform,
+        eImage,
+        eWaveform,
         Unknown,
     } value;
     ThumbnailType() { value = Value::Unknown; };

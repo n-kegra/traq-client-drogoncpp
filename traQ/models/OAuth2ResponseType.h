@@ -12,9 +12,9 @@ namespace traQApi {
 
 struct OAuth2ResponseType {
     enum class Value {
-        ecode,
-        etoken,
-        enone,
+        eCode,
+        eToken,
+        eNone,
         Unknown,
     } value;
     OAuth2ResponseType() { value = Value::Unknown; };

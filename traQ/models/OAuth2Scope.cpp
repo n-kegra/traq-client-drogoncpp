@@ -4,26 +4,26 @@ namespace traQApi {
 
 Json::Value OAuth2Scope::toJson() const {
     switch(this->value) {
-    case Value::eread:
+    case Value::eRead:
         return Json::Value("read");
-    case Value::ewrite:
+    case Value::eWrite:
         return Json::Value("write");
-    case Value::emanage_bot:
+    case Value::eManage_bot:
         return Json::Value("manage_bot");
-    case Value::Unknown:
+    default:
         return Json::Value(Json::nullValue);
     }
 }
 OAuth2Scope& OAuth2Scope::fromJson(const Json::Value& _json) {
     std::string s = _json.asString();
     if (s == "read") {
-        this->value = Value::eread;
+        this->value = Value::eRead;
     } else
     if (s == "write") {
-        this->value = Value::ewrite;
+        this->value = Value::eWrite;
     } else
     if (s == "manage_bot") {
-        this->value = Value::emanage_bot;
+        this->value = Value::eManage_bot;
     } else
     {
         this->value = Value::Unknown;

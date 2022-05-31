@@ -4,21 +4,21 @@ namespace traQApi {
 
 Json::Value ThumbnailType::toJson() const {
     switch(this->value) {
-    case Value::eimage:
+    case Value::eImage:
         return Json::Value("image");
-    case Value::ewaveform:
+    case Value::eWaveform:
         return Json::Value("waveform");
-    case Value::Unknown:
+    default:
         return Json::Value(Json::nullValue);
     }
 }
 ThumbnailType& ThumbnailType::fromJson(const Json::Value& _json) {
     std::string s = _json.asString();
     if (s == "image") {
-        this->value = Value::eimage;
+        this->value = Value::eImage;
     } else
     if (s == "waveform") {
-        this->value = Value::ewaveform;
+        this->value = Value::eWaveform;
     } else
     {
         this->value = Value::Unknown;

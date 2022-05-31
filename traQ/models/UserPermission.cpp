@@ -4,416 +4,416 @@ namespace traQApi {
 
 Json::Value UserPermission::toJson() const {
     switch(this->value) {
-    case Value::eget_webhook:
+    case Value::eGet_webhook:
         return Json::Value("get_webhook");
-    case Value::ecreate_webhook:
+    case Value::eCreate_webhook:
         return Json::Value("create_webhook");
-    case Value::eedit_webhook:
+    case Value::eEdit_webhook:
         return Json::Value("edit_webhook");
-    case Value::edelete_webhook:
+    case Value::eDelete_webhook:
         return Json::Value("delete_webhook");
-    case Value::eaccess_others_webhook:
+    case Value::eAccess_others_webhook:
         return Json::Value("access_others_webhook");
-    case Value::eget_bot:
+    case Value::eGet_bot:
         return Json::Value("get_bot");
-    case Value::ecreate_bot:
+    case Value::eCreate_bot:
         return Json::Value("create_bot");
-    case Value::eedit_bot:
+    case Value::eEdit_bot:
         return Json::Value("edit_bot");
-    case Value::edelete_bot:
+    case Value::eDelete_bot:
         return Json::Value("delete_bot");
-    case Value::eaccess_others_bot:
+    case Value::eAccess_others_bot:
         return Json::Value("access_others_bot");
-    case Value::ebot_action_join_channel:
+    case Value::eBot_action_join_channel:
         return Json::Value("bot_action_join_channel");
-    case Value::ebot_action_leave_channel:
+    case Value::eBot_action_leave_channel:
         return Json::Value("bot_action_leave_channel");
-    case Value::ecreate_channel:
+    case Value::eCreate_channel:
         return Json::Value("create_channel");
-    case Value::eget_channel:
+    case Value::eGet_channel:
         return Json::Value("get_channel");
-    case Value::eedit_channel:
+    case Value::eEdit_channel:
         return Json::Value("edit_channel");
-    case Value::edelete_channel:
+    case Value::eDelete_channel:
         return Json::Value("delete_channel");
-    case Value::echange_parent_channel:
+    case Value::eChange_parent_channel:
         return Json::Value("change_parent_channel");
-    case Value::eedit_channel_topic:
+    case Value::eEdit_channel_topic:
         return Json::Value("edit_channel_topic");
-    case Value::eget_channel_star:
+    case Value::eGet_channel_star:
         return Json::Value("get_channel_star");
-    case Value::eedit_channel_star:
+    case Value::eEdit_channel_star:
         return Json::Value("edit_channel_star");
-    case Value::eget_my_tokens:
+    case Value::eGet_my_tokens:
         return Json::Value("get_my_tokens");
-    case Value::erevoke_my_token:
+    case Value::eRevoke_my_token:
         return Json::Value("revoke_my_token");
-    case Value::eget_clients:
+    case Value::eGet_clients:
         return Json::Value("get_clients");
-    case Value::ecreate_client:
+    case Value::eCreate_client:
         return Json::Value("create_client");
-    case Value::eedit_my_client:
+    case Value::eEdit_my_client:
         return Json::Value("edit_my_client");
-    case Value::edelete_my_client:
+    case Value::eDelete_my_client:
         return Json::Value("delete_my_client");
-    case Value::emanage_others_client:
+    case Value::eManage_others_client:
         return Json::Value("manage_others_client");
-    case Value::eupload_file:
+    case Value::eUpload_file:
         return Json::Value("upload_file");
-    case Value::edownload_file:
+    case Value::eDownload_file:
         return Json::Value("download_file");
-    case Value::edelete_file:
+    case Value::eDelete_file:
         return Json::Value("delete_file");
-    case Value::eget_message:
+    case Value::eGet_message:
         return Json::Value("get_message");
-    case Value::epost_message:
+    case Value::ePost_message:
         return Json::Value("post_message");
-    case Value::eedit_message:
+    case Value::eEdit_message:
         return Json::Value("edit_message");
-    case Value::edelete_message:
+    case Value::eDelete_message:
         return Json::Value("delete_message");
-    case Value::ereport_message:
+    case Value::eReport_message:
         return Json::Value("report_message");
-    case Value::eget_message_reports:
+    case Value::eGet_message_reports:
         return Json::Value("get_message_reports");
-    case Value::ecreate_message_pin:
+    case Value::eCreate_message_pin:
         return Json::Value("create_message_pin");
-    case Value::edelete_message_pin:
+    case Value::eDelete_message_pin:
         return Json::Value("delete_message_pin");
-    case Value::eget_channel_subscription:
+    case Value::eGet_channel_subscription:
         return Json::Value("get_channel_subscription");
-    case Value::eedit_channel_subscription:
+    case Value::eEdit_channel_subscription:
         return Json::Value("edit_channel_subscription");
-    case Value::econnect_notification_stream:
+    case Value::eConnect_notification_stream:
         return Json::Value("connect_notification_stream");
-    case Value::eregister_fcm_device:
+    case Value::eRegister_fcm_device:
         return Json::Value("register_fcm_device");
-    case Value::eget_stamp:
+    case Value::eGet_stamp:
         return Json::Value("get_stamp");
-    case Value::ecreate_stamp:
+    case Value::eCreate_stamp:
         return Json::Value("create_stamp");
-    case Value::eedit_stamp:
+    case Value::eEdit_stamp:
         return Json::Value("edit_stamp");
-    case Value::eedit_stamp_created_by_others:
+    case Value::eEdit_stamp_created_by_others:
         return Json::Value("edit_stamp_created_by_others");
-    case Value::edelete_stamp:
+    case Value::eDelete_stamp:
         return Json::Value("delete_stamp");
-    case Value::eadd_message_stamp:
+    case Value::eAdd_message_stamp:
         return Json::Value("add_message_stamp");
-    case Value::eremove_message_stamp:
+    case Value::eRemove_message_stamp:
         return Json::Value("remove_message_stamp");
-    case Value::eget_my_stamp_history:
+    case Value::eGet_my_stamp_history:
         return Json::Value("get_my_stamp_history");
-    case Value::eget_stamp_palette:
+    case Value::eGet_stamp_palette:
         return Json::Value("get_stamp_palette");
-    case Value::ecreate_stamp_palette:
+    case Value::eCreate_stamp_palette:
         return Json::Value("create_stamp_palette");
-    case Value::eedit_stamp_palette:
+    case Value::eEdit_stamp_palette:
         return Json::Value("edit_stamp_palette");
-    case Value::edelete_stamp_palette:
+    case Value::eDelete_stamp_palette:
         return Json::Value("delete_stamp_palette");
-    case Value::eget_user:
+    case Value::eGet_user:
         return Json::Value("get_user");
-    case Value::eregister_user:
+    case Value::eRegister_user:
         return Json::Value("register_user");
-    case Value::eget_me:
+    case Value::eGet_me:
         return Json::Value("get_me");
-    case Value::eedit_me:
+    case Value::eEdit_me:
         return Json::Value("edit_me");
-    case Value::echange_my_icon:
+    case Value::eChange_my_icon:
         return Json::Value("change_my_icon");
-    case Value::echange_my_password:
+    case Value::eChange_my_password:
         return Json::Value("change_my_password");
-    case Value::eedit_other_users:
+    case Value::eEdit_other_users:
         return Json::Value("edit_other_users");
-    case Value::eget_user_qr_code:
+    case Value::eGet_user_qr_code:
         return Json::Value("get_user_qr_code");
-    case Value::eget_user_tag:
+    case Value::eGet_user_tag:
         return Json::Value("get_user_tag");
-    case Value::eedit_user_tag:
+    case Value::eEdit_user_tag:
         return Json::Value("edit_user_tag");
-    case Value::eget_user_group:
+    case Value::eGet_user_group:
         return Json::Value("get_user_group");
-    case Value::ecreate_user_group:
+    case Value::eCreate_user_group:
         return Json::Value("create_user_group");
-    case Value::ecreate_special_user_group:
+    case Value::eCreate_special_user_group:
         return Json::Value("create_special_user_group");
-    case Value::eedit_user_group:
+    case Value::eEdit_user_group:
         return Json::Value("edit_user_group");
-    case Value::edelete_user_group:
+    case Value::eDelete_user_group:
         return Json::Value("delete_user_group");
-    case Value::eedit_others_user_group:
+    case Value::eEdit_others_user_group:
         return Json::Value("edit_others_user_group");
-    case Value::eweb_rtc:
+    case Value::eWeb_rtc:
         return Json::Value("web_rtc");
-    case Value::eget_my_sessions:
+    case Value::eGet_my_sessions:
         return Json::Value("get_my_sessions");
-    case Value::edelete_my_sessions:
+    case Value::eDelete_my_sessions:
         return Json::Value("delete_my_sessions");
-    case Value::eget_my_external_account:
+    case Value::eGet_my_external_account:
         return Json::Value("get_my_external_account");
-    case Value::eedit_my_external_account:
+    case Value::eEdit_my_external_account:
         return Json::Value("edit_my_external_account");
-    case Value::eget_unread:
+    case Value::eGet_unread:
         return Json::Value("get_unread");
-    case Value::edelete_unread:
+    case Value::eDelete_unread:
         return Json::Value("delete_unread");
-    case Value::eget_clip_folder:
+    case Value::eGet_clip_folder:
         return Json::Value("get_clip_folder");
-    case Value::ecreate_clip_folder:
+    case Value::eCreate_clip_folder:
         return Json::Value("create_clip_folder");
-    case Value::eedit_clip_folder:
+    case Value::eEdit_clip_folder:
         return Json::Value("edit_clip_folder");
-    case Value::edelete_clip_folder:
+    case Value::eDelete_clip_folder:
         return Json::Value("delete_clip_folder");
-    case Value::Unknown:
+    default:
         return Json::Value(Json::nullValue);
     }
 }
 UserPermission& UserPermission::fromJson(const Json::Value& _json) {
     std::string s = _json.asString();
     if (s == "get_webhook") {
-        this->value = Value::eget_webhook;
+        this->value = Value::eGet_webhook;
     } else
     if (s == "create_webhook") {
-        this->value = Value::ecreate_webhook;
+        this->value = Value::eCreate_webhook;
     } else
     if (s == "edit_webhook") {
-        this->value = Value::eedit_webhook;
+        this->value = Value::eEdit_webhook;
     } else
     if (s == "delete_webhook") {
-        this->value = Value::edelete_webhook;
+        this->value = Value::eDelete_webhook;
     } else
     if (s == "access_others_webhook") {
-        this->value = Value::eaccess_others_webhook;
+        this->value = Value::eAccess_others_webhook;
     } else
     if (s == "get_bot") {
-        this->value = Value::eget_bot;
+        this->value = Value::eGet_bot;
     } else
     if (s == "create_bot") {
-        this->value = Value::ecreate_bot;
+        this->value = Value::eCreate_bot;
     } else
     if (s == "edit_bot") {
-        this->value = Value::eedit_bot;
+        this->value = Value::eEdit_bot;
     } else
     if (s == "delete_bot") {
-        this->value = Value::edelete_bot;
+        this->value = Value::eDelete_bot;
     } else
     if (s == "access_others_bot") {
-        this->value = Value::eaccess_others_bot;
+        this->value = Value::eAccess_others_bot;
     } else
     if (s == "bot_action_join_channel") {
-        this->value = Value::ebot_action_join_channel;
+        this->value = Value::eBot_action_join_channel;
     } else
     if (s == "bot_action_leave_channel") {
-        this->value = Value::ebot_action_leave_channel;
+        this->value = Value::eBot_action_leave_channel;
     } else
     if (s == "create_channel") {
-        this->value = Value::ecreate_channel;
+        this->value = Value::eCreate_channel;
     } else
     if (s == "get_channel") {
-        this->value = Value::eget_channel;
+        this->value = Value::eGet_channel;
     } else
     if (s == "edit_channel") {
-        this->value = Value::eedit_channel;
+        this->value = Value::eEdit_channel;
     } else
     if (s == "delete_channel") {
-        this->value = Value::edelete_channel;
+        this->value = Value::eDelete_channel;
     } else
     if (s == "change_parent_channel") {
-        this->value = Value::echange_parent_channel;
+        this->value = Value::eChange_parent_channel;
     } else
     if (s == "edit_channel_topic") {
-        this->value = Value::eedit_channel_topic;
+        this->value = Value::eEdit_channel_topic;
     } else
     if (s == "get_channel_star") {
-        this->value = Value::eget_channel_star;
+        this->value = Value::eGet_channel_star;
     } else
     if (s == "edit_channel_star") {
-        this->value = Value::eedit_channel_star;
+        this->value = Value::eEdit_channel_star;
     } else
     if (s == "get_my_tokens") {
-        this->value = Value::eget_my_tokens;
+        this->value = Value::eGet_my_tokens;
     } else
     if (s == "revoke_my_token") {
-        this->value = Value::erevoke_my_token;
+        this->value = Value::eRevoke_my_token;
     } else
     if (s == "get_clients") {
-        this->value = Value::eget_clients;
+        this->value = Value::eGet_clients;
     } else
     if (s == "create_client") {
-        this->value = Value::ecreate_client;
+        this->value = Value::eCreate_client;
     } else
     if (s == "edit_my_client") {
-        this->value = Value::eedit_my_client;
+        this->value = Value::eEdit_my_client;
     } else
     if (s == "delete_my_client") {
-        this->value = Value::edelete_my_client;
+        this->value = Value::eDelete_my_client;
     } else
     if (s == "manage_others_client") {
-        this->value = Value::emanage_others_client;
+        this->value = Value::eManage_others_client;
     } else
     if (s == "upload_file") {
-        this->value = Value::eupload_file;
+        this->value = Value::eUpload_file;
     } else
     if (s == "download_file") {
-        this->value = Value::edownload_file;
+        this->value = Value::eDownload_file;
     } else
     if (s == "delete_file") {
-        this->value = Value::edelete_file;
+        this->value = Value::eDelete_file;
     } else
     if (s == "get_message") {
-        this->value = Value::eget_message;
+        this->value = Value::eGet_message;
     } else
     if (s == "post_message") {
-        this->value = Value::epost_message;
+        this->value = Value::ePost_message;
     } else
     if (s == "edit_message") {
-        this->value = Value::eedit_message;
+        this->value = Value::eEdit_message;
     } else
     if (s == "delete_message") {
-        this->value = Value::edelete_message;
+        this->value = Value::eDelete_message;
     } else
     if (s == "report_message") {
-        this->value = Value::ereport_message;
+        this->value = Value::eReport_message;
     } else
     if (s == "get_message_reports") {
-        this->value = Value::eget_message_reports;
+        this->value = Value::eGet_message_reports;
     } else
     if (s == "create_message_pin") {
-        this->value = Value::ecreate_message_pin;
+        this->value = Value::eCreate_message_pin;
     } else
     if (s == "delete_message_pin") {
-        this->value = Value::edelete_message_pin;
+        this->value = Value::eDelete_message_pin;
     } else
     if (s == "get_channel_subscription") {
-        this->value = Value::eget_channel_subscription;
+        this->value = Value::eGet_channel_subscription;
     } else
     if (s == "edit_channel_subscription") {
-        this->value = Value::eedit_channel_subscription;
+        this->value = Value::eEdit_channel_subscription;
     } else
     if (s == "connect_notification_stream") {
-        this->value = Value::econnect_notification_stream;
+        this->value = Value::eConnect_notification_stream;
     } else
     if (s == "register_fcm_device") {
-        this->value = Value::eregister_fcm_device;
+        this->value = Value::eRegister_fcm_device;
     } else
     if (s == "get_stamp") {
-        this->value = Value::eget_stamp;
+        this->value = Value::eGet_stamp;
     } else
     if (s == "create_stamp") {
-        this->value = Value::ecreate_stamp;
+        this->value = Value::eCreate_stamp;
     } else
     if (s == "edit_stamp") {
-        this->value = Value::eedit_stamp;
+        this->value = Value::eEdit_stamp;
     } else
     if (s == "edit_stamp_created_by_others") {
-        this->value = Value::eedit_stamp_created_by_others;
+        this->value = Value::eEdit_stamp_created_by_others;
     } else
     if (s == "delete_stamp") {
-        this->value = Value::edelete_stamp;
+        this->value = Value::eDelete_stamp;
     } else
     if (s == "add_message_stamp") {
-        this->value = Value::eadd_message_stamp;
+        this->value = Value::eAdd_message_stamp;
     } else
     if (s == "remove_message_stamp") {
-        this->value = Value::eremove_message_stamp;
+        this->value = Value::eRemove_message_stamp;
     } else
     if (s == "get_my_stamp_history") {
-        this->value = Value::eget_my_stamp_history;
+        this->value = Value::eGet_my_stamp_history;
     } else
     if (s == "get_stamp_palette") {
-        this->value = Value::eget_stamp_palette;
+        this->value = Value::eGet_stamp_palette;
     } else
     if (s == "create_stamp_palette") {
-        this->value = Value::ecreate_stamp_palette;
+        this->value = Value::eCreate_stamp_palette;
     } else
     if (s == "edit_stamp_palette") {
-        this->value = Value::eedit_stamp_palette;
+        this->value = Value::eEdit_stamp_palette;
     } else
     if (s == "delete_stamp_palette") {
-        this->value = Value::edelete_stamp_palette;
+        this->value = Value::eDelete_stamp_palette;
     } else
     if (s == "get_user") {
-        this->value = Value::eget_user;
+        this->value = Value::eGet_user;
     } else
     if (s == "register_user") {
-        this->value = Value::eregister_user;
+        this->value = Value::eRegister_user;
     } else
     if (s == "get_me") {
-        this->value = Value::eget_me;
+        this->value = Value::eGet_me;
     } else
     if (s == "edit_me") {
-        this->value = Value::eedit_me;
+        this->value = Value::eEdit_me;
     } else
     if (s == "change_my_icon") {
-        this->value = Value::echange_my_icon;
+        this->value = Value::eChange_my_icon;
     } else
     if (s == "change_my_password") {
-        this->value = Value::echange_my_password;
+        this->value = Value::eChange_my_password;
     } else
     if (s == "edit_other_users") {
-        this->value = Value::eedit_other_users;
+        this->value = Value::eEdit_other_users;
     } else
     if (s == "get_user_qr_code") {
-        this->value = Value::eget_user_qr_code;
+        this->value = Value::eGet_user_qr_code;
     } else
     if (s == "get_user_tag") {
-        this->value = Value::eget_user_tag;
+        this->value = Value::eGet_user_tag;
     } else
     if (s == "edit_user_tag") {
-        this->value = Value::eedit_user_tag;
+        this->value = Value::eEdit_user_tag;
     } else
     if (s == "get_user_group") {
-        this->value = Value::eget_user_group;
+        this->value = Value::eGet_user_group;
     } else
     if (s == "create_user_group") {
-        this->value = Value::ecreate_user_group;
+        this->value = Value::eCreate_user_group;
     } else
     if (s == "create_special_user_group") {
-        this->value = Value::ecreate_special_user_group;
+        this->value = Value::eCreate_special_user_group;
     } else
     if (s == "edit_user_group") {
-        this->value = Value::eedit_user_group;
+        this->value = Value::eEdit_user_group;
     } else
     if (s == "delete_user_group") {
-        this->value = Value::edelete_user_group;
+        this->value = Value::eDelete_user_group;
     } else
     if (s == "edit_others_user_group") {
-        this->value = Value::eedit_others_user_group;
+        this->value = Value::eEdit_others_user_group;
     } else
     if (s == "web_rtc") {
-        this->value = Value::eweb_rtc;
+        this->value = Value::eWeb_rtc;
     } else
     if (s == "get_my_sessions") {
-        this->value = Value::eget_my_sessions;
+        this->value = Value::eGet_my_sessions;
     } else
     if (s == "delete_my_sessions") {
-        this->value = Value::edelete_my_sessions;
+        this->value = Value::eDelete_my_sessions;
     } else
     if (s == "get_my_external_account") {
-        this->value = Value::eget_my_external_account;
+        this->value = Value::eGet_my_external_account;
     } else
     if (s == "edit_my_external_account") {
-        this->value = Value::eedit_my_external_account;
+        this->value = Value::eEdit_my_external_account;
     } else
     if (s == "get_unread") {
-        this->value = Value::eget_unread;
+        this->value = Value::eGet_unread;
     } else
     if (s == "delete_unread") {
-        this->value = Value::edelete_unread;
+        this->value = Value::eDelete_unread;
     } else
     if (s == "get_clip_folder") {
-        this->value = Value::eget_clip_folder;
+        this->value = Value::eGet_clip_folder;
     } else
     if (s == "create_clip_folder") {
-        this->value = Value::ecreate_clip_folder;
+        this->value = Value::eCreate_clip_folder;
     } else
     if (s == "edit_clip_folder") {
-        this->value = Value::eedit_clip_folder;
+        this->value = Value::eEdit_clip_folder;
     } else
     if (s == "delete_clip_folder") {
-        this->value = Value::edelete_clip_folder;
+        this->value = Value::eDelete_clip_folder;
     } else
     {
         this->value = Value::Unknown;

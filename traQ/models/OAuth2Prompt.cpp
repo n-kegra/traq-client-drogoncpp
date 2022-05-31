@@ -4,16 +4,16 @@ namespace traQApi {
 
 Json::Value OAuth2Prompt::toJson() const {
     switch(this->value) {
-    case Value::enone:
+    case Value::eNone:
         return Json::Value("none");
-    case Value::Unknown:
+    default:
         return Json::Value(Json::nullValue);
     }
 }
 OAuth2Prompt& OAuth2Prompt::fromJson(const Json::Value& _json) {
     std::string s = _json.asString();
     if (s == "none") {
-        this->value = Value::enone;
+        this->value = Value::eNone;
     } else
     {
         this->value = Value::Unknown;

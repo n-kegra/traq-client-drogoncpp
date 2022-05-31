@@ -4,31 +4,31 @@ namespace traQApi {
 
 Json::Value BotEventResult::toJson() const {
     switch(this->value) {
-    case Value::eok:
+    case Value::eOk:
         return Json::Value("ok");
-    case Value::eng:
+    case Value::eNg:
         return Json::Value("ng");
-    case Value::ene:
+    case Value::eNe:
         return Json::Value("ne");
-    case Value::edp:
+    case Value::eDp:
         return Json::Value("dp");
-    case Value::Unknown:
+    default:
         return Json::Value(Json::nullValue);
     }
 }
 BotEventResult& BotEventResult::fromJson(const Json::Value& _json) {
     std::string s = _json.asString();
     if (s == "ok") {
-        this->value = Value::eok;
+        this->value = Value::eOk;
     } else
     if (s == "ng") {
-        this->value = Value::eng;
+        this->value = Value::eNg;
     } else
     if (s == "ne") {
-        this->value = Value::ene;
+        this->value = Value::eNe;
     } else
     if (s == "dp") {
-        this->value = Value::edp;
+        this->value = Value::eDp;
     } else
     {
         this->value = Value::Unknown;

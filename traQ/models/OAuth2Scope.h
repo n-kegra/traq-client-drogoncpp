@@ -13,9 +13,9 @@ namespace traQApi {
 // OAuth2スコープ
 struct OAuth2Scope {
     enum class Value {
-        eread,
-        ewrite,
-        emanage_bot,
+        eRead,
+        eWrite,
+        eManage_bot,
         Unknown,
     } value;
     OAuth2Scope() { value = Value::Unknown; };

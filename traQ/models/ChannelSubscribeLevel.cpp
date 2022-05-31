@@ -10,7 +10,7 @@ Json::Value ChannelSubscribeLevel::toJson() const {
         return Json::Value(1);
     case Value::e2:
         return Json::Value(2);
-    case Value::Unknown:
+    default:
         return Json::Value(Json::nullValue);
     }
 }
