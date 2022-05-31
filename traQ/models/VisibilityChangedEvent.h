@@ -23,11 +23,22 @@ struct VisibilityChangedEvent {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    VisibilityChangedEvent& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["userId"] = (userId);
+        _json["visibility"] = (visibility);
+        return _json;
+    }
+    VisibilityChangedEvent& fromJson(const Json::Value& _json) {
+        userId = _json["userId"].as<std::string>();
+        visibility = _json["visibility"].as<bool>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::VisibilityChangedEvent Json::Value::as<traQApi::VisibilityChangedEvent>() const;
+template <> inline traQApi::VisibilityChangedEvent Json::Value::as<traQApi::VisibilityChangedEvent>() const {
+    return traQApi::VisibilityChangedEvent(*this);
+};
 
 #endif

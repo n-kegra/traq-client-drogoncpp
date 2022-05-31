@@ -22,11 +22,20 @@ struct PostBotActionLeaveRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    PostBotActionLeaveRequest& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["channelId"] = (channelId);
+        return _json;
+    }
+    PostBotActionLeaveRequest& fromJson(const Json::Value& _json) {
+        channelId = _json["channelId"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::PostBotActionLeaveRequest Json::Value::as<traQApi::PostBotActionLeaveRequest>() const;
+template <> inline traQApi::PostBotActionLeaveRequest Json::Value::as<traQApi::PostBotActionLeaveRequest>() const {
+    return traQApi::PostBotActionLeaveRequest(*this);
+};
 
 #endif

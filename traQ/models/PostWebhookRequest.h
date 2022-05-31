@@ -25,11 +25,26 @@ struct PostWebhookRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    PostWebhookRequest& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["name"] = (name);
+        _json["description"] = (description);
+        _json["channelId"] = (channelId);
+        _json["secret"] = (secret);
+        return _json;
+    }
+    PostWebhookRequest& fromJson(const Json::Value& _json) {
+        name = _json["name"].as<std::string>();
+        description = _json["description"].as<std::string>();
+        channelId = _json["channelId"].as<std::string>();
+        secret = _json["secret"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::PostWebhookRequest Json::Value::as<traQApi::PostWebhookRequest>() const;
+template <> inline traQApi::PostWebhookRequest Json::Value::as<traQApi::PostWebhookRequest>() const {
+    return traQApi::PostWebhookRequest(*this);
+};
 
 #endif

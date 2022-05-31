@@ -24,11 +24,22 @@ struct ClippedMessage {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    ClippedMessage& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["message"] = (message.toJson());
+        _json["clippedAt"] = (clippedAt);
+        return _json;
+    }
+    ClippedMessage& fromJson(const Json::Value& _json) {
+        message.fromJson(_json["message"]);
+        clippedAt = _json["clippedAt"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::ClippedMessage Json::Value::as<traQApi::ClippedMessage>() const;
+template <> inline traQApi::ClippedMessage Json::Value::as<traQApi::ClippedMessage>() const {
+    return traQApi::ClippedMessage(*this);
+};
 
 #endif

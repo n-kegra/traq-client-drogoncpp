@@ -25,11 +25,26 @@ struct PatchMeRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    PatchMeRequest& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["displayName"] = (displayName);
+        _json["twitterId"] = (twitterId);
+        _json["bio"] = (bio);
+        _json["homeChannel"] = (homeChannel);
+        return _json;
+    }
+    PatchMeRequest& fromJson(const Json::Value& _json) {
+        displayName = _json["displayName"].as<std::string>();
+        twitterId = _json["twitterId"].as<std::string>();
+        bio = _json["bio"].as<std::string>();
+        homeChannel = _json["homeChannel"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::PatchMeRequest Json::Value::as<traQApi::PatchMeRequest>() const;
+template <> inline traQApi::PatchMeRequest Json::Value::as<traQApi::PatchMeRequest>() const {
+    return traQApi::PatchMeRequest(*this);
+};
 
 #endif

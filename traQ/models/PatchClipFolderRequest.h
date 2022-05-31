@@ -23,11 +23,22 @@ struct PatchClipFolderRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    PatchClipFolderRequest& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["name"] = (name);
+        _json["description"] = (description);
+        return _json;
+    }
+    PatchClipFolderRequest& fromJson(const Json::Value& _json) {
+        name = _json["name"].as<std::string>();
+        description = _json["description"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::PatchClipFolderRequest Json::Value::as<traQApi::PatchClipFolderRequest>() const;
+template <> inline traQApi::PatchClipFolderRequest Json::Value::as<traQApi::PatchClipFolderRequest>() const {
+    return traQApi::PatchClipFolderRequest(*this);
+};
 
 #endif

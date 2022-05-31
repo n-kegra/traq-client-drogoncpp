@@ -22,11 +22,20 @@ struct PostBotActionJoinRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    PostBotActionJoinRequest& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["channelId"] = (channelId);
+        return _json;
+    }
+    PostBotActionJoinRequest& fromJson(const Json::Value& _json) {
+        channelId = _json["channelId"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::PostBotActionJoinRequest Json::Value::as<traQApi::PostBotActionJoinRequest>() const;
+template <> inline traQApi::PostBotActionJoinRequest Json::Value::as<traQApi::PostBotActionJoinRequest>() const {
+    return traQApi::PostBotActionJoinRequest(*this);
+};
 
 #endif

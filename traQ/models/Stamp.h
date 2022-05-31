@@ -28,11 +28,32 @@ struct Stamp {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    Stamp& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["id"] = (id);
+        _json["name"] = (name);
+        _json["creatorId"] = (creatorId);
+        _json["createdAt"] = (createdAt);
+        _json["updatedAt"] = (updatedAt);
+        _json["fileId"] = (fileId);
+        _json["isUnicode"] = (isUnicode);
+        return _json;
+    }
+    Stamp& fromJson(const Json::Value& _json) {
+        id = _json["id"].as<std::string>();
+        name = _json["name"].as<std::string>();
+        creatorId = _json["creatorId"].as<std::string>();
+        createdAt = _json["createdAt"].as<std::string>();
+        updatedAt = _json["updatedAt"].as<std::string>();
+        fileId = _json["fileId"].as<std::string>();
+        isUnicode = _json["isUnicode"].as<bool>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::Stamp Json::Value::as<traQApi::Stamp>() const;
+template <> inline traQApi::Stamp Json::Value::as<traQApi::Stamp>() const {
+    return traQApi::Stamp(*this);
+};
 
 #endif

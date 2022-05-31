@@ -22,11 +22,20 @@ struct PatchUserTagRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    PatchUserTagRequest& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["isLocked"] = (isLocked);
+        return _json;
+    }
+    PatchUserTagRequest& fromJson(const Json::Value& _json) {
+        isLocked = _json["isLocked"].as<bool>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::PatchUserTagRequest Json::Value::as<traQApi::PatchUserTagRequest>() const;
+template <> inline traQApi::PatchUserTagRequest Json::Value::as<traQApi::PatchUserTagRequest>() const {
+    return traQApi::PatchUserTagRequest(*this);
+};
 
 #endif

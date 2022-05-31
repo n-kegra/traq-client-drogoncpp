@@ -22,11 +22,20 @@ struct PutChannelTopicRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    PutChannelTopicRequest& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["topic"] = (topic);
+        return _json;
+    }
+    PutChannelTopicRequest& fromJson(const Json::Value& _json) {
+        topic = _json["topic"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::PutChannelTopicRequest Json::Value::as<traQApi::PutChannelTopicRequest>() const;
+template <> inline traQApi::PutChannelTopicRequest Json::Value::as<traQApi::PutChannelTopicRequest>() const {
+    return traQApi::PutChannelTopicRequest(*this);
+};
 
 #endif

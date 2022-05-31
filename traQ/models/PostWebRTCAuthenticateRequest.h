@@ -22,11 +22,20 @@ struct PostWebRTCAuthenticateRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    PostWebRTCAuthenticateRequest& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["peerId"] = (peerId);
+        return _json;
+    }
+    PostWebRTCAuthenticateRequest& fromJson(const Json::Value& _json) {
+        peerId = _json["peerId"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::PostWebRTCAuthenticateRequest Json::Value::as<traQApi::PostWebRTCAuthenticateRequest>() const;
+template <> inline traQApi::PostWebRTCAuthenticateRequest Json::Value::as<traQApi::PostWebRTCAuthenticateRequest>() const {
+    return traQApi::PostWebRTCAuthenticateRequest(*this);
+};
 
 #endif

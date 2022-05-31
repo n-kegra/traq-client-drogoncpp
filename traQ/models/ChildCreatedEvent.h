@@ -23,11 +23,22 @@ struct ChildCreatedEvent {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    ChildCreatedEvent& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["userId"] = (userId);
+        _json["channelId"] = (channelId);
+        return _json;
+    }
+    ChildCreatedEvent& fromJson(const Json::Value& _json) {
+        userId = _json["userId"].as<std::string>();
+        channelId = _json["channelId"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::ChildCreatedEvent Json::Value::as<traQApi::ChildCreatedEvent>() const;
+template <> inline traQApi::ChildCreatedEvent Json::Value::as<traQApi::ChildCreatedEvent>() const {
+    return traQApi::ChildCreatedEvent(*this);
+};
 
 #endif

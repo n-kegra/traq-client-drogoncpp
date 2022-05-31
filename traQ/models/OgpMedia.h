@@ -26,11 +26,28 @@ struct OgpMedia {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    OgpMedia& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["url"] = (url);
+        _json["secureUrl"] = (secureUrl);
+        _json["type"] = (type);
+        _json["width"] = (width);
+        _json["height"] = (height);
+        return _json;
+    }
+    OgpMedia& fromJson(const Json::Value& _json) {
+        url = _json["url"].as<std::string>();
+        secureUrl = _json["secureUrl"].as<std::string>();
+        type = _json["type"].as<std::string>();
+        width = _json["width"].as<int32_t>();
+        height = _json["height"].as<int32_t>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::OgpMedia Json::Value::as<traQApi::OgpMedia>() const;
+template <> inline traQApi::OgpMedia Json::Value::as<traQApi::OgpMedia>() const {
+    return traQApi::OgpMedia(*this);
+};
 
 #endif

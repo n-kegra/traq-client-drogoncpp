@@ -23,11 +23,22 @@ struct PatchStampRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    PatchStampRequest& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["name"] = (name);
+        _json["creatorId"] = (creatorId);
+        return _json;
+    }
+    PatchStampRequest& fromJson(const Json::Value& _json) {
+        name = _json["name"].as<std::string>();
+        creatorId = _json["creatorId"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::PatchStampRequest Json::Value::as<traQApi::PatchStampRequest>() const;
+template <> inline traQApi::PatchStampRequest Json::Value::as<traQApi::PatchStampRequest>() const {
+    return traQApi::PatchStampRequest(*this);
+};
 
 #endif

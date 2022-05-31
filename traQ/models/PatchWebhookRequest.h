@@ -26,11 +26,28 @@ struct PatchWebhookRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    PatchWebhookRequest& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["name"] = (name);
+        _json["description"] = (description);
+        _json["channelId"] = (channelId);
+        _json["secret"] = (secret);
+        _json["ownerId"] = (ownerId);
+        return _json;
+    }
+    PatchWebhookRequest& fromJson(const Json::Value& _json) {
+        name = _json["name"].as<std::string>();
+        description = _json["description"].as<std::string>();
+        channelId = _json["channelId"].as<std::string>();
+        secret = _json["secret"].as<std::string>();
+        ownerId = _json["ownerId"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::PatchWebhookRequest Json::Value::as<traQApi::PatchWebhookRequest>() const;
+template <> inline traQApi::PatchWebhookRequest Json::Value::as<traQApi::PatchWebhookRequest>() const {
+    return traQApi::PatchWebhookRequest(*this);
+};
 
 #endif

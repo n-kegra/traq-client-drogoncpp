@@ -23,11 +23,22 @@ struct ChannelStatsUser {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    ChannelStatsUser& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["id"] = (id);
+        _json["messageCount"] = (messageCount);
+        return _json;
+    }
+    ChannelStatsUser& fromJson(const Json::Value& _json) {
+        id = _json["id"].as<std::string>();
+        messageCount = _json["messageCount"].as<int64_t>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::ChannelStatsUser Json::Value::as<traQApi::ChannelStatsUser>() const;
+template <> inline traQApi::ChannelStatsUser Json::Value::as<traQApi::ChannelStatsUser>() const {
+    return traQApi::ChannelStatsUser(*this);
+};
 
 #endif

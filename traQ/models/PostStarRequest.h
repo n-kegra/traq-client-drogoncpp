@@ -22,11 +22,20 @@ struct PostStarRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    PostStarRequest& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["channelId"] = (channelId);
+        return _json;
+    }
+    PostStarRequest& fromJson(const Json::Value& _json) {
+        channelId = _json["channelId"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::PostStarRequest Json::Value::as<traQApi::PostStarRequest>() const;
+template <> inline traQApi::PostStarRequest Json::Value::as<traQApi::PostStarRequest>() const {
+    return traQApi::PostStarRequest(*this);
+};
 
 #endif

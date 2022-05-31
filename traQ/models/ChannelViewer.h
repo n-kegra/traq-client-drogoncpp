@@ -25,11 +25,24 @@ struct ChannelViewer {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    ChannelViewer& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["userId"] = (userId);
+        _json["state"] = (state);
+        _json["updatedAt"] = (updatedAt);
+        return _json;
+    }
+    ChannelViewer& fromJson(const Json::Value& _json) {
+        userId = _json["userId"].as<std::string>();
+        state = _json["state"].as<ChannelViewState>();
+        updatedAt = _json["updatedAt"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::ChannelViewer Json::Value::as<traQApi::ChannelViewer>() const;
+template <> inline traQApi::ChannelViewer Json::Value::as<traQApi::ChannelViewer>() const {
+    return traQApi::ChannelViewer(*this);
+};
 
 #endif

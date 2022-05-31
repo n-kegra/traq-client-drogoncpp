@@ -22,11 +22,20 @@ struct PostUserGroupAdminRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    PostUserGroupAdminRequest& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["id"] = (id);
+        return _json;
+    }
+    PostUserGroupAdminRequest& fromJson(const Json::Value& _json) {
+        id = _json["id"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::PostUserGroupAdminRequest Json::Value::as<traQApi::PostUserGroupAdminRequest>() const;
+template <> inline traQApi::PostUserGroupAdminRequest Json::Value::as<traQApi::PostUserGroupAdminRequest>() const {
+    return traQApi::PostUserGroupAdminRequest(*this);
+};
 
 #endif

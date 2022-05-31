@@ -23,11 +23,22 @@ struct MessagePin {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    MessagePin& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["userId"] = (userId);
+        _json["pinnedAt"] = (pinnedAt);
+        return _json;
+    }
+    MessagePin& fromJson(const Json::Value& _json) {
+        userId = _json["userId"].as<std::string>();
+        pinnedAt = _json["pinnedAt"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::MessagePin Json::Value::as<traQApi::MessagePin>() const;
+template <> inline traQApi::MessagePin Json::Value::as<traQApi::MessagePin>() const {
+    return traQApi::MessagePin(*this);
+};
 
 #endif

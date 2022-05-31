@@ -22,11 +22,20 @@ struct PutNotifyCitationRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    PutNotifyCitationRequest& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["notifyCitation"] = (notifyCitation);
+        return _json;
+    }
+    PutNotifyCitationRequest& fromJson(const Json::Value& _json) {
+        notifyCitation = _json["notifyCitation"].as<bool>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::PutNotifyCitationRequest Json::Value::as<traQApi::PutNotifyCitationRequest>() const;
+template <> inline traQApi::PutNotifyCitationRequest Json::Value::as<traQApi::PutNotifyCitationRequest>() const {
+    return traQApi::PutNotifyCitationRequest(*this);
+};
 
 #endif

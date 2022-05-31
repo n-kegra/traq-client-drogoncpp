@@ -23,11 +23,22 @@ struct UserGroupMember {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    UserGroupMember& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["id"] = (id);
+        _json["role"] = (role);
+        return _json;
+    }
+    UserGroupMember& fromJson(const Json::Value& _json) {
+        id = _json["id"].as<std::string>();
+        role = _json["role"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::UserGroupMember Json::Value::as<traQApi::UserGroupMember>() const;
+template <> inline traQApi::UserGroupMember Json::Value::as<traQApi::UserGroupMember>() const {
+    return traQApi::UserGroupMember(*this);
+};
 
 #endif

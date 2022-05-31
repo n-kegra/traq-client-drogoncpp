@@ -23,11 +23,22 @@ struct PutMyPasswordRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    PutMyPasswordRequest& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["password"] = (password);
+        _json["newPassword"] = (newPassword);
+        return _json;
+    }
+    PutMyPasswordRequest& fromJson(const Json::Value& _json) {
+        password = _json["password"].as<std::string>();
+        newPassword = _json["newPassword"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::PutMyPasswordRequest Json::Value::as<traQApi::PutMyPasswordRequest>() const;
+template <> inline traQApi::PutMyPasswordRequest Json::Value::as<traQApi::PutMyPasswordRequest>() const {
+    return traQApi::PutMyPasswordRequest(*this);
+};
 
 #endif

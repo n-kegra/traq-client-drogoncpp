@@ -23,11 +23,22 @@ struct LoginSession {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    LoginSession& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["id"] = (id);
+        _json["issuedAt"] = (issuedAt);
+        return _json;
+    }
+    LoginSession& fromJson(const Json::Value& _json) {
+        id = _json["id"].as<std::string>();
+        issuedAt = _json["issuedAt"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::LoginSession Json::Value::as<traQApi::LoginSession>() const;
+template <> inline traQApi::LoginSession Json::Value::as<traQApi::LoginSession>() const {
+    return traQApi::LoginSession(*this);
+};
 
 #endif

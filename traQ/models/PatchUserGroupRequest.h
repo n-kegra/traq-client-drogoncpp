@@ -24,11 +24,24 @@ struct PatchUserGroupRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    PatchUserGroupRequest& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["name"] = (name);
+        _json["description"] = (description);
+        _json["type"] = (type);
+        return _json;
+    }
+    PatchUserGroupRequest& fromJson(const Json::Value& _json) {
+        name = _json["name"].as<std::string>();
+        description = _json["description"].as<std::string>();
+        type = _json["type"].as<std::string>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::PatchUserGroupRequest Json::Value::as<traQApi::PatchUserGroupRequest>() const;
+template <> inline traQApi::PatchUserGroupRequest Json::Value::as<traQApi::PatchUserGroupRequest>() const {
+    return traQApi::PatchUserGroupRequest(*this);
+};
 
 #endif

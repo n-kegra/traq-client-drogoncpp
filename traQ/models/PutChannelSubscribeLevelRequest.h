@@ -23,11 +23,20 @@ struct PutChannelSubscribeLevelRequest {
         this->fromJson(__value);
     }
 
-    Json::Value toJson() const;
-    PutChannelSubscribeLevelRequest& fromJson(const Json::Value& _json);
+    Json::Value toJson() const {
+        Json::Value _json;
+        _json["level"] = (level);
+        return _json;
+    }
+    PutChannelSubscribeLevelRequest& fromJson(const Json::Value& _json) {
+        level = _json["level"].as<ChannelSubscribeLevel>();
+        return *this;
+    }
 };
 
 }
-template <> traQApi::PutChannelSubscribeLevelRequest Json::Value::as<traQApi::PutChannelSubscribeLevelRequest>() const;
+template <> inline traQApi::PutChannelSubscribeLevelRequest Json::Value::as<traQApi::PutChannelSubscribeLevelRequest>() const {
+    return traQApi::PutChannelSubscribeLevelRequest(*this);
+};
 
 #endif
