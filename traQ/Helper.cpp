@@ -55,7 +55,7 @@ namespace __Helper {
         }
         return str;
     }
-    std::vector<std::string>&& serialize_explode(SerializeStyle style, const std::string name, const Json::Value& value) {
+    std::vector<std::string> serialize_explode(SerializeStyle style, const std::string name, const Json::Value& value) {
         std::vector<std::string> strs;
 
         if(value.isArray()){
@@ -74,7 +74,7 @@ namespace __Helper {
         } else {
             strs.push_back(value.asString());
         }
-        return std::move(strs);
+        return strs;
     }
     std::string serialize_collect(SerializeStyle style, const std::vector<std::string>& strs) {
         std::string str_collect;
