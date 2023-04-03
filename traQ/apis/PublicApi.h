@@ -56,7 +56,7 @@ public:
         auto [result, response] = this->client->sendRequest(req);
 
 
-        return std::forward_as_tuple(result, response);
+        return std::make_tuple(result, std::move(response));
     }
 
 
@@ -86,7 +86,7 @@ public:
             response_object.emplace(*response_json);
         }
 
-        return std::forward_as_tuple(result, response, response_object);
+        return std::make_tuple(result, std::move(response), response_object);
     }
 
 
