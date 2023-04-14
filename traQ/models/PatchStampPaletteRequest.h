@@ -8,7 +8,6 @@
 #include <traQ/Helper.h>
 
 #include <set>
-#include <vector>
 
 namespace traQApi {
 

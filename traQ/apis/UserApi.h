@@ -81,7 +81,7 @@ public:
             response_object.emplace(*response_json);
         }
 
-        return std::make_tuple(result, std::move(response), response_object);
+        return std::make_tuple(result, std::move(response), std::move(response_object));
     }
 
 
@@ -180,7 +180,7 @@ public:
             response_object.emplace(*response_json);
         }
 
-        return std::make_tuple(result, std::move(response), response_object);
+        return std::make_tuple(result, std::move(response), std::move(response_object));
     }
 
 
@@ -346,7 +346,7 @@ public:
             response_object.emplace(std::move(tmp));
         }
 
-        return std::make_tuple(result, std::move(response), response_object);
+        return std::make_tuple(result, std::move(response), std::move(response_object));
     }
 
 
@@ -384,7 +384,7 @@ public:
             response_object.emplace(*response_json);
         }
 
-        return std::make_tuple(result, std::move(response), response_object);
+        return std::make_tuple(result, std::move(response), std::move(response_object));
     }
 
 
@@ -422,7 +422,7 @@ public:
             response_object.emplace(*response_json);
         }
 
-        return std::make_tuple(result, std::move(response), response_object);
+        return std::make_tuple(result, std::move(response), std::move(response_object));
     }
 
 
@@ -489,7 +489,7 @@ public:
             response_object.emplace(*response_json);
         }
 
-        return std::make_tuple(result, std::move(response), response_object);
+        return std::make_tuple(result, std::move(response), std::move(response_object));
     }
 
 
@@ -531,7 +531,7 @@ public:
             response_object.emplace(std::move(tmp));
         }
 
-        return std::make_tuple(result, std::move(response), response_object);
+        return std::make_tuple(result, std::move(response), std::move(response_object));
     }
 
 
@@ -581,7 +581,7 @@ public:
             response_object.emplace(std::move(tmp));
         }
 
-        return std::make_tuple(result, std::move(response), response_object);
+        return std::make_tuple(result, std::move(response), std::move(response_object));
     }
 
 
@@ -624,7 +624,7 @@ public:
             response_object.emplace(*response_json);
         }
 
-        return std::make_tuple(result, std::move(response), response_object);
+        return std::make_tuple(result, std::move(response), std::move(response_object));
     }
 
 

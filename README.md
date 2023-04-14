@@ -329,6 +329,11 @@ Class | Method | HTTP request | Description
 
 <a name="documentation-for-authorization"></a>
 ## Documentation for Authorization
+<a name="cookieAuth"></a>
+### cookieAuth
+- **Type**: API key
+- **API key parameter name**: r_session
+- **Location**: 
 <a name="OAuth2"></a>
 ### OAuth2
 - **Type**: OAuth
@@ -341,8 +346,3 @@ Class | Method | HTTP request | Description
 <a name="bearerAuth"></a>
 ### bearerAuth
 - **Type**: HTTP basic authentication
-<a name="cookieAuth"></a>
-### cookieAuth
-- **Type**: API key
-- **API key parameter name**: r_session
-- **Location**: 
