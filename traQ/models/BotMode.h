@@ -17,7 +17,7 @@ struct BotMode {
         eWebSocket,
         Unknown,
     } value;
-    BotMode() { value = Value::Unknown; };
+    BotMode();
     operator Json::Value() const;
     BotMode(const Json::Value& __value);
     BotMode(const Value __value);

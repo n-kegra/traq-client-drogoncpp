@@ -18,7 +18,7 @@ struct BotState {
         e2,
         Unknown,
     } value;
-    BotState() { value = Value::Unknown; };
+    BotState();
     operator Json::Value() const;
     BotState(const Json::Value& __value);
     BotState(const Value __value);

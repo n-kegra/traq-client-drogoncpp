@@ -96,7 +96,7 @@ struct UserPermission {
         eDelete_clip_folder,
         Unknown,
     } value;
-    UserPermission() { value = Value::Unknown; };
+    UserPermission();
     operator Json::Value() const;
     UserPermission(const Json::Value& __value);
     UserPermission(const Value __value);

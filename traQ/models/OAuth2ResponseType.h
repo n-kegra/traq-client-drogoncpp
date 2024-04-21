@@ -17,7 +17,7 @@ struct OAuth2ResponseType {
         eNone,
         Unknown,
     } value;
-    OAuth2ResponseType() { value = Value::Unknown; };
+    OAuth2ResponseType();
     operator Json::Value() const;
     OAuth2ResponseType(const Json::Value& __value);
     OAuth2ResponseType(const Value __value);

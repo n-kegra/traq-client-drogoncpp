@@ -18,7 +18,7 @@ struct UserAccountState {
         e2,
         Unknown,
     } value;
-    UserAccountState() { value = Value::Unknown; };
+    UserAccountState();
     operator Json::Value() const;
     UserAccountState(const Json::Value& __value);
     UserAccountState(const Value __value);

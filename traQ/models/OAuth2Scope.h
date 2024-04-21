@@ -18,7 +18,7 @@ struct OAuth2Scope {
         eManage_bot,
         Unknown,
     } value;
-    OAuth2Scope() { value = Value::Unknown; };
+    OAuth2Scope();
     operator Json::Value() const;
     OAuth2Scope(const Json::Value& __value);
     OAuth2Scope(const Value __value);

@@ -18,7 +18,7 @@ struct ChannelSubscribeLevel {
         e2,
         Unknown,
     } value;
-    ChannelSubscribeLevel() { value = Value::Unknown; };
+    ChannelSubscribeLevel();
     operator Json::Value() const;
     ChannelSubscribeLevel(const Json::Value& __value);
     ChannelSubscribeLevel(const Value __value);

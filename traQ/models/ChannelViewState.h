@@ -18,7 +18,7 @@ struct ChannelViewState {
         eEditing,
         Unknown,
     } value;
-    ChannelViewState() { value = Value::Unknown; };
+    ChannelViewState();
     operator Json::Value() const;
     ChannelViewState(const Json::Value& __value);
     ChannelViewState(const Value __value);

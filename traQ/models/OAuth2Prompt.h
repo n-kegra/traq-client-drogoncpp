@@ -15,7 +15,7 @@ struct OAuth2Prompt {
         eNone,
         Unknown,
     } value;
-    OAuth2Prompt() { value = Value::Unknown; };
+    OAuth2Prompt();
     operator Json::Value() const;
     OAuth2Prompt(const Json::Value& __value);
     OAuth2Prompt(const Value __value);

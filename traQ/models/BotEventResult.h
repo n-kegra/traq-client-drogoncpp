@@ -19,7 +19,7 @@ struct BotEventResult {
         eDp,
         Unknown,
     } value;
-    BotEventResult() { value = Value::Unknown; };
+    BotEventResult();
     operator Json::Value() const;
     BotEventResult(const Json::Value& __value);
     BotEventResult(const Value __value);

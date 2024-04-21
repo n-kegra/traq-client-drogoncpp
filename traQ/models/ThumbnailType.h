@@ -17,7 +17,7 @@ struct ThumbnailType {
         eWaveform,
         Unknown,
     } value;
-    ThumbnailType() { value = Value::Unknown; };
+    ThumbnailType();
     operator Json::Value() const;
     ThumbnailType(const Json::Value& __value);
     ThumbnailType(const Value __value);
