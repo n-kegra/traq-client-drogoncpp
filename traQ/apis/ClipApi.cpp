@@ -17,7 +17,9 @@ namespace traQApi {
 ClipApi::ClipApi(std::string baseurl)
 {
     std::smatch m;
-    std::regex_match(baseurl, std::regex(R"((\w+://[a-zA-Z0-9-\.]+)(.+))"));
+    if(!std::regex_match(baseurl, std::regex(R"((\w+://[a-zA-Z0-9-\.]+)(.+))"))) {
+        throw std::runtime_error("ClipApi : invalid baseurl");
+    }
     client = drogon::HttpClient::newHttpClient(m[1].str());
     baseurl_path = m[2].str();
 }
