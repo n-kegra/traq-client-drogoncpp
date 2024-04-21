@@ -27,7 +27,7 @@ class MessageApi {
 
 public:
 
-    MessageApi(std::string _baseurl_host, std::string _baseurl_path);
+    MessageApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     MessageApi& setBearerToken(std::string _token);
     MessageApi& setBasicAuth(std::string _username, std::string _password);

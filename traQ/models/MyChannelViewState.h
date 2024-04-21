@@ -18,31 +18,14 @@ struct MyChannelViewState {
     ChannelViewState state;
 
     MyChannelViewState() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    MyChannelViewState(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    MyChannelViewState(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["key"] = (key);
-        _json["channelId"] = (channelId);
-        _json["state"] = (state);
-        return _json;
-    }
-    MyChannelViewState& fromJson(const Json::Value& _json) {
-        key = _json["key"].as<std::string>();
-        channelId = _json["channelId"].as<std::string>();
-        state = _json["state"].as<ChannelViewState>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    MyChannelViewState& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::MyChannelViewState Json::Value::as<traQApi::MyChannelViewState>() const {
-    return traQApi::MyChannelViewState(*this);
-};
+template <> traQApi::MyChannelViewState Json::Value::as<traQApi::MyChannelViewState>() const;
 
 #endif

@@ -16,29 +16,14 @@ struct StampHistoryEntry {
     std::string datetime;
 
     StampHistoryEntry() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    StampHistoryEntry(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    StampHistoryEntry(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["stampId"] = (stampId);
-        _json["datetime"] = (datetime);
-        return _json;
-    }
-    StampHistoryEntry& fromJson(const Json::Value& _json) {
-        stampId = _json["stampId"].as<std::string>();
-        datetime = _json["datetime"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    StampHistoryEntry& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::StampHistoryEntry Json::Value::as<traQApi::StampHistoryEntry>() const {
-    return traQApi::StampHistoryEntry(*this);
-};
+template <> traQApi::StampHistoryEntry Json::Value::as<traQApi::StampHistoryEntry>() const;
 
 #endif

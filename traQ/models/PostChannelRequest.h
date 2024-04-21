@@ -16,29 +16,14 @@ struct PostChannelRequest {
     std::string parent;
 
     PostChannelRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PostChannelRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PostChannelRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["name"] = (name);
-        _json["parent"] = (parent);
-        return _json;
-    }
-    PostChannelRequest& fromJson(const Json::Value& _json) {
-        name = _json["name"].as<std::string>();
-        parent = _json["parent"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostChannelRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PostChannelRequest Json::Value::as<traQApi::PostChannelRequest>() const {
-    return traQApi::PostChannelRequest(*this);
-};
+template <> traQApi::PostChannelRequest Json::Value::as<traQApi::PostChannelRequest>() const;
 
 #endif

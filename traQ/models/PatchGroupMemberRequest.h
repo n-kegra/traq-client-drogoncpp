@@ -15,27 +15,14 @@ struct PatchGroupMemberRequest {
     std::string role;
 
     PatchGroupMemberRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PatchGroupMemberRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PatchGroupMemberRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["role"] = (role);
-        return _json;
-    }
-    PatchGroupMemberRequest& fromJson(const Json::Value& _json) {
-        role = _json["role"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PatchGroupMemberRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PatchGroupMemberRequest Json::Value::as<traQApi::PatchGroupMemberRequest>() const {
-    return traQApi::PatchGroupMemberRequest(*this);
-};
+template <> traQApi::PatchGroupMemberRequest Json::Value::as<traQApi::PatchGroupMemberRequest>() const;
 
 #endif

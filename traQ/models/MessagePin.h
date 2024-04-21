@@ -16,29 +16,14 @@ struct MessagePin {
     std::string pinnedAt;
 
     MessagePin() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    MessagePin(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    MessagePin(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["userId"] = (userId);
-        _json["pinnedAt"] = (pinnedAt);
-        return _json;
-    }
-    MessagePin& fromJson(const Json::Value& _json) {
-        userId = _json["userId"].as<std::string>();
-        pinnedAt = _json["pinnedAt"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    MessagePin& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::MessagePin Json::Value::as<traQApi::MessagePin>() const {
-    return traQApi::MessagePin(*this);
-};
+template <> traQApi::MessagePin Json::Value::as<traQApi::MessagePin>() const;
 
 #endif

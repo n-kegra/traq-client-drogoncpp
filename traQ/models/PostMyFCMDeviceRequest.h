@@ -15,27 +15,14 @@ struct PostMyFCMDeviceRequest {
     std::string token;
 
     PostMyFCMDeviceRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PostMyFCMDeviceRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PostMyFCMDeviceRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["token"] = (token);
-        return _json;
-    }
-    PostMyFCMDeviceRequest& fromJson(const Json::Value& _json) {
-        token = _json["token"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostMyFCMDeviceRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PostMyFCMDeviceRequest Json::Value::as<traQApi::PostMyFCMDeviceRequest>() const {
-    return traQApi::PostMyFCMDeviceRequest(*this);
-};
+template <> traQApi::PostMyFCMDeviceRequest Json::Value::as<traQApi::PostMyFCMDeviceRequest>() const;
 
 #endif

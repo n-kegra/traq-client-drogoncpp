@@ -15,27 +15,14 @@ struct PostLinkExternalAccount {
     std::string providerName;
 
     PostLinkExternalAccount() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PostLinkExternalAccount(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PostLinkExternalAccount(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["providerName"] = (providerName);
-        return _json;
-    }
-    PostLinkExternalAccount& fromJson(const Json::Value& _json) {
-        providerName = _json["providerName"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostLinkExternalAccount& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PostLinkExternalAccount Json::Value::as<traQApi::PostLinkExternalAccount>() const {
-    return traQApi::PostLinkExternalAccount(*this);
-};
+template <> traQApi::PostLinkExternalAccount Json::Value::as<traQApi::PostLinkExternalAccount>() const;
 
 #endif

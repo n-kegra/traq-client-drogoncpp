@@ -26,7 +26,7 @@ class GroupApi {
 
 public:
 
-    GroupApi(std::string _baseurl_host, std::string _baseurl_path);
+    GroupApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     GroupApi& setBearerToken(std::string _token);
     GroupApi& setBasicAuth(std::string _username, std::string _password);

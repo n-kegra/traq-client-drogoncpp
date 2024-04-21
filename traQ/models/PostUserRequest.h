@@ -16,29 +16,14 @@ struct PostUserRequest {
     std::string password;
 
     PostUserRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PostUserRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PostUserRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["name"] = (name);
-        _json["password"] = (password);
-        return _json;
-    }
-    PostUserRequest& fromJson(const Json::Value& _json) {
-        name = _json["name"].as<std::string>();
-        password = _json["password"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostUserRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PostUserRequest Json::Value::as<traQApi::PostUserRequest>() const {
-    return traQApi::PostUserRequest(*this);
-};
+template <> traQApi::PostUserRequest Json::Value::as<traQApi::PostUserRequest>() const;
 
 #endif

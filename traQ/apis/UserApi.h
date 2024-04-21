@@ -32,7 +32,7 @@ class UserApi {
 
 public:
 
-    UserApi(std::string _baseurl_host, std::string _baseurl_path);
+    UserApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     UserApi& setBearerToken(std::string _token);
     UserApi& setBasicAuth(std::string _username, std::string _password);

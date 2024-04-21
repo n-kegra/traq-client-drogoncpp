@@ -16,37 +16,15 @@ struct OAuth2Prompt {
         Unknown,
     } value;
     OAuth2Prompt() { value = Value::Unknown; };
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    OAuth2Prompt(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
-    OAuth2Prompt(const Value __value) : value(__value) {}
+    operator Json::Value() const;
+    OAuth2Prompt(const Json::Value& __value);
+    OAuth2Prompt(const Value __value);
 
-    Json::Value toJson() const {
-        switch(this->value) {
-        case Value::eNone:
-            return Json::Value("none");
-        default:
-            return Json::Value(Json::nullValue);
-        }
-    }
-    OAuth2Prompt& fromJson(const Json::Value& _json) {
-        std::string s = _json.asString();
-        if (s == "none") {
-            this->value = Value::eNone;
-        } else
-        {
-            this->value = Value::Unknown;
-        }
-        return (*this);
-    }
+    Json::Value toJson() const;
+    OAuth2Prompt& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::OAuth2Prompt Json::Value::as<traQApi::OAuth2Prompt>() const {
-    return traQApi::OAuth2Prompt(*this);
-};
+template <> traQApi::OAuth2Prompt Json::Value::as<traQApi::OAuth2Prompt>() const;
 
 #endif

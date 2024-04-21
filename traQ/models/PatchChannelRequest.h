@@ -18,33 +18,14 @@ struct PatchChannelRequest {
     std::string parent;
 
     PatchChannelRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PatchChannelRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PatchChannelRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["name"] = (name);
-        _json["archived"] = (archived);
-        _json["force"] = (force);
-        _json["parent"] = (parent);
-        return _json;
-    }
-    PatchChannelRequest& fromJson(const Json::Value& _json) {
-        name = _json["name"].as<std::string>();
-        archived = _json["archived"].as<bool>();
-        force = _json["force"].as<bool>();
-        parent = _json["parent"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PatchChannelRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PatchChannelRequest Json::Value::as<traQApi::PatchChannelRequest>() const {
-    return traQApi::PatchChannelRequest(*this);
-};
+template <> traQApi::PatchChannelRequest Json::Value::as<traQApi::PatchChannelRequest>() const;
 
 #endif

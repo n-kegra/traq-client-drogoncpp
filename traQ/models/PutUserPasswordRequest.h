@@ -15,27 +15,14 @@ struct PutUserPasswordRequest {
     std::string newPassword;
 
     PutUserPasswordRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PutUserPasswordRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PutUserPasswordRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["newPassword"] = (newPassword);
-        return _json;
-    }
-    PutUserPasswordRequest& fromJson(const Json::Value& _json) {
-        newPassword = _json["newPassword"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PutUserPasswordRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PutUserPasswordRequest Json::Value::as<traQApi::PutUserPasswordRequest>() const {
-    return traQApi::PutUserPasswordRequest(*this);
-};
+template <> traQApi::PutUserPasswordRequest Json::Value::as<traQApi::PutUserPasswordRequest>() const;
 
 #endif

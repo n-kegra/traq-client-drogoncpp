@@ -29,7 +29,7 @@ class Oauth2Api {
 
 public:
 
-    Oauth2Api(std::string _baseurl_host, std::string _baseurl_path);
+    Oauth2Api(std::string baseurl = "https://q.trap.jp/api/v3");
     
     Oauth2Api& setBearerToken(std::string _token);
     Oauth2Api& setBasicAuth(std::string _username, std::string _password);

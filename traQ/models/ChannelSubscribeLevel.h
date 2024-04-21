@@ -19,47 +19,15 @@ struct ChannelSubscribeLevel {
         Unknown,
     } value;
     ChannelSubscribeLevel() { value = Value::Unknown; };
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    ChannelSubscribeLevel(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
-    ChannelSubscribeLevel(const Value __value) : value(__value) {}
+    operator Json::Value() const;
+    ChannelSubscribeLevel(const Json::Value& __value);
+    ChannelSubscribeLevel(const Value __value);
 
-    Json::Value toJson() const {
-        switch(this->value) {
-        case Value::e0:
-            return Json::Value(0);
-        case Value::e1:
-            return Json::Value(1);
-        case Value::e2:
-            return Json::Value(2);
-        default:
-            return Json::Value(Json::nullValue);
-        }
-    }
-    ChannelSubscribeLevel& fromJson(const Json::Value& _json) {
-        auto s = _json.asLargestInt();
-        if (s == 0) {
-            this->value = Value::e0;
-        } else
-        if (s == 1) {
-            this->value = Value::e1;
-        } else
-        if (s == 2) {
-            this->value = Value::e2;
-        } else
-        {
-            this->value = Value::Unknown;
-        }
-        return (*this);
-    }
+    Json::Value toJson() const;
+    ChannelSubscribeLevel& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::ChannelSubscribeLevel Json::Value::as<traQApi::ChannelSubscribeLevel>() const {
-    return traQApi::ChannelSubscribeLevel(*this);
-};
+template <> traQApi::ChannelSubscribeLevel Json::Value::as<traQApi::ChannelSubscribeLevel>() const;
 
 #endif

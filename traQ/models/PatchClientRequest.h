@@ -18,33 +18,14 @@ struct PatchClientRequest {
     std::string developerId;
 
     PatchClientRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PatchClientRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PatchClientRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["name"] = (name);
-        _json["description"] = (description);
-        _json["callbackUrl"] = (callbackUrl);
-        _json["developerId"] = (developerId);
-        return _json;
-    }
-    PatchClientRequest& fromJson(const Json::Value& _json) {
-        name = _json["name"].as<std::string>();
-        description = _json["description"].as<std::string>();
-        callbackUrl = _json["callbackUrl"].as<std::string>();
-        developerId = _json["developerId"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PatchClientRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PatchClientRequest Json::Value::as<traQApi::PatchClientRequest>() const {
-    return traQApi::PatchClientRequest(*this);
-};
+template <> traQApi::PatchClientRequest Json::Value::as<traQApi::PatchClientRequest>() const;
 
 #endif

@@ -16,29 +16,14 @@ struct ForcedNotificationChangedEvent {
     bool force;
 
     ForcedNotificationChangedEvent() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    ForcedNotificationChangedEvent(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    ForcedNotificationChangedEvent(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["userId"] = (userId);
-        _json["force"] = (force);
-        return _json;
-    }
-    ForcedNotificationChangedEvent& fromJson(const Json::Value& _json) {
-        userId = _json["userId"].as<std::string>();
-        force = _json["force"].as<bool>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    ForcedNotificationChangedEvent& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::ForcedNotificationChangedEvent Json::Value::as<traQApi::ForcedNotificationChangedEvent>() const {
-    return traQApi::ForcedNotificationChangedEvent(*this);
-};
+template <> traQApi::ForcedNotificationChangedEvent Json::Value::as<traQApi::ForcedNotificationChangedEvent>() const;
 
 #endif

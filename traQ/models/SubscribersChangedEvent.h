@@ -18,35 +18,14 @@ struct SubscribersChangedEvent {
     std::vector<std::string> off;
 
     SubscribersChangedEvent() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    SubscribersChangedEvent(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    SubscribersChangedEvent(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["userId"] = (userId);
-        _json["on"] = __Helper::toJson(on);
-        _json["off"] = __Helper::toJson(off);
-        return _json;
-    }
-    SubscribersChangedEvent& fromJson(const Json::Value& _json) {
-        userId = _json["userId"].as<std::string>();
-        for (auto _it = _json["on"].begin(); _it != _json["on"].end(); _it++) {
-            on.emplace_back((*_it).as<std::string>());    
-        }
-        for (auto _it = _json["off"].begin(); _it != _json["off"].end(); _it++) {
-            off.emplace_back((*_it).as<std::string>());    
-        }
-        return *this;
-    }
+    Json::Value toJson() const;
+    SubscribersChangedEvent& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::SubscribersChangedEvent Json::Value::as<traQApi::SubscribersChangedEvent>() const {
-    return traQApi::SubscribersChangedEvent(*this);
-};
+template <> traQApi::SubscribersChangedEvent Json::Value::as<traQApi::SubscribersChangedEvent>() const;
 
 #endif

@@ -20,37 +20,14 @@ struct UnreadChannel {
     std::string oldestMessageId;
 
     UnreadChannel() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    UnreadChannel(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    UnreadChannel(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["channelId"] = (channelId);
-        _json["count"] = (count);
-        _json["noticeable"] = (noticeable);
-        _json["since"] = (since);
-        _json["updatedAt"] = (updatedAt);
-        _json["oldestMessageId"] = (oldestMessageId);
-        return _json;
-    }
-    UnreadChannel& fromJson(const Json::Value& _json) {
-        channelId = _json["channelId"].as<std::string>();
-        count = _json["count"].as<int32_t>();
-        noticeable = _json["noticeable"].as<bool>();
-        since = _json["since"].as<std::string>();
-        updatedAt = _json["updatedAt"].as<std::string>();
-        oldestMessageId = _json["oldestMessageId"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    UnreadChannel& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::UnreadChannel Json::Value::as<traQApi::UnreadChannel>() const {
-    return traQApi::UnreadChannel(*this);
-};
+template <> traQApi::UnreadChannel Json::Value::as<traQApi::UnreadChannel>() const;
 
 #endif

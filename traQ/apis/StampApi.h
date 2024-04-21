@@ -30,7 +30,7 @@ class StampApi {
 
 public:
 
-    StampApi(std::string _baseurl_host, std::string _baseurl_path);
+    StampApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     StampApi& setBearerToken(std::string _token);
     StampApi& setBasicAuth(std::string _username, std::string _password);

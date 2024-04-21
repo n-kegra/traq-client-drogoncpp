@@ -15,27 +15,14 @@ struct GetNotifyCitation {
     bool notifyCitation;
 
     GetNotifyCitation() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    GetNotifyCitation(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    GetNotifyCitation(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["notifyCitation"] = (notifyCitation);
-        return _json;
-    }
-    GetNotifyCitation& fromJson(const Json::Value& _json) {
-        notifyCitation = _json["notifyCitation"].as<bool>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    GetNotifyCitation& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::GetNotifyCitation Json::Value::as<traQApi::GetNotifyCitation>() const {
-    return traQApi::GetNotifyCitation(*this);
-};
+template <> traQApi::GetNotifyCitation Json::Value::as<traQApi::GetNotifyCitation>() const;
 
 #endif

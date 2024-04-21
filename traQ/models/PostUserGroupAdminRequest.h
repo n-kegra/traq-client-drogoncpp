@@ -15,27 +15,14 @@ struct PostUserGroupAdminRequest {
     std::string id;
 
     PostUserGroupAdminRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PostUserGroupAdminRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PostUserGroupAdminRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["id"] = (id);
-        return _json;
-    }
-    PostUserGroupAdminRequest& fromJson(const Json::Value& _json) {
-        id = _json["id"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostUserGroupAdminRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PostUserGroupAdminRequest Json::Value::as<traQApi::PostUserGroupAdminRequest>() const {
-    return traQApi::PostUserGroupAdminRequest(*this);
-};
+template <> traQApi::PostUserGroupAdminRequest Json::Value::as<traQApi::PostUserGroupAdminRequest>() const;
 
 #endif

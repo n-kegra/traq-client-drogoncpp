@@ -16,29 +16,14 @@ struct BotTokens {
     std::string accessToken;
 
     BotTokens() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    BotTokens(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    BotTokens(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["verificationToken"] = (verificationToken);
-        _json["accessToken"] = (accessToken);
-        return _json;
-    }
-    BotTokens& fromJson(const Json::Value& _json) {
-        verificationToken = _json["verificationToken"].as<std::string>();
-        accessToken = _json["accessToken"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    BotTokens& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::BotTokens Json::Value::as<traQApi::BotTokens>() const {
-    return traQApi::BotTokens(*this);
-};
+template <> traQApi::BotTokens Json::Value::as<traQApi::BotTokens>() const;
 
 #endif

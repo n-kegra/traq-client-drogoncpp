@@ -18,31 +18,14 @@ struct MessageSearchResult {
     std::vector<Message> hits;
 
     MessageSearchResult() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    MessageSearchResult(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    MessageSearchResult(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["totalHits"] = (totalHits);
-        _json["hits"] = __Helper::toJson(hits);
-        return _json;
-    }
-    MessageSearchResult& fromJson(const Json::Value& _json) {
-        totalHits = _json["totalHits"].as<int64_t>();
-        for (auto _it = _json["hits"].begin(); _it != _json["hits"].end(); _it++) {
-            hits.emplace_back((*_it));    
-        }
-        return *this;
-    }
+    Json::Value toJson() const;
+    MessageSearchResult& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::MessageSearchResult Json::Value::as<traQApi::MessageSearchResult>() const {
-    return traQApi::MessageSearchResult(*this);
-};
+template <> traQApi::MessageSearchResult Json::Value::as<traQApi::MessageSearchResult>() const;
 
 #endif

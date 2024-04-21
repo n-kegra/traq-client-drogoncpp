@@ -22,41 +22,14 @@ struct StampPalette {
     std::string description;
 
     StampPalette() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    StampPalette(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    StampPalette(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["id"] = (id);
-        _json["name"] = (name);
-        _json["stamps"] = __Helper::toJson(stamps);
-        _json["creatorId"] = (creatorId);
-        _json["createdAt"] = (createdAt);
-        _json["updatedAt"] = (updatedAt);
-        _json["description"] = (description);
-        return _json;
-    }
-    StampPalette& fromJson(const Json::Value& _json) {
-        id = _json["id"].as<std::string>();
-        name = _json["name"].as<std::string>();
-        for (auto _it = _json["stamps"].begin(); _it != _json["stamps"].end(); _it++) {
-            stamps.emplace_back((*_it).as<std::string>());    
-        }
-        creatorId = _json["creatorId"].as<std::string>();
-        createdAt = _json["createdAt"].as<std::string>();
-        updatedAt = _json["updatedAt"].as<std::string>();
-        description = _json["description"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    StampPalette& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::StampPalette Json::Value::as<traQApi::StampPalette>() const {
-    return traQApi::StampPalette(*this);
-};
+template <> traQApi::StampPalette Json::Value::as<traQApi::StampPalette>() const;
 
 #endif

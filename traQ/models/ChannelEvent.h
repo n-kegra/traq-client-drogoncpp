@@ -18,31 +18,14 @@ struct ChannelEvent {
     ChannelEventDetail detail;
 
     ChannelEvent() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    ChannelEvent(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    ChannelEvent(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["type"] = (type);
-        _json["datetime"] = (datetime);
-        _json["detail"] = (detail.toJson());
-        return _json;
-    }
-    ChannelEvent& fromJson(const Json::Value& _json) {
-        type = _json["type"].as<std::string>();
-        datetime = _json["datetime"].as<std::string>();
-        detail.fromJson(_json["detail"]);
-        return *this;
-    }
+    Json::Value toJson() const;
+    ChannelEvent& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::ChannelEvent Json::Value::as<traQApi::ChannelEvent>() const {
-    return traQApi::ChannelEvent(*this);
-};
+template <> traQApi::ChannelEvent Json::Value::as<traQApi::ChannelEvent>() const;
 
 #endif

@@ -16,29 +16,14 @@ struct UserGroupMember {
     std::string role;
 
     UserGroupMember() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    UserGroupMember(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    UserGroupMember(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["id"] = (id);
-        _json["role"] = (role);
-        return _json;
-    }
-    UserGroupMember& fromJson(const Json::Value& _json) {
-        id = _json["id"].as<std::string>();
-        role = _json["role"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    UserGroupMember& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::UserGroupMember Json::Value::as<traQApi::UserGroupMember>() const {
-    return traQApi::UserGroupMember(*this);
-};
+template <> traQApi::UserGroupMember Json::Value::as<traQApi::UserGroupMember>() const;
 
 #endif

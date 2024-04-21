@@ -30,7 +30,7 @@ class BotApi {
 
 public:
 
-    BotApi(std::string _baseurl_host, std::string _baseurl_path);
+    BotApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     BotApi& setBearerToken(std::string _token);
     BotApi& setBasicAuth(std::string _username, std::string _password);

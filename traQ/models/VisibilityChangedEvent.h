@@ -16,29 +16,14 @@ struct VisibilityChangedEvent {
     bool visibility;
 
     VisibilityChangedEvent() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    VisibilityChangedEvent(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    VisibilityChangedEvent(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["userId"] = (userId);
-        _json["visibility"] = (visibility);
-        return _json;
-    }
-    VisibilityChangedEvent& fromJson(const Json::Value& _json) {
-        userId = _json["userId"].as<std::string>();
-        visibility = _json["visibility"].as<bool>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    VisibilityChangedEvent& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::VisibilityChangedEvent Json::Value::as<traQApi::VisibilityChangedEvent>() const {
-    return traQApi::VisibilityChangedEvent(*this);
-};
+template <> traQApi::VisibilityChangedEvent Json::Value::as<traQApi::VisibilityChangedEvent>() const;
 
 #endif

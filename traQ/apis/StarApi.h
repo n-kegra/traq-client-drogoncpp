@@ -21,7 +21,7 @@ class StarApi {
 
 public:
 
-    StarApi(std::string _baseurl_host, std::string _baseurl_path);
+    StarApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     StarApi& setBearerToken(std::string _token);
     StarApi& setBasicAuth(std::string _username, std::string _password);

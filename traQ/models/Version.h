@@ -18,31 +18,14 @@ struct Version {
     VersionFlags flags;
 
     Version() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    Version(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    Version(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["revision"] = (revision);
-        _json["version"] = (version);
-        _json["flags"] = (flags.toJson());
-        return _json;
-    }
-    Version& fromJson(const Json::Value& _json) {
-        revision = _json["revision"].as<std::string>();
-        version = _json["version"].as<std::string>();
-        flags.fromJson(_json["flags"]);
-        return *this;
-    }
+    Json::Value toJson() const;
+    Version& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::Version Json::Value::as<traQApi::Version>() const {
-    return traQApi::Version(*this);
-};
+template <> traQApi::Version Json::Value::as<traQApi::Version>() const;
 
 #endif

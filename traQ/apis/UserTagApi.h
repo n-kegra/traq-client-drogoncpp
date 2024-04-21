@@ -24,7 +24,7 @@ class UserTagApi {
 
 public:
 
-    UserTagApi(std::string _baseurl_host, std::string _baseurl_path);
+    UserTagApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     UserTagApi& setBearerToken(std::string _token);
     UserTagApi& setBasicAuth(std::string _username, std::string _password);

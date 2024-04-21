@@ -16,29 +16,14 @@ struct PostClipFolderRequest {
     std::string description;
 
     PostClipFolderRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PostClipFolderRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PostClipFolderRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["name"] = (name);
-        _json["description"] = (description);
-        return _json;
-    }
-    PostClipFolderRequest& fromJson(const Json::Value& _json) {
-        name = _json["name"].as<std::string>();
-        description = _json["description"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostClipFolderRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PostClipFolderRequest Json::Value::as<traQApi::PostClipFolderRequest>() const {
-    return traQApi::PostClipFolderRequest(*this);
-};
+template <> traQApi::PostClipFolderRequest Json::Value::as<traQApi::PostClipFolderRequest>() const;
 
 #endif

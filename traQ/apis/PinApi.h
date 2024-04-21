@@ -22,7 +22,7 @@ class PinApi {
 
 public:
 
-    PinApi(std::string _baseurl_host, std::string _baseurl_path);
+    PinApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     PinApi& setBearerToken(std::string _token);
     PinApi& setBasicAuth(std::string _username, std::string _password);

@@ -22,7 +22,7 @@ class FileApi {
 
 public:
 
-    FileApi(std::string _baseurl_host, std::string _baseurl_path);
+    FileApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     FileApi& setBearerToken(std::string _token);
     FileApi& setBasicAuth(std::string _username, std::string _password);

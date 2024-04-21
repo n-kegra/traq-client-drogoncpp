@@ -20,35 +20,14 @@ struct ActiveOAuth2Token {
     std::string issuedAt;
 
     ActiveOAuth2Token() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    ActiveOAuth2Token(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    ActiveOAuth2Token(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["id"] = (id);
-        _json["clientId"] = (clientId);
-        _json["scopes"] = __Helper::toJson(scopes);
-        _json["issuedAt"] = (issuedAt);
-        return _json;
-    }
-    ActiveOAuth2Token& fromJson(const Json::Value& _json) {
-        id = _json["id"].as<std::string>();
-        clientId = _json["clientId"].as<std::string>();
-        for (auto _it = _json["scopes"].begin(); _it != _json["scopes"].end(); _it++) {
-            scopes.emplace_back((*_it).as<OAuth2Scope>());    
-        }
-        issuedAt = _json["issuedAt"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    ActiveOAuth2Token& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::ActiveOAuth2Token Json::Value::as<traQApi::ActiveOAuth2Token>() const {
-    return traQApi::ActiveOAuth2Token(*this);
-};
+template <> traQApi::ActiveOAuth2Token Json::Value::as<traQApi::ActiveOAuth2Token>() const;
 
 #endif

@@ -21,7 +21,7 @@ class ActivityApi {
 
 public:
 
-    ActivityApi(std::string _baseurl_host, std::string _baseurl_path);
+    ActivityApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     ActivityApi& setBearerToken(std::string _token);
     ActivityApi& setBasicAuth(std::string _username, std::string _password);

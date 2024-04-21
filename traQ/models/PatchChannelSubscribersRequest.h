@@ -17,33 +17,14 @@ struct PatchChannelSubscribersRequest {
     std::vector<std::string> off;
 
     PatchChannelSubscribersRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PatchChannelSubscribersRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PatchChannelSubscribersRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["on"] = __Helper::toJson(on);
-        _json["off"] = __Helper::toJson(off);
-        return _json;
-    }
-    PatchChannelSubscribersRequest& fromJson(const Json::Value& _json) {
-        for (auto _it = _json["on"].begin(); _it != _json["on"].end(); _it++) {
-            on.emplace_back((*_it).as<std::string>());    
-        }
-        for (auto _it = _json["off"].begin(); _it != _json["off"].end(); _it++) {
-            off.emplace_back((*_it).as<std::string>());    
-        }
-        return *this;
-    }
+    Json::Value toJson() const;
+    PatchChannelSubscribersRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PatchChannelSubscribersRequest Json::Value::as<traQApi::PatchChannelSubscribersRequest>() const {
-    return traQApi::PatchChannelSubscribersRequest(*this);
-};
+template <> traQApi::PatchChannelSubscribersRequest Json::Value::as<traQApi::PatchChannelSubscribersRequest>() const;
 
 #endif

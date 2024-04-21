@@ -17,29 +17,14 @@ struct ClippedMessage {
     std::string clippedAt;
 
     ClippedMessage() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    ClippedMessage(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    ClippedMessage(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["message"] = (message.toJson());
-        _json["clippedAt"] = (clippedAt);
-        return _json;
-    }
-    ClippedMessage& fromJson(const Json::Value& _json) {
-        message.fromJson(_json["message"]);
-        clippedAt = _json["clippedAt"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    ClippedMessage& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::ClippedMessage Json::Value::as<traQApi::ClippedMessage>() const {
-    return traQApi::ClippedMessage(*this);
-};
+template <> traQApi::ClippedMessage Json::Value::as<traQApi::ClippedMessage>() const;
 
 #endif

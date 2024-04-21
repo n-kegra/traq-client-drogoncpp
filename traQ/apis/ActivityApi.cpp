@@ -9,8 +9,13 @@
 
 namespace traQApi {
 
-ActivityApi::ActivityApi(std::string _baseurl_host, std::string _baseurl_path) :
-    baseurl_path(_baseurl_path), client(drogon::HttpClient::newHttpClient(_baseurl_host)) {}
+ActivityApi::ActivityApi(std::string baseurl)
+{
+    std::smatch m;
+    std::regex_match(baseurl, std::regex(R"((\w+://[a-zA-Z0-9-\.]+)(.+))"));
+    client = drogon::HttpClient::newHttpClient(m[1].str());
+    baseurl_path = m[2].str();
+}
 
 ActivityApi& ActivityApi::setBearerToken(std::string _token) { this->bearer_token = _token; return *this; }
 ActivityApi& ActivityApi::setBasicAuth(std::string _username, std::string _password) { this->basic_username = _username; this->basic_password = _password; return *this; }

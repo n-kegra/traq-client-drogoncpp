@@ -36,7 +36,7 @@ class ChannelApi {
 
 public:
 
-    ChannelApi(std::string _baseurl_host, std::string _baseurl_path);
+    ChannelApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     ChannelApi& setBearerToken(std::string _token);
     ChannelApi& setBasicAuth(std::string _username, std::string _password);

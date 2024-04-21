@@ -17,29 +17,14 @@ struct UserSubscribeState {
     ChannelSubscribeLevel level;
 
     UserSubscribeState() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    UserSubscribeState(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    UserSubscribeState(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["channelId"] = (channelId);
-        _json["level"] = (level);
-        return _json;
-    }
-    UserSubscribeState& fromJson(const Json::Value& _json) {
-        channelId = _json["channelId"].as<std::string>();
-        level = _json["level"].as<ChannelSubscribeLevel>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    UserSubscribeState& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::UserSubscribeState Json::Value::as<traQApi::UserSubscribeState>() const {
-    return traQApi::UserSubscribeState(*this);
-};
+template <> traQApi::UserSubscribeState Json::Value::as<traQApi::UserSubscribeState>() const;
 
 #endif

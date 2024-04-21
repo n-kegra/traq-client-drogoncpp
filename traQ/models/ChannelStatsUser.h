@@ -16,29 +16,14 @@ struct ChannelStatsUser {
     int64_t messageCount;
 
     ChannelStatsUser() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    ChannelStatsUser(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    ChannelStatsUser(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["id"] = (id);
-        _json["messageCount"] = (messageCount);
-        return _json;
-    }
-    ChannelStatsUser& fromJson(const Json::Value& _json) {
-        id = _json["id"].as<std::string>();
-        messageCount = _json["messageCount"].as<int64_t>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    ChannelStatsUser& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::ChannelStatsUser Json::Value::as<traQApi::ChannelStatsUser>() const {
-    return traQApi::ChannelStatsUser(*this);
-};
+template <> traQApi::ChannelStatsUser Json::Value::as<traQApi::ChannelStatsUser>() const;
 
 #endif

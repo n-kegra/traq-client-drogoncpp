@@ -16,29 +16,14 @@ struct PatchClipFolderRequest {
     std::string description;
 
     PatchClipFolderRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PatchClipFolderRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PatchClipFolderRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["name"] = (name);
-        _json["description"] = (description);
-        return _json;
-    }
-    PatchClipFolderRequest& fromJson(const Json::Value& _json) {
-        name = _json["name"].as<std::string>();
-        description = _json["description"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PatchClipFolderRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PatchClipFolderRequest Json::Value::as<traQApi::PatchClipFolderRequest>() const {
-    return traQApi::PatchClipFolderRequest(*this);
-};
+template <> traQApi::PatchClipFolderRequest Json::Value::as<traQApi::PatchClipFolderRequest>() const;
 
 #endif

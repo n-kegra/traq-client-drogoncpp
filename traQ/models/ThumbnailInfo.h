@@ -18,33 +18,14 @@ struct ThumbnailInfo {
     int32_t height;
 
     ThumbnailInfo() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    ThumbnailInfo(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    ThumbnailInfo(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["type"] = (type);
-        _json["mime"] = (mime);
-        _json["width"] = (width);
-        _json["height"] = (height);
-        return _json;
-    }
-    ThumbnailInfo& fromJson(const Json::Value& _json) {
-        type = _json["type"].as<ThumbnailType>();
-        mime = _json["mime"].as<std::string>();
-        width = _json["width"].as<int32_t>();
-        height = _json["height"].as<int32_t>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    ThumbnailInfo& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::ThumbnailInfo Json::Value::as<traQApi::ThumbnailInfo>() const {
-    return traQApi::ThumbnailInfo(*this);
-};
+template <> traQApi::ThumbnailInfo Json::Value::as<traQApi::ThumbnailInfo>() const;
 
 #endif

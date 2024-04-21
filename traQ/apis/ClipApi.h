@@ -26,7 +26,7 @@ class ClipApi {
 
 public:
 
-    ClipApi(std::string _baseurl_host, std::string _baseurl_path);
+    ClipApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     ClipApi& setBearerToken(std::string _token);
     ClipApi& setBasicAuth(std::string _username, std::string _password);

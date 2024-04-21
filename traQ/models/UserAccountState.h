@@ -19,47 +19,15 @@ struct UserAccountState {
         Unknown,
     } value;
     UserAccountState() { value = Value::Unknown; };
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    UserAccountState(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
-    UserAccountState(const Value __value) : value(__value) {}
+    operator Json::Value() const;
+    UserAccountState(const Json::Value& __value);
+    UserAccountState(const Value __value);
 
-    Json::Value toJson() const {
-        switch(this->value) {
-        case Value::e0:
-            return Json::Value(0);
-        case Value::e1:
-            return Json::Value(1);
-        case Value::e2:
-            return Json::Value(2);
-        default:
-            return Json::Value(Json::nullValue);
-        }
-    }
-    UserAccountState& fromJson(const Json::Value& _json) {
-        auto s = _json.asLargestInt();
-        if (s == 0) {
-            this->value = Value::e0;
-        } else
-        if (s == 1) {
-            this->value = Value::e1;
-        } else
-        if (s == 2) {
-            this->value = Value::e2;
-        } else
-        {
-            this->value = Value::Unknown;
-        }
-        return (*this);
-    }
+    Json::Value toJson() const;
+    UserAccountState& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::UserAccountState Json::Value::as<traQApi::UserAccountState>() const {
-    return traQApi::UserAccountState(*this);
-};
+template <> traQApi::UserAccountState Json::Value::as<traQApi::UserAccountState>() const;
 
 #endif

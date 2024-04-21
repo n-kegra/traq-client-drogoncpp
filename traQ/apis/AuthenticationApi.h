@@ -25,7 +25,7 @@ class AuthenticationApi {
 
 public:
 
-    AuthenticationApi(std::string _baseurl_host, std::string _baseurl_path);
+    AuthenticationApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     AuthenticationApi& setBearerToken(std::string _token);
     AuthenticationApi& setBasicAuth(std::string _username, std::string _password);

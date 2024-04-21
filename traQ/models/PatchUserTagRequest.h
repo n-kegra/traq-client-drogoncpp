@@ -15,27 +15,14 @@ struct PatchUserTagRequest {
     bool isLocked;
 
     PatchUserTagRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PatchUserTagRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PatchUserTagRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["isLocked"] = (isLocked);
-        return _json;
-    }
-    PatchUserTagRequest& fromJson(const Json::Value& _json) {
-        isLocked = _json["isLocked"].as<bool>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PatchUserTagRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PatchUserTagRequest Json::Value::as<traQApi::PatchUserTagRequest>() const {
-    return traQApi::PatchUserTagRequest(*this);
-};
+template <> traQApi::PatchUserTagRequest Json::Value::as<traQApi::PatchUserTagRequest>() const;
 
 #endif

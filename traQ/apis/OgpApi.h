@@ -21,7 +21,7 @@ class OgpApi {
 
 public:
 
-    OgpApi(std::string _baseurl_host, std::string _baseurl_path);
+    OgpApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     OgpApi& setBearerToken(std::string _token);
     OgpApi& setBasicAuth(std::string _username, std::string _password);

@@ -22,7 +22,7 @@ class WebrtcApi {
 
 public:
 
-    WebrtcApi(std::string _baseurl_host, std::string _baseurl_path);
+    WebrtcApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     WebrtcApi& setBearerToken(std::string _token);
     WebrtcApi& setBasicAuth(std::string _username, std::string _password);

@@ -18,47 +18,15 @@ struct OAuth2ResponseType {
         Unknown,
     } value;
     OAuth2ResponseType() { value = Value::Unknown; };
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    OAuth2ResponseType(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
-    OAuth2ResponseType(const Value __value) : value(__value) {}
+    operator Json::Value() const;
+    OAuth2ResponseType(const Json::Value& __value);
+    OAuth2ResponseType(const Value __value);
 
-    Json::Value toJson() const {
-        switch(this->value) {
-        case Value::eCode:
-            return Json::Value("code");
-        case Value::eToken:
-            return Json::Value("token");
-        case Value::eNone:
-            return Json::Value("none");
-        default:
-            return Json::Value(Json::nullValue);
-        }
-    }
-    OAuth2ResponseType& fromJson(const Json::Value& _json) {
-        std::string s = _json.asString();
-        if (s == "code") {
-            this->value = Value::eCode;
-        } else
-        if (s == "token") {
-            this->value = Value::eToken;
-        } else
-        if (s == "none") {
-            this->value = Value::eNone;
-        } else
-        {
-            this->value = Value::Unknown;
-        }
-        return (*this);
-    }
+    Json::Value toJson() const;
+    OAuth2ResponseType& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::OAuth2ResponseType Json::Value::as<traQApi::OAuth2ResponseType>() const {
-    return traQApi::OAuth2ResponseType(*this);
-};
+template <> traQApi::OAuth2ResponseType Json::Value::as<traQApi::OAuth2ResponseType>() const;
 
 #endif

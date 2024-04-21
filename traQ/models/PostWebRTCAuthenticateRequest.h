@@ -15,27 +15,14 @@ struct PostWebRTCAuthenticateRequest {
     std::string peerId;
 
     PostWebRTCAuthenticateRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PostWebRTCAuthenticateRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PostWebRTCAuthenticateRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["peerId"] = (peerId);
-        return _json;
-    }
-    PostWebRTCAuthenticateRequest& fromJson(const Json::Value& _json) {
-        peerId = _json["peerId"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostWebRTCAuthenticateRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PostWebRTCAuthenticateRequest Json::Value::as<traQApi::PostWebRTCAuthenticateRequest>() const {
-    return traQApi::PostWebRTCAuthenticateRequest(*this);
-};
+template <> traQApi::PostWebRTCAuthenticateRequest Json::Value::as<traQApi::PostWebRTCAuthenticateRequest>() const;
 
 #endif

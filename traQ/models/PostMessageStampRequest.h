@@ -15,27 +15,14 @@ struct PostMessageStampRequest {
     int32_t count;
 
     PostMessageStampRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PostMessageStampRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PostMessageStampRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["count"] = (count);
-        return _json;
-    }
-    PostMessageStampRequest& fromJson(const Json::Value& _json) {
-        count = _json["count"].as<int32_t>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostMessageStampRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PostMessageStampRequest Json::Value::as<traQApi::PostMessageStampRequest>() const {
-    return traQApi::PostMessageStampRequest(*this);
-};
+template <> traQApi::PostMessageStampRequest Json::Value::as<traQApi::PostMessageStampRequest>() const;
 
 #endif

@@ -15,27 +15,14 @@ struct PostStarRequest {
     std::string channelId;
 
     PostStarRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PostStarRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PostStarRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["channelId"] = (channelId);
-        return _json;
-    }
-    PostStarRequest& fromJson(const Json::Value& _json) {
-        channelId = _json["channelId"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostStarRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PostStarRequest Json::Value::as<traQApi::PostStarRequest>() const {
-    return traQApi::PostStarRequest(*this);
-};
+template <> traQApi::PostStarRequest Json::Value::as<traQApi::PostStarRequest>() const;
 
 #endif

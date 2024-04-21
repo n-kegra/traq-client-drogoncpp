@@ -18,33 +18,14 @@ struct WebRTCAuthenticateResult {
     std::string authToken;
 
     WebRTCAuthenticateResult() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    WebRTCAuthenticateResult(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    WebRTCAuthenticateResult(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["peerId"] = (peerId);
-        _json["ttl"] = (ttl);
-        _json["timestamp"] = (timestamp);
-        _json["authToken"] = (authToken);
-        return _json;
-    }
-    WebRTCAuthenticateResult& fromJson(const Json::Value& _json) {
-        peerId = _json["peerId"].as<std::string>();
-        ttl = _json["ttl"].as<int32_t>();
-        timestamp = _json["timestamp"].as<int64_t>();
-        authToken = _json["authToken"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    WebRTCAuthenticateResult& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::WebRTCAuthenticateResult Json::Value::as<traQApi::WebRTCAuthenticateResult>() const {
-    return traQApi::WebRTCAuthenticateResult(*this);
-};
+template <> traQApi::WebRTCAuthenticateResult Json::Value::as<traQApi::WebRTCAuthenticateResult>() const;
 
 #endif

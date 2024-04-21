@@ -27,7 +27,7 @@ class NotificationApi {
 
 public:
 
-    NotificationApi(std::string _baseurl_host, std::string _baseurl_path);
+    NotificationApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     NotificationApi& setBearerToken(std::string _token);
     NotificationApi& setBasicAuth(std::string _username, std::string _password);

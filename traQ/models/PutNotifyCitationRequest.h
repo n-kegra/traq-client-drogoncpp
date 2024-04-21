@@ -15,27 +15,14 @@ struct PutNotifyCitationRequest {
     bool notifyCitation;
 
     PutNotifyCitationRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PutNotifyCitationRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PutNotifyCitationRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["notifyCitation"] = (notifyCitation);
-        return _json;
-    }
-    PutNotifyCitationRequest& fromJson(const Json::Value& _json) {
-        notifyCitation = _json["notifyCitation"].as<bool>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PutNotifyCitationRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PutNotifyCitationRequest Json::Value::as<traQApi::PutNotifyCitationRequest>() const {
-    return traQApi::PutNotifyCitationRequest(*this);
-};
+template <> traQApi::PutNotifyCitationRequest Json::Value::as<traQApi::PutNotifyCitationRequest>() const;
 
 #endif

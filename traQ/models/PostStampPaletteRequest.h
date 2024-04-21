@@ -18,33 +18,14 @@ struct PostStampPaletteRequest {
     std::string description;
 
     PostStampPaletteRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PostStampPaletteRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PostStampPaletteRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["stamps"] = __Helper::toJson(stamps);
-        _json["name"] = (name);
-        _json["description"] = (description);
-        return _json;
-    }
-    PostStampPaletteRequest& fromJson(const Json::Value& _json) {
-        for (auto _it = _json["stamps"].begin(); _it != _json["stamps"].end(); _it++) {
-            stamps.emplace((*_it).as<std::string>());    
-        }
-        name = _json["name"].as<std::string>();
-        description = _json["description"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostStampPaletteRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PostStampPaletteRequest Json::Value::as<traQApi::PostStampPaletteRequest>() const {
-    return traQApi::PostStampPaletteRequest(*this);
-};
+template <> traQApi::PostStampPaletteRequest Json::Value::as<traQApi::PostStampPaletteRequest>() const;
 
 #endif

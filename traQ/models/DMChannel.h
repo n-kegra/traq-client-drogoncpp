@@ -16,29 +16,14 @@ struct DMChannel {
     std::string userId;
 
     DMChannel() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    DMChannel(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    DMChannel(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["id"] = (id);
-        _json["userId"] = (userId);
-        return _json;
-    }
-    DMChannel& fromJson(const Json::Value& _json) {
-        id = _json["id"].as<std::string>();
-        userId = _json["userId"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    DMChannel& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::DMChannel Json::Value::as<traQApi::DMChannel>() const {
-    return traQApi::DMChannel(*this);
-};
+template <> traQApi::DMChannel Json::Value::as<traQApi::DMChannel>() const;
 
 #endif

@@ -16,29 +16,14 @@ struct MessageClip {
     std::string clippedAt;
 
     MessageClip() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    MessageClip(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    MessageClip(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["folderId"] = (folderId);
-        _json["clippedAt"] = (clippedAt);
-        return _json;
-    }
-    MessageClip& fromJson(const Json::Value& _json) {
-        folderId = _json["folderId"].as<std::string>();
-        clippedAt = _json["clippedAt"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    MessageClip& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::MessageClip Json::Value::as<traQApi::MessageClip>() const {
-    return traQApi::MessageClip(*this);
-};
+template <> traQApi::MessageClip Json::Value::as<traQApi::MessageClip>() const;
 
 #endif

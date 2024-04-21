@@ -17,31 +17,14 @@ struct PatchUserGroupRequest {
     std::string type;
 
     PatchUserGroupRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PatchUserGroupRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PatchUserGroupRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["name"] = (name);
-        _json["description"] = (description);
-        _json["type"] = (type);
-        return _json;
-    }
-    PatchUserGroupRequest& fromJson(const Json::Value& _json) {
-        name = _json["name"].as<std::string>();
-        description = _json["description"].as<std::string>();
-        type = _json["type"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PatchUserGroupRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PatchUserGroupRequest Json::Value::as<traQApi::PatchUserGroupRequest>() const {
-    return traQApi::PatchUserGroupRequest(*this);
-};
+template <> traQApi::PatchUserGroupRequest Json::Value::as<traQApi::PatchUserGroupRequest>() const;
 
 #endif

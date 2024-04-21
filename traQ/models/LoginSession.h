@@ -16,29 +16,14 @@ struct LoginSession {
     std::string issuedAt;
 
     LoginSession() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    LoginSession(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    LoginSession(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["id"] = (id);
-        _json["issuedAt"] = (issuedAt);
-        return _json;
-    }
-    LoginSession& fromJson(const Json::Value& _json) {
-        id = _json["id"].as<std::string>();
-        issuedAt = _json["issuedAt"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    LoginSession& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::LoginSession Json::Value::as<traQApi::LoginSession>() const {
-    return traQApi::LoginSession(*this);
-};
+template <> traQApi::LoginSession Json::Value::as<traQApi::LoginSession>() const;
 
 #endif

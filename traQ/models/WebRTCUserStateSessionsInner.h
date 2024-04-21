@@ -15,29 +15,14 @@ struct WebRTCUserStateSessionsInner {
     std::string sessionId;
 
     WebRTCUserStateSessionsInner() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    WebRTCUserStateSessionsInner(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    WebRTCUserStateSessionsInner(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["state"] = (state);
-        _json["sessionId"] = (sessionId);
-        return _json;
-    }
-    WebRTCUserStateSessionsInner& fromJson(const Json::Value& _json) {
-        state = _json["state"].as<std::string>();
-        sessionId = _json["sessionId"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    WebRTCUserStateSessionsInner& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::WebRTCUserStateSessionsInner Json::Value::as<traQApi::WebRTCUserStateSessionsInner>() const {
-    return traQApi::WebRTCUserStateSessionsInner(*this);
-};
+template <> traQApi::WebRTCUserStateSessionsInner Json::Value::as<traQApi::WebRTCUserStateSessionsInner>() const;
 
 #endif

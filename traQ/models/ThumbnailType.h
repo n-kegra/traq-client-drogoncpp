@@ -18,42 +18,15 @@ struct ThumbnailType {
         Unknown,
     } value;
     ThumbnailType() { value = Value::Unknown; };
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    ThumbnailType(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
-    ThumbnailType(const Value __value) : value(__value) {}
+    operator Json::Value() const;
+    ThumbnailType(const Json::Value& __value);
+    ThumbnailType(const Value __value);
 
-    Json::Value toJson() const {
-        switch(this->value) {
-        case Value::eImage:
-            return Json::Value("image");
-        case Value::eWaveform:
-            return Json::Value("waveform");
-        default:
-            return Json::Value(Json::nullValue);
-        }
-    }
-    ThumbnailType& fromJson(const Json::Value& _json) {
-        std::string s = _json.asString();
-        if (s == "image") {
-            this->value = Value::eImage;
-        } else
-        if (s == "waveform") {
-            this->value = Value::eWaveform;
-        } else
-        {
-            this->value = Value::Unknown;
-        }
-        return (*this);
-    }
+    Json::Value toJson() const;
+    ThumbnailType& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::ThumbnailType Json::Value::as<traQApi::ThumbnailType>() const {
-    return traQApi::ThumbnailType(*this);
-};
+template <> traQApi::ThumbnailType Json::Value::as<traQApi::ThumbnailType>() const;
 
 #endif

@@ -23,41 +23,14 @@ struct PatchBotRequest {
     std::vector<std::string> subscribeEvents;
 
     PatchBotRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PatchBotRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PatchBotRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["displayName"] = (displayName);
-        _json["description"] = (description);
-        _json["privileged"] = (privileged);
-        _json["mode"] = (mode);
-        _json["endpoint"] = (endpoint);
-        _json["developerId"] = (developerId);
-        _json["subscribeEvents"] = __Helper::toJson(subscribeEvents);
-        return _json;
-    }
-    PatchBotRequest& fromJson(const Json::Value& _json) {
-        displayName = _json["displayName"].as<std::string>();
-        description = _json["description"].as<std::string>();
-        privileged = _json["privileged"].as<bool>();
-        mode = _json["mode"].as<BotMode>();
-        endpoint = _json["endpoint"].as<std::string>();
-        developerId = _json["developerId"].as<std::string>();
-        for (auto _it = _json["subscribeEvents"].begin(); _it != _json["subscribeEvents"].end(); _it++) {
-            subscribeEvents.emplace_back((*_it).as<std::string>());    
-        }
-        return *this;
-    }
+    Json::Value toJson() const;
+    PatchBotRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PatchBotRequest Json::Value::as<traQApi::PatchBotRequest>() const {
-    return traQApi::PatchBotRequest(*this);
-};
+template <> traQApi::PatchBotRequest Json::Value::as<traQApi::PatchBotRequest>() const;
 
 #endif

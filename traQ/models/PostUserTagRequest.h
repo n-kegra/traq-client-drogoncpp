@@ -15,27 +15,14 @@ struct PostUserTagRequest {
     std::string tag;
 
     PostUserTagRequest() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PostUserTagRequest(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PostUserTagRequest(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["tag"] = (tag);
-        return _json;
-    }
-    PostUserTagRequest& fromJson(const Json::Value& _json) {
-        tag = _json["tag"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostUserTagRequest& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PostUserTagRequest Json::Value::as<traQApi::PostUserTagRequest>() const {
-    return traQApi::PostUserTagRequest(*this);
-};
+template <> traQApi::PostUserTagRequest Json::Value::as<traQApi::PostUserTagRequest>() const;
 
 #endif

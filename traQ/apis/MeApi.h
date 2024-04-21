@@ -41,7 +41,7 @@ class MeApi {
 
 public:
 
-    MeApi(std::string _baseurl_host, std::string _baseurl_path);
+    MeApi(std::string baseurl = "https://q.trap.jp/api/v3");
     
     MeApi& setBearerToken(std::string _token);
     MeApi& setBasicAuth(std::string _username, std::string _password);

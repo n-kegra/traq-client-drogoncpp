@@ -15,27 +15,14 @@ struct PostUnlinkExternalAccount {
     std::string providerName;
 
     PostUnlinkExternalAccount() = default;
-    operator Json::Value() const {
-        return this->toJson();
-    }
-    PostUnlinkExternalAccount(const Json::Value& __value) {
-        this->fromJson(__value);
-    }
+    operator Json::Value() const;
+    PostUnlinkExternalAccount(const Json::Value& __value);
 
-    Json::Value toJson() const {
-        Json::Value _json;
-        _json["providerName"] = (providerName);
-        return _json;
-    }
-    PostUnlinkExternalAccount& fromJson(const Json::Value& _json) {
-        providerName = _json["providerName"].as<std::string>();
-        return *this;
-    }
+    Json::Value toJson() const;
+    PostUnlinkExternalAccount& fromJson(const Json::Value& _json);
 };
 
 }
-template <> inline traQApi::PostUnlinkExternalAccount Json::Value::as<traQApi::PostUnlinkExternalAccount>() const {
-    return traQApi::PostUnlinkExternalAccount(*this);
-};
+template <> traQApi::PostUnlinkExternalAccount Json::Value::as<traQApi::PostUnlinkExternalAccount>() const;
 
 #endif
