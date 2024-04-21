@@ -17,6 +17,7 @@ struct UnreadChannel {
     bool noticeable;
     std::string since;
     std::string updatedAt;
+    std::string oldestMessageId;
 
     UnreadChannel() = default;
     operator Json::Value() const {
@@ -33,6 +34,7 @@ struct UnreadChannel {
         _json["noticeable"] = (noticeable);
         _json["since"] = (since);
         _json["updatedAt"] = (updatedAt);
+        _json["oldestMessageId"] = (oldestMessageId);
         return _json;
     }
     UnreadChannel& fromJson(const Json::Value& _json) {
@@ -41,6 +43,7 @@ struct UnreadChannel {
         noticeable = _json["noticeable"].as<bool>();
         since = _json["since"].as<std::string>();
         updatedAt = _json["updatedAt"].as<std::string>();
+        oldestMessageId = _json["oldestMessageId"].as<std::string>();
         return *this;
     }
 };

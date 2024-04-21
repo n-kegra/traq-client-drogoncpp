@@ -120,6 +120,7 @@
 #include <traQ/models/StampHistoryEntry.h>
 #include <traQ/models/StampPalette.h>
 #include <traQ/models/StampStats.h>
+#include <traQ/models/StampWithThumbnail.h>
 #include <traQ/models/SubscribersChangedEvent.h>
 #include <traQ/models/Tag.h>
 #include <traQ/models/ThumbnailInfo.h>

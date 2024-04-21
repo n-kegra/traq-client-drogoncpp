@@ -140,6 +140,7 @@ Class | Method | HTTP request | Description
 *Oauth2Api* | [**postOAuth2Token**](Apis/Oauth2Api.md#postoauth2token) | **POST** /oauth2/token | OAuth2 トークンエンドポイント
 *Oauth2Api* | [**revokeMyToken**](Apis/Oauth2Api.md#revokemytoken) | **DELETE** /users/me/tokens/{tokenId} | トークンの認可を取り消す
 *Oauth2Api* | [**revokeOAuth2Token**](Apis/Oauth2Api.md#revokeoauth2token) | **POST** /oauth2/revoke | OAuth2 トークン無効化エンドポイント
+*OgpApi* | [**deleteOgpCache**](Apis/OgpApi.md#deleteogpcache) | **DELETE** /ogp/cache | OGP情報のキャッシュを削除
 *OgpApi* | [**getOgp**](Apis/OgpApi.md#getogp) | **GET** /ogp | OGP情報を取得
 *PinApi* | [**createPin**](Apis/PinApi.md#createpin) | **POST** /messages/{messageId}/pin | ピン留めする
 *PinApi* | [**getChannelPins**](Apis/PinApi.md#getchannelpins) | **GET** /channels/{channelId}/pins | チャンネルピンのリストを取得
@@ -302,6 +303,7 @@ Class | Method | HTTP request | Description
  - [traQ/models.StampHistoryEntry](Models/StampHistoryEntry.md)
  - [traQ/models.StampPalette](Models/StampPalette.md)
  - [traQ/models.StampStats](Models/StampStats.md)
+ - [traQ/models.StampWithThumbnail](Models/StampWithThumbnail.md)
  - [traQ/models.SubscribersChangedEvent](Models/SubscribersChangedEvent.md)
  - [traQ/models.Tag](Models/Tag.md)
  - [traQ/models.ThumbnailInfo](Models/ThumbnailInfo.md)

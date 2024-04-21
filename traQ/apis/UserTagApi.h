@@ -2,8 +2,6 @@
 #define TRAQ_UserTagApi_H
 
 #include <drogon/drogon.h>
-#include <drogon/utils/Utilities.h>
-#include <json/json.h>
 #include <string>
 #include <optional>
 #include <traQ/Helper.h>
@@ -26,347 +24,70 @@ class UserTagApi {
 
 public:
 
-    UserTagApi(std::string _baseurl_host, std::string _baseurl_path) :
-        baseurl_path(_baseurl_path), client(drogon::HttpClient::newHttpClient(_baseurl_host)) {}
+    UserTagApi(std::string _baseurl_host, std::string _baseurl_path);
     
-    UserTagApi& setBearerToken(std::string _token) { this->bearer_token = _token; return *this; }
-    UserTagApi& setBasicAuth(std::string _username, std::string _password) { this->basic_username = _username; this->basic_password = _password; return *this; }
-    UserTagApi& setApikey(std::string _apikey) { this->apikey = _apikey; return *this; }
+    UserTagApi& setBearerToken(std::string _token);
+    UserTagApi& setBasicAuth(std::string _username, std::string _password);
+    UserTagApi& setApikey(std::string _apikey);
 
 
     // 自分にタグを追加
-    auto addMyUserTag(
+    UserTag
+    addMyUserTag(
         const std::optional<PostUserTagRequest>& _postUserTagRequest
-    ){
-        Json::Value json;
-        if(_postUserTagRequest.has_value()) {
-            json = (_postUserTagRequest.value());
-        }
-        auto req = drogon::HttpRequest::newHttpJsonRequest(json);
-        req->setMethod(drogon::HttpMethod::Post);
-
-        std::string endpoint_path = "/users/me/tags";
-        
-        if (this->bearer_token.has_value()) {
-            req->addHeader("Authorization", "Bearer " + this->bearer_token.value());
-        }
-        
-        req->setPath(baseurl_path + endpoint_path);
-
-        auto [result, response] = this->client->sendRequest(req);
-
-        auto response_json = response->getJsonObject();
-        std::optional<UserTag> response_object;
-
-        if (result == drogon::ReqResult::Ok &&
-            200 <= response->getStatusCode() &&
-            300 > response->getStatusCode() &&
-            response_json) {
-            response_object.emplace(*response_json);
-        }
-
-        return std::make_tuple(result, std::move(response), std::move(response_object));
-    }
-
+    );
 
     // ユーザーにタグを追加
-    auto addUserTag(
+    UserTag
+    addUserTag(
         const std::string& _userId, 
         const std::optional<PostUserTagRequest>& _postUserTagRequest
-    ){
-        Json::Value json;
-        if(_postUserTagRequest.has_value()) {
-            json = (_postUserTagRequest.value());
-        }
-        auto req = drogon::HttpRequest::newHttpJsonRequest(json);
-        req->setMethod(drogon::HttpMethod::Post);
-
-        std::string endpoint_path = "/users/{userId}/tags";
-        
-        if (this->bearer_token.has_value()) {
-            req->addHeader("Authorization", "Bearer " + this->bearer_token.value());
-        }
-        
-        {
-            Json::Value jsonobj = (_userId);
-            constexpr auto style = __Helper::SerializeStyle::simple;
-            auto serialized = __Helper::serialize(style, "userId", jsonobj);
-            endpoint_path = std::regex_replace(endpoint_path, std::regex("\\{" "userId" "\\}"), serialized);
-        }
-        
-        req->setPath(baseurl_path + endpoint_path);
-
-        auto [result, response] = this->client->sendRequest(req);
-
-        auto response_json = response->getJsonObject();
-        std::optional<UserTag> response_object;
-
-        if (result == drogon::ReqResult::Ok &&
-            200 <= response->getStatusCode() &&
-            300 > response->getStatusCode() &&
-            response_json) {
-            response_object.emplace(*response_json);
-        }
-
-        return std::make_tuple(result, std::move(response), std::move(response_object));
-    }
-
+    );
 
     // 自分のタグを編集
-    auto editMyUserTag(
+    void
+    editMyUserTag(
         const std::string& _tagId, 
         const std::optional<PatchUserTagRequest>& _patchUserTagRequest
-    ){
-        Json::Value json;
-        if(_patchUserTagRequest.has_value()) {
-            json = (_patchUserTagRequest.value());
-        }
-        auto req = drogon::HttpRequest::newHttpJsonRequest(json);
-        req->setMethod(drogon::HttpMethod::Patch);
-
-        std::string endpoint_path = "/users/me/tags/{tagId}";
-        
-        if (this->bearer_token.has_value()) {
-            req->addHeader("Authorization", "Bearer " + this->bearer_token.value());
-        }
-        
-        {
-            Json::Value jsonobj = (_tagId);
-            constexpr auto style = __Helper::SerializeStyle::simple;
-            auto serialized = __Helper::serialize(style, "tagId", jsonobj);
-            endpoint_path = std::regex_replace(endpoint_path, std::regex("\\{" "tagId" "\\}"), serialized);
-        }
-        
-        req->setPath(baseurl_path + endpoint_path);
-
-        auto [result, response] = this->client->sendRequest(req);
-
-
-        return std::make_tuple(result, std::move(response));
-    }
-
+    );
 
     // ユーザーのタグを編集
-    auto editUserTag(
+    void
+    editUserTag(
         const std::string& _userId, 
         const std::string& _tagId, 
         const std::optional<PatchUserTagRequest>& _patchUserTagRequest
-    ){
-        Json::Value json;
-        if(_patchUserTagRequest.has_value()) {
-            json = (_patchUserTagRequest.value());
-        }
-        auto req = drogon::HttpRequest::newHttpJsonRequest(json);
-        req->setMethod(drogon::HttpMethod::Patch);
-
-        std::string endpoint_path = "/users/{userId}/tags/{tagId}";
-        
-        if (this->bearer_token.has_value()) {
-            req->addHeader("Authorization", "Bearer " + this->bearer_token.value());
-        }
-        
-        {
-            Json::Value jsonobj = (_userId);
-            constexpr auto style = __Helper::SerializeStyle::simple;
-            auto serialized = __Helper::serialize(style, "userId", jsonobj);
-            endpoint_path = std::regex_replace(endpoint_path, std::regex("\\{" "userId" "\\}"), serialized);
-        }
-        
-        {
-            Json::Value jsonobj = (_tagId);
-            constexpr auto style = __Helper::SerializeStyle::simple;
-            auto serialized = __Helper::serialize(style, "tagId", jsonobj);
-            endpoint_path = std::regex_replace(endpoint_path, std::regex("\\{" "tagId" "\\}"), serialized);
-        }
-        
-        req->setPath(baseurl_path + endpoint_path);
-
-        auto [result, response] = this->client->sendRequest(req);
-
-
-        return std::make_tuple(result, std::move(response));
-    }
-
+    );
 
     // 自分のタグリストを取得
-    auto getMyUserTags(
-    ){
-        auto req = drogon::HttpRequest::newHttpRequest();
-        req->setMethod(drogon::HttpMethod::Get);
-
-        std::string endpoint_path = "/users/me/tags";
-        
-        if (this->bearer_token.has_value()) {
-            req->addHeader("Authorization", "Bearer " + this->bearer_token.value());
-        }
-        
-        req->setPath(baseurl_path + endpoint_path);
-
-        auto [result, response] = this->client->sendRequest(req);
-
-        auto response_json = response->getJsonObject();
-        std::optional<std::vector<UserTag>> response_object;
-
-        if (result == drogon::ReqResult::Ok &&
-            200 <= response->getStatusCode() &&
-            300 > response->getStatusCode() &&
-            response_json) {
-            std::vector<UserTag> tmp;
-            for (const auto& item : *response_json) {
-                tmp.emplace_back(item.as<UserTag>());    
-            }
-            response_object.emplace(std::move(tmp));
-        }
-
-        return std::make_tuple(result, std::move(response), std::move(response_object));
-    }
-
+    std::vector<UserTag>
+    getMyUserTags(
+    );
 
     // タグ情報を取得
-    auto getTag(
+    Tag
+    getTag(
         const std::string& _tagId
-    ){
-        auto req = drogon::HttpRequest::newHttpRequest();
-        req->setMethod(drogon::HttpMethod::Get);
-
-        std::string endpoint_path = "/tags/{tagId}";
-        
-        if (this->bearer_token.has_value()) {
-            req->addHeader("Authorization", "Bearer " + this->bearer_token.value());
-        }
-        
-        {
-            Json::Value jsonobj = (_tagId);
-            constexpr auto style = __Helper::SerializeStyle::simple;
-            auto serialized = __Helper::serialize(style, "tagId", jsonobj);
-            endpoint_path = std::regex_replace(endpoint_path, std::regex("\\{" "tagId" "\\}"), serialized);
-        }
-        
-        req->setPath(baseurl_path + endpoint_path);
-
-        auto [result, response] = this->client->sendRequest(req);
-
-        auto response_json = response->getJsonObject();
-        std::optional<Tag> response_object;
-
-        if (result == drogon::ReqResult::Ok &&
-            200 <= response->getStatusCode() &&
-            300 > response->getStatusCode() &&
-            response_json) {
-            response_object.emplace(*response_json);
-        }
-
-        return std::make_tuple(result, std::move(response), std::move(response_object));
-    }
-
+    );
 
     // ユーザーのタグリストを取得
-    auto getUserTags(
+    std::vector<UserTag>
+    getUserTags(
         const std::string& _userId
-    ){
-        auto req = drogon::HttpRequest::newHttpRequest();
-        req->setMethod(drogon::HttpMethod::Get);
-
-        std::string endpoint_path = "/users/{userId}/tags";
-        
-        if (this->bearer_token.has_value()) {
-            req->addHeader("Authorization", "Bearer " + this->bearer_token.value());
-        }
-        
-        {
-            Json::Value jsonobj = (_userId);
-            constexpr auto style = __Helper::SerializeStyle::simple;
-            auto serialized = __Helper::serialize(style, "userId", jsonobj);
-            endpoint_path = std::regex_replace(endpoint_path, std::regex("\\{" "userId" "\\}"), serialized);
-        }
-        
-        req->setPath(baseurl_path + endpoint_path);
-
-        auto [result, response] = this->client->sendRequest(req);
-
-        auto response_json = response->getJsonObject();
-        std::optional<std::vector<UserTag>> response_object;
-
-        if (result == drogon::ReqResult::Ok &&
-            200 <= response->getStatusCode() &&
-            300 > response->getStatusCode() &&
-            response_json) {
-            std::vector<UserTag> tmp;
-            for (const auto& item : *response_json) {
-                tmp.emplace_back(item.as<UserTag>());    
-            }
-            response_object.emplace(std::move(tmp));
-        }
-
-        return std::make_tuple(result, std::move(response), std::move(response_object));
-    }
-
+    );
 
     // 自分からタグを削除します
-    auto removeMyUserTag(
+    void
+    removeMyUserTag(
         const std::string& _tagId
-    ){
-        auto req = drogon::HttpRequest::newHttpRequest();
-        req->setMethod(drogon::HttpMethod::Delete);
-
-        std::string endpoint_path = "/users/me/tags/{tagId}";
-        
-        if (this->bearer_token.has_value()) {
-            req->addHeader("Authorization", "Bearer " + this->bearer_token.value());
-        }
-        
-        {
-            Json::Value jsonobj = (_tagId);
-            constexpr auto style = __Helper::SerializeStyle::simple;
-            auto serialized = __Helper::serialize(style, "tagId", jsonobj);
-            endpoint_path = std::regex_replace(endpoint_path, std::regex("\\{" "tagId" "\\}"), serialized);
-        }
-        
-        req->setPath(baseurl_path + endpoint_path);
-
-        auto [result, response] = this->client->sendRequest(req);
-
-
-        return std::make_tuple(result, std::move(response));
-    }
-
+    );
 
     // ユーザーからタグを削除します
-    auto removeUserTag(
+    void
+    removeUserTag(
         const std::string& _userId, 
         const std::string& _tagId
-    ){
-        auto req = drogon::HttpRequest::newHttpRequest();
-        req->setMethod(drogon::HttpMethod::Delete);
-
-        std::string endpoint_path = "/users/{userId}/tags/{tagId}";
-        
-        if (this->bearer_token.has_value()) {
-            req->addHeader("Authorization", "Bearer " + this->bearer_token.value());
-        }
-        
-        {
-            Json::Value jsonobj = (_userId);
-            constexpr auto style = __Helper::SerializeStyle::simple;
-            auto serialized = __Helper::serialize(style, "userId", jsonobj);
-            endpoint_path = std::regex_replace(endpoint_path, std::regex("\\{" "userId" "\\}"), serialized);
-        }
-        
-        {
-            Json::Value jsonobj = (_tagId);
-            constexpr auto style = __Helper::SerializeStyle::simple;
-            auto serialized = __Helper::serialize(style, "tagId", jsonobj);
-            endpoint_path = std::regex_replace(endpoint_path, std::regex("\\{" "tagId" "\\}"), serialized);
-        }
-        
-        req->setPath(baseurl_path + endpoint_path);
-
-        auto [result, response] = this->client->sendRequest(req);
-
-
-        return std::make_tuple(result, std::move(response));
-    }
-
+    );
 
 };
 
