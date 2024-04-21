@@ -20,7 +20,7 @@ namespace traQApi {
 Oauth2Api::Oauth2Api(std::string baseurl)
 {
     std::smatch m;
-    if(!std::regex_match(baseurl, std::regex(R"((\w+://[a-zA-Z0-9-\.]+)(.+))"))) {
+    if(!std::regex_match(baseurl, m, std::regex(R"((\w+://[a-zA-Z0-9-\.]+)(.+))"))) {
         throw std::runtime_error("Oauth2Api : invalid baseurl");
     }
     client = drogon::HttpClient::newHttpClient(m[1].str());
@@ -58,7 +58,15 @@ Oauth2Api::createClient(
         auto response_json = response->getJsonObject();
         return OAuth2ClientDetail(*response_json);
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -159,7 +167,15 @@ Oauth2Api::getClient(
         auto response_json = response->getJsonObject();
         return GetClient200Response(*response_json);
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -197,7 +213,15 @@ Oauth2Api::getClients(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -227,7 +251,15 @@ Oauth2Api::getMyTokens(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -542,7 +574,15 @@ Oauth2Api::postOAuth2Token(
         auto response_json = response->getJsonObject();
         return OAuth2Token(*response_json);
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 

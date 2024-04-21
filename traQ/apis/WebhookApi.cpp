@@ -15,7 +15,7 @@ namespace traQApi {
 WebhookApi::WebhookApi(std::string baseurl)
 {
     std::smatch m;
-    if(!std::regex_match(baseurl, std::regex(R"((\w+://[a-zA-Z0-9-\.]+)(.+))"))) {
+    if(!std::regex_match(baseurl, m, std::regex(R"((\w+://[a-zA-Z0-9-\.]+)(.+))"))) {
         throw std::runtime_error("WebhookApi : invalid baseurl");
     }
     client = drogon::HttpClient::newHttpClient(m[1].str());
@@ -81,7 +81,15 @@ WebhookApi::createWebhook(
         auto response_json = response->getJsonObject();
         return Webhook(*response_json);
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -174,7 +182,15 @@ WebhookApi::getWebhook(
         auto response_json = response->getJsonObject();
         return Webhook(*response_json);
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -207,7 +223,15 @@ WebhookApi::getWebhookIcon(
         200 <= response->getStatusCode() && response->getStatusCode() < 300) {
         return response;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -293,7 +317,15 @@ WebhookApi::getWebhookMessages(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -331,7 +363,15 @@ WebhookApi::getWebhooks(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 

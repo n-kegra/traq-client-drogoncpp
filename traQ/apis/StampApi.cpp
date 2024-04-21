@@ -21,7 +21,7 @@ namespace traQApi {
 StampApi::StampApi(std::string baseurl)
 {
     std::smatch m;
-    if(!std::regex_match(baseurl, std::regex(R"((\w+://[a-zA-Z0-9-\.]+)(.+))"))) {
+    if(!std::regex_match(baseurl, m, std::regex(R"((\w+://[a-zA-Z0-9-\.]+)(.+))"))) {
         throw std::runtime_error("StampApi : invalid baseurl");
     }
     client = drogon::HttpClient::newHttpClient(m[1].str());
@@ -131,7 +131,15 @@ StampApi::createStamp(
         auto response_json = response->getJsonObject();
         return Stamp(*response_json);
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -162,7 +170,15 @@ StampApi::createStampPalette(
         auto response_json = response->getJsonObject();
         return StampPalette(*response_json);
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -318,7 +334,15 @@ StampApi::getMessageStamps(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -356,7 +380,15 @@ StampApi::getMyStampHistory(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -390,7 +422,15 @@ StampApi::getStamp(
         auto response_json = response->getJsonObject();
         return Stamp(*response_json);
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -423,7 +463,15 @@ StampApi::getStampImage(
         200 <= response->getStatusCode() && response->getStatusCode() < 300) {
         return response;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -457,7 +505,15 @@ StampApi::getStampPalette(
         auto response_json = response->getJsonObject();
         return StampPalette(*response_json);
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -487,7 +543,15 @@ StampApi::getStampPalettes(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -521,7 +585,15 @@ StampApi::getStampStats(
         auto response_json = response->getJsonObject();
         return StampStats(*response_json);
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -567,7 +639,15 @@ StampApi::getStamps(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 

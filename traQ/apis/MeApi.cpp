@@ -32,7 +32,7 @@ namespace traQApi {
 MeApi::MeApi(std::string baseurl)
 {
     std::smatch m;
-    if(!std::regex_match(baseurl, std::regex(R"((\w+://[a-zA-Z0-9-\.]+)(.+))"))) {
+    if(!std::regex_match(baseurl, m, std::regex(R"((\w+://[a-zA-Z0-9-\.]+)(.+))"))) {
         throw std::runtime_error("MeApi : invalid baseurl");
     }
     client = drogon::HttpClient::newHttpClient(m[1].str());
@@ -94,7 +94,15 @@ MeApi::addMyUserTag(
         auto response_json = response->getJsonObject();
         return UserTag(*response_json);
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -244,7 +252,15 @@ MeApi::getMe(
         auto response_json = response->getJsonObject();
         return MyUserDetail(*response_json);
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -274,7 +290,15 @@ MeApi::getMyChannelSubscriptions(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -304,7 +328,15 @@ MeApi::getMyExternalAccounts(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -329,7 +361,15 @@ MeApi::getMyIcon(
         200 <= response->getStatusCode() && response->getStatusCode() < 300) {
         return response;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -355,7 +395,15 @@ MeApi::getMyNotifyCitation(
         auto response_json = response->getJsonObject();
         return GetNotifyCitation(*response_json);
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -388,7 +436,15 @@ MeApi::getMyQRCode(
         200 <= response->getStatusCode() && response->getStatusCode() < 300) {
         return response;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -418,7 +474,15 @@ MeApi::getMySessions(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -456,7 +520,15 @@ MeApi::getMyStampHistory(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -486,7 +558,15 @@ MeApi::getMyStars(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -516,7 +596,15 @@ MeApi::getMyTokens(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -546,7 +634,15 @@ MeApi::getMyUnreadChannels(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -576,7 +672,15 @@ MeApi::getMyUserTags(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -606,7 +710,15 @@ MeApi::getMyViewStates(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -632,7 +744,15 @@ MeApi::getUserSettings(
         auto response_json = response->getJsonObject();
         return UserSettings(*response_json);
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 

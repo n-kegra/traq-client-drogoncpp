@@ -18,7 +18,7 @@ namespace traQApi {
 NotificationApi::NotificationApi(std::string baseurl)
 {
     std::smatch m;
-    if(!std::regex_match(baseurl, std::regex(R"((\w+://[a-zA-Z0-9-\.]+)(.+))"))) {
+    if(!std::regex_match(baseurl, m, std::regex(R"((\w+://[a-zA-Z0-9-\.]+)(.+))"))) {
         throw std::runtime_error("NotificationApi : invalid baseurl");
     }
     client = drogon::HttpClient::newHttpClient(m[1].str());
@@ -95,7 +95,15 @@ NotificationApi::getChannelSubscribers(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -125,7 +133,15 @@ NotificationApi::getMyChannelSubscriptions(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -155,7 +171,15 @@ NotificationApi::getMyUnreadChannels(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
@@ -185,7 +209,15 @@ NotificationApi::getMyViewStates(
         }
         return tmp;
     } else {
-        throw std::runtime_error("error");
+        std::ostringstream oss;
+        oss << "result:" << result;
+        if(!response) {
+            oss << ", response invalid";
+        } else {
+            oss << ", code=" << response->getStatusCode() << ", response=\"" << response->getBody() << "\"";
+        }
+        oss << std::flush;
+        throw std::runtime_error(oss.str());
     }
 }
 
