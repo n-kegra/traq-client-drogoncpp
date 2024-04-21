@@ -1,6 +1,4 @@
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
-
-target_sources(${PROJECT_NAME} PRIVATE
+add_library(traQApi PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/traQ/Helper.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/traQ/apis/ActivityApi.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/traQ/apis/AuthenticationApi.cpp
@@ -145,3 +143,4 @@ target_sources(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/traQ/models/WebRTCUserStateSessionsInner.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/traQ/models/Webhook.cpp
 )
+target_include_directories(traQApi PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
