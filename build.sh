@@ -1,0 +1,1 @@
+java -jar ./modules/openapi-generator-cli/target/openapi-generator-cli.jar generate -g cpp-drogon -i ../v3-api.yaml -o ../traq-client-drogoncpp --additional-properties=cppNamespace=traQApi,cmakeTarget=traQApi,includeDir=traQ,prefix=TRAQ
